@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="script.js"></script>
   </head>
   <body>
     <header>
@@ -30,11 +31,77 @@
             </div>
             <div class="col-div-7">
               <i class="fa fa-search sicon"></i>
-              <button class="buy buy-1">Megnézem</button>
+              <button class="buy buy-1" id="btnLogin-PopUp">Bejelentkezés</button>
             </div>
             <div class="clearfix"></div>
         </div>
     </header>
+
+
+    <!--Regisztráció/bejelentkezés:-->
+
+
+    <div class="wrapper">
+    <span class="icon-close"><ion-icon name="close"></ion-icon>
+    </span>
+
+    <div class="form-box login">
+        <h2>Bejelentkezés</h2>
+        <form action="#">
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Emlékezz rám</label>
+                <a href="#">Elfelejtettem a jelszavam</a>
+            </div>
+            <button type="submit" class="btn">Bejelentkezés</button>
+            <div class="login-register">
+                <p>Nincs még fiókod? <a href="#" class="register-link">Regisztráció</a></p>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="form-box register">
+        <h2>Regisztráció</h2>
+        <form action="#">
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="person"></ion-icon></span>
+                <input id="username" type="text" required>
+                <label>Felhasználónév</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input id="email" type="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input id="password" type="password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Elfogadom a felhasználói feltételeket</label>
+            </div>
+            <button id="regButton" type="submit" class="btn">Regisztráció</button>
+            <div class="login-register">
+                <p>Van már fiókod? <a href="#" class="login-link">Bejelentkezés</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
       <section class="banner">
         <div class="overlay"></div>
         <div class="container">
@@ -225,29 +292,6 @@
       </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script type="text/javascript">
-      window.onscroll =function() {myFunction()};
-
-      var header = document.getElementById("myHeader");
-      var sticky = header.offsetTop;
-      function myFunction(){
-        if (window.pageYOffset > sticky){
-          header.classList.add("sticky");
-        }else{
-          header.classList.remove("sticky");
-        }
-      }
-    </script>
-
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $(".menu-icon").click(function(){
-          $("nav").slideToggle();
-        });
-      });
-    </script>
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
