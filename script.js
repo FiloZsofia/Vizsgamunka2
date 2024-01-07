@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  window.onscroll = function () {
+  /*window.onscroll = function () {
     myFunction();
   };
 
@@ -17,32 +17,49 @@ document.addEventListener("DOMContentLoaded", function () {
     $(".menu-icon").click(function () {
       $("nav").slideToggle();
     });
-  });
+  });*/
+
+
+
+// JavaScript kód a pop-up kezeléséhez
+let gomb = document.getElementById("btnLogin");
+let bezar = document.getElementById("btnClose");
+gomb.onclick = openPopup;
+bezar.onclick = closePopup;
+
+function openPopup() {
+  document.getElementById('popup').style.display = 'block';
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
 
 
   //Bejelentkezés-regisztráció:
 
-  const wrapper = document.querySelector(".wrapper");
+  const contReg = document.querySelector(".popup-content");
   const loginLink = document.querySelector(".login-link");
   const registerLink = document.querySelector(".register-link");
-  const btnPopup = document.querySelector("#btnLogin-PopUp");
+  const btnPopup = document.querySelector(".btnLogin-popup");
   const iconClose = document.querySelector(".icon-close");
 
   registerLink.addEventListener("click", () => {
-    wrapper.classList.add("active");
+    contReg.classList.add("active");
   });
 
   loginLink.addEventListener("click", () => {
-    wrapper.classList.remove("active");
+    contReg.classList.remove("active");
   });
 
-  btnPopup.addEventListener("click", () => {
+  /*btnPopup.addEventListener("click", () => {
     wrapper.classList.add("active-popup");
-  });
+  });*/
 
-  iconClose.addEventListener("click", () => {
+  /*iconClose.addEventListener("click", () => {
     wrapper.classList.remove("active-popup");
-  });
+  });*/
 
   //registration form
 

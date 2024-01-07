@@ -511,58 +511,46 @@ margin-right: 7px;
 
 /*Bejelentkezés-regisztráció formázása:*/
 
-.wrapper {
-    position: relative;
-    width: 400px;
-    height: 440px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .5);
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transform: scale(0);
-    transition: transform .5s ease, height .2s ease;
-}
 
-.wrapper.active-popup {
+.popup-content.active-popup {
     transform: scale(1);
 }
 
-.wrapper.active {
+.popup-content.active {
     height: 520px;
 }
 
-.wrapper .form-box {
+.popup-content .form-box {
     width: 100%;
     padding: 40px;
 }
 
-.wrapper .form-box.login {
+.popup-content .form-box.login {
     transition: transform .18s ease;
     transform: translateX(0);
+    display: inline-block;
 }
 
-.wrapper.active .form-box.login {
+.popup-content.active .form-box.login {
     transition: none;
     transform: translateX(-400px);
+    
+    display: none
 }
 
-.wrapper .form-box.register {
-    position: absolute;
+.popup-content .form-box.register {
+    display: none;
     transition: none;
     transform: translateX(400px);
 }
 
-.wrapper.active .form-box.register {
+.popup-content.active .form-box.register {
     transition: transform .18s ease;
     transform: translateX(0);
+    display: inline-block;
 }
-
-.wrapper .icon-close {
+*/
+.icon-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -683,3 +671,50 @@ margin-right: 7px;
 .login-register p a:hover {
     text-decoration: underline;
 }
+
+
+
+
+
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    overflow: hidden;
+
+    
+    
+  }
+  
+  .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #ac7474;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+  }
