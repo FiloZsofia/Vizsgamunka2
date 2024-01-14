@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
- let image = document.getElementById("image");
+
+  termekDoboz();
+ 
+  let image = document.getElementById("image");
   let price = document.getElementById("price");
   let size = document.getElementById("size");
   let name = document.getElementById("festmenyNevek");
-  termekDoboz();
+
 
   // A fetch függvény használata a GET kérés elküldéséhez
   fetch("https://api.punkapi.com/v2/beers")
@@ -29,13 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
       // Az esetleges hibák kezelése
       console.error("Hiba történt:", error);
     });
-
 });
 
 
 function termekDoboz() {
 
-      let section = document.getElementsByClassName("section-two");
+      let section = document.getElementById("section");
 
       let ourBox = document.createElement("div");
       ourBox.className = "our-box";
@@ -61,7 +63,12 @@ function termekDoboz() {
       kosar.class = "kosar";
       kosar.id = "kosar";
 
-      ourContent.appendChild(festmenyNevek, price, size, kosar);
+      ourContent.appendChild(festmenyNevek);
+      ourContent.appendChild(price);
+      ourContent.appendChild(size);
+      ourContent.appendChild(kosar);
+      ourBox.appendChild(image);
+      ourBox.appendChild(ourContent);
 
-      section.appendChild = ourBox;
+      section.appendChild(ourBox);
 }
