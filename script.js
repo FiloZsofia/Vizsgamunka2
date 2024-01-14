@@ -100,4 +100,38 @@ function closePopup() {
         // Handle error, e.g., show an error message to the user
       });
   }
+
+//  Termékek a rest api-ból:
+
+  const festmenyNevek = document.getElementById("festmenyNevek");
+  const price = document.getElementById("price");
+  const size = document.getElementById("size");
+  const image = document.getElementById("image");
+  const kosar = document.getElementById("kosar");
+
+
+  kosar.onclick = betoltes;
+
+  function betoltes(){
+    // A fetch függvény használata a GET kérés elküldéséhez
+    fetch("https://api.punkapi.com/v2/beers")
+      .then(response => {
+    // Ellenőrizze, hogy a válasz sikeres-e (HTTP státuszkód 200-299)
+    if (!response.ok) {
+      throw new Error("Hiba a kérés során: ${response.status}");
+    }
+
+    // A válasz JSON formátumra való átalakítása
+    return response.json();
+  })
+      .then((data) => {
+        // Az API válaszban lévő adatok kezelése
+        console.log("API válasz:", data);
+      })
+      .catch((error) => {
+        // Az esetleges hibák kezelése
+        console.error("Hiba történt:", error);
+      });
+  }
+
 });

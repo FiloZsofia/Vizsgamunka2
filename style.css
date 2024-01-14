@@ -162,11 +162,11 @@ nav ul li a:hover::after {
     transition: background-color 0.3s ease;
 }
 
-.sicon{
+/*.sicon{
     font-size: 25px;
     margin-right: 25px;
     color: var(--light-font);
-}
+}*/
 
 .ban-content{
     position: absolute;
@@ -506,6 +506,7 @@ margin-right: 7px;
 
 .col-div-7{
     display: inline-block;
+    padding-top: 10px;
 }
 
 
@@ -569,7 +570,7 @@ margin-right: 7px;
 
 .form-box h2 {
     font-size: 2em;
-    color: #162938;
+    color: var(--white);
     text-align: center;
 }
 
@@ -577,7 +578,7 @@ margin-right: 7px;
     position: relative;
     width: 100%;
     height: 50px;
-    border-bottom: 2px solid #162938;
+    border-bottom: 2px solid var(--light-font);
     margin: 30px 0;
 }
 
@@ -587,7 +588,7 @@ margin-right: 7px;
     left: 5px;
     transform: translateY(-50%);
     font-size: 1em;
-    color: #162938;
+    color: var(--white);
     font-weight: 500;
     pointer-events: none;
     transition: .5s;
@@ -605,7 +606,7 @@ margin-right: 7px;
     border: none;
     outline: none;
     font-size: 1em;
-    color: #162938;
+    color: var(--white);
     font-weight: 600;
     padding: 0 35px 0 5px;
 }
@@ -620,9 +621,9 @@ margin-right: 7px;
 
 .remember-forgot {
     font-size: .9em;
-    color: #162938;
+    color: var(--light-font);
     font-weight: 500;
-    margin: -15px 0 15px;
+    margin: 20px 0 25px;
     display: flex;
     justify-content: space-between;
 }
@@ -633,8 +634,9 @@ margin-right: 7px;
 }
 
 .remember-forgot a {
-    color: #162938;
+    color: var(--light-font);
     text-decoration: none;
+    margin-left: 15px;
 }
 
 .remember-forgot a:hover {
@@ -644,14 +646,18 @@ margin-right: 7px;
 .btn {
     width: 100%;
     height: 45px;
-    background: #162938;
+    background: var(--main-color);
     border: none;
     outline: none;
-    border-radius: 6px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 1em;
-    color: #fff;
+    color: var(--stickyheader);
     font-weight: 500;
+}
+
+.btn:hover{
+    background-color: var(--cursor);
 }
 
 .login-register {
@@ -672,11 +678,6 @@ margin-right: 7px;
     text-decoration: underline;
 }
 
-
-
-
-
-
 .popup-container {
     display: none;
     position: fixed;
@@ -684,12 +685,9 @@ margin-right: 7px;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);         
     z-index: 1;
     overflow: hidden;
-
-    
-    
   }
   
   .popup-content {
@@ -698,11 +696,11 @@ margin-right: 7px;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: #ac7474;
+    background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(7px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
@@ -715,6 +713,34 @@ margin-right: 7px;
     top: 10px;
     right: 10px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 10px;
     color: #333;
   }
+
+  #btnLogin{
+    position: inline-block;
+    background-color: var(--background);
+    border: none;
+    size: 10px;
+    margin-left: 10px;
+  }
+
+  #btnLogin:hover{
+    cursor: pointer;
+
+  }
+
+  #fentikosar{
+    position: inline-block;
+    background-color: var(--background);
+    border: none;
+    margin-left: 10px;
+  }
+
+  #fentikosar:hover {
+    cursor: pointer;
+  }
+
+    #termekek-div {
+        justify-content: center;
+}
