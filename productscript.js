@@ -1,13 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  termekDoboz();
- 
-  let image = document.getElementById("image");
-  let price = document.getElementById("price");
-  let size = document.getElementById("size");
-  let name = document.getElementById("festmenyNevek");
-
-
   // A fetch függvény használata a GET kérés elküldéséhez
   fetch("https://api.punkapi.com/v2/beers")
     .then((response) => {
@@ -23,10 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // Az API válaszban lévő adatok kezelése
       console.log("API válasz:", data);
 
-      name.innerText = data[1].name;
-      price.innerText = `"${data[1].first_brewed}" Ft`;
-      size.innerText = `A termék mérete: "${data[1].ibu}"`;
-      image.src = data[1].image_url;
+      // Iteráljunk az adatokon és hozzunk létre egy-egy termék dobozt
+      data.forEach((beer, index) => {
+        termekDoboz(index + 1, beer);
+      });
     })
     .catch((error) => {
       // Az esetleges hibák kezelése
@@ -34,41 +25,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function termekDoboz(number, beerData) {
+  let section = document.getElementById("section");
 
-function termekDoboz() {
+  let ourBox = document.createElement("div");
+  ourBox.className = "our-box";
 
-      let section = document.getElementById("section");
+  let image = document.createElement("img");
+  image.id = `image${number}`;
+  image.src = beerData.image_url;
 
-      let ourBox = document.createElement("div");
-      ourBox.className = "our-box";
+  let ourContent = document.createElement("div");
+  ourContent.className = "our-content";
 
-      let image = document.createElement("img");
-      image.id = "image";
+  let festmenyNevek = document.createElement("h3");
+  festmenyNevek.innerText = beerData.name;
 
-      let ourContent = document.createElement("div");
-      ourContent.className = "our-content";
+  let price = document.createElement("p");
+  price.className = "price";
+  price.innerText = `"${beerData.first_brewed}" Ft`;
 
-      let festmenyNevek = document.createElement("h3");
-      festmenyNevek.id = "festmenyNevek";
+  let size = document.createElement("p");
+  size.className = "size";
+  size.innerText = `A termék mérete: "${beerData.ibu}"`;
 
-      let price = document.createElement("p");
-      price.class = "price";
-      price.id = "price";
+  let kosar = document.createElement("button");
+  kosar.className = "kosar";
+  kosar.innerText = "Kosárba";
 
-      let size = document.createElement("p");
-      size.class = "size";
-      size.id = "size";
+  ourContent.appendChild(festmenyNevek);
+  ourContent.appendChild(price);
+  ourContent.appendChild(size);
+  ourContent.appendChild(kosar);
+  ourBox.appendChild(image);
+  ourBox.appendChild(ourContent);
 
-      let kosar = document.createElement("button");
-      kosar.class = "kosar";
-      kosar.id = "kosar";
-
-      ourContent.appendChild(festmenyNevek);
-      ourContent.appendChild(price);
-      ourContent.appendChild(size);
-      ourContent.appendChild(kosar);
-      ourBox.appendChild(image);
-      ourBox.appendChild(ourContent);
-
-      section.appendChild(ourBox);
+  section.appendChild(ourBox);
 }
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Festményvilág</title>
+    <!-- Add Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.0.0/css/ionicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="termek-feltoltese.css" />
+    <script src="loginscript.js"></script>
+    <script src="script.js"></script>
+    <script src="termek-feltoltese.js"></script>
+  </head>
+  <body>
+    <!-- Navigációs sáv: -->
+    <header>
+      <div class="container">
+        <div class="col-div-3 col3">
+          <ion-icon
+            name="color-palette-outline"
+            class="fenti-logokep"
+          ></ion-icon>
+          <h1 class="logo">
+            Festményvilág<i class="fa fa-bars menu-icon"></i>
+          </h1>
+        </div>
+        <div class="col-div-6">
+          <nav>
+            <ul>
+              <li><a href="/index.html">Főoldal</a></li>
+              <li><a href="#">Rólunk</a></li>
+              <li><a href="/termekeink.html">Termékeink</a></li>
+              <li><a href="#">Kontakt</a></li>
+              <li><a href="/termek-feltoltese.html">Termék feltöltése</a></li>
+              <li><a href="/Egyedi rendelés/egyedi-rendeles.html">Egyedi rendelés</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-div-7">
+          <button id="btnLogin" class="btnLogin-popup">
+            <ion-icon name="person-outline" size="large"></ion-icon>
+          </button>
+          <button id="fentikosar">
+            <ion-icon name="cart-outline" size="large"></ion-icon>
+          </button>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </header>
+
+    <!--Regisztráció/bejelentkezés: -->
+
+    <div id="popup" class="popup-container">
+      <div class="popup-content">
+        <span id="btnClose" class="close">
+          <ion-icon name="close"></ion-icon
+        ></span>
+
+        <div class="form-box login">
+          <h2>Bejelentkezés</h2>
+          <form action="#">
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="mail-outline"></ion-icon
+              ></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="lock-closed-outline"></ion-icon
+              ></span>
+              <input type="password" required />
+              <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+              <label><input type="checkbox" />Emlékezz rám</label>
+              <a href="#">Elfelejtettem a jelszavam</a>
+            </div>
+            <button type="submit" class="btn">Bejelentkezés</button>
+            <div class="login-register">
+              <p>
+                Nincs még fiókod?
+                <a href="#" class="register-link">Regisztráció</a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-box register">
+          <h2>Regisztráció</h2>
+          <form action="#">
+            <div class="input-box">
+              <span class="icon">
+                <ion-icon name="person-outline"></ion-icon
+              ></span>
+              <input id="username" type="text" required />
+              <label>Felhasználónév</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="mail-outline"></ion-icon
+              ></span>
+              <input id="email" type="email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-box">
+              <span class="icon"
+                ><ion-icon name="lock-closed-outline"></ion-icon
+              ></span>
+              <input id="password" type="password" required />
+              <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+              <label
+                ><input type="checkbox" />Elfogadom a felhasználói
+                feltételeket</label
+              >
+            </div>
+            <button id="regButton" type="submit" class="btn">
+              Regisztráció
+            </button>
+            <div class="login-register">
+              <p>
+                Van már fiókod? <a href="#" class="login-link">Bejelentkezés</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Termék feltöltése: -->
+
+    <form class="container">
+      <div class="card p-4 m-4 row my-box">
+        <h1 class="d-flex justify-content-center">Termék feltöltése</h1>
+        <div class="p-4 m-4 row" style="flex-direction: row">
+          <div class="felosztas col-md-6 col-xs-12">
+            <div class="form-group">
+              <label for="productName">Festmény neve</label>
+              <input
+                type="text"
+                class="form-control"
+                id="productName"
+                placeholder="Festmény neve"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="artist">Művész</label>
+              <input
+                type="text"
+                class="form-control"
+                id="artist"
+                placeholder="Művész"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="keszitesEve">Készítés éve</label>
+              <input
+                type="number"
+                min="0"
+                class="form-control"
+                id="keszitesEve"
+                placeholder="Készítés éve"
+              />
+            </div>
+
+            <div class="form-group mt-4">
+              <label for="anyag" class="custom-margin-right">Anyag</label>
+              <select name="" id="anyag">
+                <option value="Olaj">Olaj</option>
+                <option value="Akril">Akril</option>
+                <option value="Grafit">Grafit</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="ar">Ár</label>
+              <input
+                type="number"
+                min="0"
+                class="form-control"
+                id="ar"
+                placeholder="Ár"
+              />
+            </div>
+
+            <div class="form-group mt-4">
+              <label for="meret" class="custom-margin-right">Méret</label>
+              <select name="" id="meret">
+                <option value="">20x40 cm</option>
+                <option value="">40x60 cm</option>
+                <option value="">60x80 cm</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="leiras">Leírás</label>
+              <input
+                type="text"
+                class="form-control"
+                id="leiras"
+                placeholder="Leírás"
+              />
+            </div>
+          </div>
+
+          <div class="felosztas col-md-6 file-upload-container">
+            <form action="/action_page.php">
+              <label for="myFile">Képfeltöltés</label>
+              <input type="file" id="myFile" name="filename" />
+            </form>
+          </div>
+        </div>
+        <div class="p-12 m-12 row d-flex justify-content-center">
+          <div>
+            <button id="hozzaadasGomb" type="button" class="btn btn-primary">
+              Termék hozzáadása
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

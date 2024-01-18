@@ -1,0 +1,48 @@
+:root {
+  --main-color: #fff069f1;
+  /*9cecb5f0*/
+  --background: #362d27;
+  --white: #eee;
+  --darkbrown: #2a2420;
+  --light-font: #7e7d7d;
+  --stickyheader: #1c0f00;
+  --cursor: orange;
+}
+
+.my-box {
+  background-color: var(--darkbrown);
+  border-radius: 30px;
+}
+
+.container {
+  color: rgba(255, 255, 255, 0.83);
+}
+
+.file-upload-label {
+  margin-bottom: 50px;
+}
+
+.valami {
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.83);
+}
+
+nav ul li a {
+  text-decoration: none !important;
+  color: var(--white) !important;
+  font-weight: 600;
+  position: relative;
+}
+
+.form-group select {
+  background-color: rgba(255, 255, 255, 0.83);
+}
+
+.custom-margin-right {
+  margin-right: 6px;
+}

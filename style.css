@@ -159,6 +159,7 @@ nav ul li a:hover::after {
 .buy:hover{
     cursor: pointer;
     background-color: var(--cursor);
+    color: var(--white);
     transition: background-color 0.3s ease;
 }
 
@@ -715,6 +716,7 @@ margin-right: 7px;
     cursor: pointer;
     font-size: 10px;
     color: #333;
+    z-index: 1;
   }
 
   #btnLogin{
@@ -745,3 +747,10 @@ margin-right: 7px;
         justify-content: center;
 }
 
+  #termekek {
+    margin-top: 20px; 
+  }
+
+.center-button {
+    text-align: center;
+  }
