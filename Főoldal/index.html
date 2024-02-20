@@ -9,22 +9,22 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="style.css" /> 
+    <link rel="stylesheet" type="text/css" href="/style.css" /> 
     <script src="loginscript.js"></script>
     <script src="script.js"></script>
   </head>
   <body>
 
-    <!-- Navigációs sáv beillesztése -->
+    <!-- Navigációs sáv beillesztése 
 <header id="navigation-container"></header>
 <script>
   // Navigációs sáv beillesztése
   document.getElementById('navigation-container').innerHTML = '<object type="text/html" data="/Navigációs sáv/navigation.html"></object>';
-</script>  
+</script>  -->
 
  <!-- <iframe src="/Navigációs sáv/navigation.html" style="width: 100%; height: 100vh; border: none;"></iframe> -->
 
-  <!-- Navigációs sáv: 
+  <!-- Navigációs sáv: -->
  
     <header>
         <div class="container">
@@ -35,7 +35,7 @@
             <div class="col-div-6">
               <nav>
                 <ul>
-                  <li><a href="/index.html">Főoldal</a></li>
+                  <li><a href="/Főoldal/index.html">Főoldal</a></li>
                   <li><a href="#">Rólunk</a></li>
                   <li><a href="/Termékeink/termekeink.html">Termékeink</a></li>
                   <li><a href="#">Kontakt</a></li>
@@ -50,7 +50,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    </header>  -->
+    </header> 
 
 <!--Regisztráció/bejelentkezés: -->
 
@@ -154,7 +154,7 @@
         </div>
       </section>
 
-
+<!-- https://www.w3schools.com/howto/howto_js_slideshow.asp   Slide show  -->
       <section class="section-two">
         <div class="container">
           <div style="text-align: center;">
@@ -190,11 +190,50 @@
                 <p class="size">A festmény mérete: 80 x 60</p>
                 <button class="kosar">Kosárba</button>
               </div>
+
+
+         <!-- <div class="our-box-container">
+            <div class="our-box fade">
+              <img src="/Assets/images/pexels-steve-johnson-1145720.jpg" style="width:100%">
             </div>
-            <div id="termekek-div" class="center-button"><button id="termekek" class="buy" onclick="window.location.href='/termekeink.html'">További termékek</button></div>
-            <div class="clearfix"></div>
+            <div class="our-box fade">
+              <img src="/Assets/images/watercolor-4119156_1280.jpg" style="width:100%">
+            </div>
+            <div class="our-box fade">
+              <img src="/Assets/images/boat-6686809_1920.jpg" style="width:100%">
+            </div>
+            <div class="our-box fade">
+              <img src="/Assets/images/pexels-steve-johnson-1145720.jpg" style="width:100%">
+            </div>
+            <div class="our-box fade">
+              <img src="/Assets/images/watercolor-4119156_1280.jpg" style="width:100%">
+            </div>
+            <div class="our-box fade">
+              <img src="/Assets/images/boat-6686809_1920.jpg" style="width:100%">
+            </div>
           </div>
+          <br> -->
+
+            <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+</div>
+<div id="termekek-div" class="center-button"><button id="termekek" class="buy" onclick="window.location.href='Termékeink/termekeink.html'">További termékek</button></div>
+<div class="clearfix"></div>
+</div>
+
       </section>
+
+
 
       <section class="section-three">
         <div class="container">
@@ -304,5 +343,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
