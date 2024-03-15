@@ -26,3 +26,6 @@ function showSlides() {
     dots[i].className += " active";
   }
 }
+
+  $("#navi").load("../Navigation/navigation.html")
+

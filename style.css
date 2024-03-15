@@ -881,3 +881,7 @@ margin-right: 7px;
   from {opacity: .4}
   to {opacity: 1}
 }
+
+#navi{
+    height: 100px;
+}

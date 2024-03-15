@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   createPager(100, 5);
   getSwapiPerson(1); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
 
+  $("#navi").load("../Navigation/navigation.html")
 
 
 /*function getSwapiPerson(page){
