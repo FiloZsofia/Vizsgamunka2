@@ -81,6 +81,7 @@ header{
 .logo{
     color: var(--white);
     display: inline-block;
+    font-size: 28px;
 }
 
 .logo i{
@@ -732,7 +733,6 @@ margin-right: 7px;
     background-color: var(--background);
     border: none;
     size: 10px;
-    margin-left: 10px;
   }
 
   #btnLogin:hover{
@@ -744,7 +744,6 @@ margin-right: 7px;
     position: inline-block;
     background-color: var(--background);
     border: none;
-    margin-left: 10px;
   }
 
   #fentikosar:hover {

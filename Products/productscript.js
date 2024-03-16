@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   getSwapiPerson(1); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
 
   $("#navi").load("../Navigation/navigation.html")
-
+  $("footer").load("../Footer/footer.html")
 
 /*function getSwapiPerson(page){
 
