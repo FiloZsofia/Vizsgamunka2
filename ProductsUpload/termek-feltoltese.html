@@ -17,94 +17,14 @@
     <link rel="stylesheet" href="../Navigation/navigation.css">
     <link rel="stylesheet" href="termek-feltoltese.css" />
 
+
   </head>
   <body>
     <!-- Navigációs sáv:--> 
  
     <header id="navi"></header>
 
-    <!--Regisztráció/bejelentkezés: -->
-
-    <div id="popup" class="popup-container">
-      <div class="popup-content">
-        <span id="btnClose" class="close">
-          <ion-icon name="close"></ion-icon
-        ></span>
-
-        <div class="form-box login">
-          <h2>Bejelentkezés</h2>
-          <form action="#">
-            <div class="input-box">
-              <span class="icon"
-                ><ion-icon name="mail-outline"></ion-icon
-              ></span>
-              <input type="email" required />
-              <label>Email</label>
-            </div>
-            <div class="input-box">
-              <span class="icon"
-                ><ion-icon name="lock-closed-outline"></ion-icon
-              ></span>
-              <input type="password" required />
-              <label>Password</label>
-            </div>
-            <div class="remember-forgot">
-              <label><input type="checkbox" />Emlékezz rám</label>
-              <a href="#">Elfelejtettem a jelszavam</a>
-            </div>
-            <button type="submit" class="btn">Bejelentkezés</button>
-            <div class="login-register">
-              <p>
-                Nincs még fiókod?
-                <a href="#" class="register-link">Regisztráció</a>
-              </p>
-            </div>
-          </form>
-        </div>
-
-        <div class="form-box register">
-          <h2>Regisztráció</h2>
-          <form action="#">
-            <div class="input-box">
-              <span class="icon">
-                <ion-icon name="person-outline"></ion-icon
-              ></span>
-              <input id="username" type="text" required />
-              <label>Felhasználónév</label>
-            </div>
-            <div class="input-box">
-              <span class="icon"
-                ><ion-icon name="mail-outline"></ion-icon
-              ></span>
-              <input id="email" type="email" required />
-              <label>Email</label>
-            </div>
-            <div class="input-box">
-              <span class="icon"
-                ><ion-icon name="lock-closed-outline"></ion-icon
-              ></span>
-              <input id="password" type="password" required />
-              <label>Password</label>
-            </div>
-            <div class="remember-forgot">
-              <label
-                ><input type="checkbox" />Elfogadom a felhasználói
-                feltételeket</label
-              >
-            </div>
-            <button id="regButton" type="submit" class="btn">
-              Regisztráció
-            </button>
-            <div class="login-register">
-              <p>
-                Van már fiókod? <a href="#" class="login-link">Bejelentkezés</a>
-              </p>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
+  
     <!-- Termék feltöltése: -->
 
     <form class="container">
@@ -207,7 +127,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="../loginscript.js"></script>
     <script src="termek-feltoltese.js"></script>
+    <script src="../loginscript.js"></script>
   </body>
 </html>
