@@ -12,9 +12,32 @@ document.addEventListener("DOMContentLoaded", function() {
         },); // Példa késleltetés
       });
     }
-  
+ 
+     // Kosár megnyitása gomb eseménykezelése
+  openCartBtn.addEventListener('click', async function() {
+    if (cartItems.style.display === 'none') {
+      const products = await fetchProducts();
+      renderProducts(products);
+      cartItems.style.display = 'block';
+      // Az eseményfigyelő hozzáadása a dokumentumhoz a kosár menü megnyitásakor
+      document.addEventListener('click', closeCartOnClickOutside);
+    } else {
+      cartItems.style.display = 'none';
+      // Az eseményfigyelő eltávolítása a dokumentumból a kosár menü bezárásakor
+      document.removeEventListener('click', closeCartOnClickOutside);
+    }
+  });
+
+  // Kosár bezárása, ha a felhasználó a kosár területén kívül kattint
+  function closeCartOnClickOutside(event) {
+    if (!cartItems.contains(event.target) && event.target !== openCartBtn) {
+      cartItems.style.display = 'none';
+      document.removeEventListener('click', closeCartOnClickOutside);
+    }
+  }
+
     // Kosár megnyitása gomb eseménykezelése
-    openCartBtn.addEventListener('click', async function() {
+   /* openCartBtn.addEventListener('click', async function() {
       if (cartItems.style.display === 'none') {
         const products = await fetchProducts();
         renderProducts(products);
@@ -23,12 +46,22 @@ document.addEventListener("DOMContentLoaded", function() {
         cartItems.style.display = 'none';
       }
     });
+    // Kosár bezárása, ha a felhasználó a kosár területén kívül kattint
+  function closeCartOnClickOutside(event) {
+    if (!cartItems.contains(event.target) && event.target !== openCartBtn) {
+      cartItems.style.display = 'none';
+      document.removeEventListener('click', closeCartOnClickOutside);
+    }
+  }*/
   
     // Termékek megjelenítése a kosárban
     function renderProducts(products) {
       if (products.length === 0) {
         cartItems.innerHTML = '<p>A kosár üres.</p>';
       } else {
+        const btn = document.createElement('button')
+        btn.textContent = "Tovább a fizetéshez"
+        btn.className = "buy";
         const ul = document.createElement('ul');
         products.forEach(product => {
           const li = document.createElement('li');
@@ -37,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         cartItems.innerHTML = '';
         cartItems.appendChild(ul);
+        cartItems.appendChild(btn);
       }
     }
   });
