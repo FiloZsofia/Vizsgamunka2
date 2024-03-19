@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="../style.css" /> 
     <link rel="stylesheet" href="../Navigation/navigation.css">
+    <script src="index.js"></script>
     <script src="../Navigation/loginscript.js"></script>
     <script src="../Navigation/basket.js"></script>
   </head>
@@ -15,9 +16,9 @@
 
 
 <!-- Navigációs sáv:--> 
- 
     <header id="navi"></header> 
 
+<!-- Háttér videó: -->
       <section class="video-header">
         <div class="overlay"></div>
         <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -35,7 +36,7 @@
         </div>
     </section>
 
-
+<!-- Első szekció: -->
       <section class="section-one">
         <div class="container">
           <div class="col-div-4">
@@ -61,16 +62,14 @@
         </div>
       </section>
 
-
-
+<!-- Második szekció -->
       <section class="section-two">
         <div class="container">
           <div style="text-align: center;">
             <p class="p1">TERMÉKEINK</p>
             <h2 class="heading-1">Termékeink</h2>
           </div>
-      
-<!-- previous buttons -->
+          <!-- Előző gomb (Slideshow) -->
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
           <div class="row">
@@ -111,109 +110,24 @@
             </div>
           </div>
       
-          <!-- Next buttons -->
+          <!-- Következő gomb (Slideshow) -->
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
           <br>
       
-          <!-- The dots/circles -->
+          <!-- Alsó pöttyök (Slideshow) -->
           <div style="text-align:center">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
           </div>
-      
-        </div>
-        <div id="termekek-div" class="center-button"><button id="termekek" class="buy" onclick="window.location.href='../Products/termekeink.html'">További termékek</button></div>
-        <div class="clearfix"></div>
-      </div>
-      
+        
+          <!-- Tovább a termékekhez gomb -->
+          <div id="termekek-div" class="center-button"><button id="termekek" class="buy" onclick="window.location.href='../Products/termekeink.html'">További termékek</button></div>
+          <div class="clearfix"></div>
+        </div>     
       </section>
       
-
-<!-- https://www.w3schools.com/howto/howto_js_slideshow.asp   Slide show  -->
-      <!--<section class="section-two">
-        <div class="container">
-          <div style="text-align: center;">
-          <p class="p1">TERMÉKEINK</p>
-          <h2 class="heading-1">Termékeink</h2>
-          </div>
-
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-
-            <div class="our-box">
-              <img src="../Assets/images/boat-6686809_1920.jpg" alt="">
-              <div class="our-content">
-                <h3>Örvény</h3>
-                <p class="price">60 000 Ft</p>
-                <p class="size">A festmény mérete: 80 x 60</p>
-                <button class="kosar">Kosárba</button>
-              </div>
-            </div>
-
-            <div class="our-box">
-              <img src="../Assets/images/watercolor-4119156_1280.jpg" alt="">
-              <div class="our-content">
-                <h3>Örvény</h3>
-                <p class="price">40 000 Ft</p>
-                <p class="size">A festmény mérete: 80 x 60</p>
-                <button class="kosar">Kosárba</button>
-              </div>
-            </div>
-
-            <div class="our-box">
-              <img src="../Assets/images/pexels-steve-johnson-1145720.jpg" alt="">
-              <div class="our-content">
-                <h3>Örvény</h3>
-                <p class="price">45 000 Ft</p>
-                <p class="size">A festmény mérete: 80 x 60</p>
-                <button class="kosar">Kosárba</button>
-              </div>
-
-
-          <div class="our-box-container">
-            <div class="our-box fade">
-              <img src="/Assets/images/pexels-steve-johnson-1145720.jpg" style="width:100%">
-            </div>
-            <div class="our-box fade">
-              <img src="/Assets/images/watercolor-4119156_1280.jpg" style="width:100%">
-            </div>
-            <div class="our-box fade">
-              <img src="/Assets/images/boat-6686809_1920.jpg" style="width:100%">
-            </div>
-            <div class="our-box fade">
-              <img src="/Assets/images/pexels-steve-johnson-1145720.jpg" style="width:100%">
-            </div>
-            <div class="our-box fade">
-              <img src="/Assets/images/watercolor-4119156_1280.jpg" style="width:100%">
-            </div>
-            <div class="our-box fade">
-              <img src="/Assets/images/boat-6686809_1920.jpg" style="width:100%">
-            </div>
-          </div>
-          <br> -->
-          
-
-            <!-- Next and previous buttons -->
-<!--
-  <a class="next" onclick="plusSlides(1)">&#10095;</a> 
-<br>
-
-The dots/circles 
- <div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div> 
-
-</div>
-<div id="termekek-div" class="center-button"><button id="termekek" class="buy" onclick="window.location.href='Termékeink/termekeink.html'">További termékek</button></div>
-<div class="clearfix"></div>
-</div>
-
-      </section>-->
-
-
-
+<!-- Harmadik szekció -->
       <section class="section-three">
         <div class="container">
           <div class="col-div-6">
@@ -252,7 +166,7 @@ The dots/circles
         </div>
       </section>
 
-
+<!-- Negyedik szekció -->
       <section class="section-four">
         <div class="container">
           <div style="text-align: center;">
@@ -288,14 +202,12 @@ The dots/circles
         </div>
       </section>
 
-    <!-- Footer:--> 
-
+<!-- Footer:--> 
     <footer id="footer"></footer>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="index.js"></script>
   </body>
 </html>

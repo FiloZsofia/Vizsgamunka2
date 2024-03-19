@@ -1,0 +1,59 @@
+#paginator {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#paginator button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+#paginator button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+/* legördülő menü*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropbtn {
+    background-color: #f1f1f1;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content label {
+    display: block;
+    padding: 10px;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+  }
+  
+  .dropdown-content label:hover {
+    background-color: #ddd;
+  }
+  
+  .show {
+    display: block;
+  }
+  

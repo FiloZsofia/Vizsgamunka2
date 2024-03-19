@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function () { 
+
 let slideIndex = 0;
 showSlides();
 
@@ -31,3 +33,4 @@ function showSlides() {
 
   $("footer").load("../Footer/footer.html")
 
+})

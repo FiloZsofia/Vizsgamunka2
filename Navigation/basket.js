@@ -35,24 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
       document.removeEventListener('click', closeCartOnClickOutside);
     }
   }
-
-    // Kosár megnyitása gomb eseménykezelése
-   /* openCartBtn.addEventListener('click', async function() {
-      if (cartItems.style.display === 'none') {
-        const products = await fetchProducts();
-        renderProducts(products);
-        cartItems.style.display = 'block';
-      } else {
-        cartItems.style.display = 'none';
-      }
-    });
-    // Kosár bezárása, ha a felhasználó a kosár területén kívül kattint
-  function closeCartOnClickOutside(event) {
-    if (!cartItems.contains(event.target) && event.target !== openCartBtn) {
-      cartItems.style.display = 'none';
-      document.removeEventListener('click', closeCartOnClickOutside);
-    }
-  }*/
   
     // Termékek megjelenítése a kosárban
     function renderProducts(products) {
