@@ -51,3 +51,7 @@
   .file-upload-container label{
     margin-bottom: 20px;
   }
+
+  *, ::after, ::before{
+    box-sizing: unset;
+    }

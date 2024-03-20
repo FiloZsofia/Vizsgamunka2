@@ -820,6 +820,10 @@ margin-right: 7px;
     height: 100px;
 }
 
+*, ::after, ::before{
+    box-sizing: unset;
+    }
+
 @media screen and (max-width: 1282px){
     .container{width: 900px;}
     .our-box{margin: 15px;}

@@ -31,9 +31,9 @@
             </div>
             <form id="filter">
                 <div>
-                    <input id="search" type="text">
+                    <input id="search" type="text" placeholder="Keresés">
                     <div class="dropdown">
-                        <button class="dropbtn">Anyag</button>
+                        <button class="dropbtn" onsubmit="false">Anyag</button>
                         <div class="dropdown-content">
                           <label><input type="checkbox" class="checkbox">Olaj</label>
                           <label><input type="checkbox" class="checkbox">Grafit</label>
@@ -41,14 +41,32 @@
                         </div>
                       </div>
                       
-                    <select name="" id="theme">
+                      <div class="dropdown">
+                        <button class="dropbtn" onsubmit="false">Méret</button>
+                        <div class="dropdown-content">
+                          <label><input type="checkbox" class="checkbox">Nagy</label>
+                          <label><input type="checkbox" class="checkbox">Közepes</label>
+                          <label><input type="checkbox" class="checkbox">Kicsi</label>
+                        </div>
+                      </div>
 
-                    </select>
-                    <select name="" id="size">
+                      <div class="dropdown">
+                        <button class="dropbtn" onsubmit="false">Téma</button>
+                        <div class="dropdown-content">
+                          <label for="csendelet"><input type="checkbox" class="checkbox" id="csendelet">Csendélet</label>
+                          <label><input type="checkbox" class="checkbox">Portré</label>
+                          <label><input type="checkbox" class="checkbox">Tájkép</label>
+                        </div>
+                      </div>
 
                     </select>
                     <select name="" id="order">
-
+                        <option value="" disabled selected hidden>Rendezés</option>
+                        <option value="">Ár szerint növekvő</option>
+                        <option value="">Ár szerint csökkenő</option>
+                        <option value="">Téma szerint ABC sorrend</option>
+                        <option value="">Anyag szerint ABC sorrend</option>
+                        <option value="">Legfrissebb legelől</option>
                     </select>
                 </div>
             </form>

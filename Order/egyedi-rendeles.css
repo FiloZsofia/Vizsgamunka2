@@ -46,3 +46,7 @@ nav ul li a {
 .custom-margin-right {
   margin-right: 6px;
 }
+
+*, ::after, ::before{
+  box-sizing: unset;
+  }

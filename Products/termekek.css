@@ -1,3 +1,7 @@
+:root{
+  --halvanysarga: rgb(247, 240, 168);   
+}
+
 #paginator {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -43,6 +47,7 @@
   .dropdown-content label {
     display: block;
     padding: 10px;
+    background-color: var(--halvanysarga);
   }
   
   .checkbox {
@@ -50,10 +55,39 @@
   }
   
   .dropdown-content label:hover {
-    background-color: #ddd;
+    background-color: orange;
   }
   
   .show {
     display: block;
   }
   
+
+  .dropbtn, #search, #order {
+    padding: 9px 40px;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    border-radius: 35px;
+    border: none;
+    background: var(--main-color);
+    color: var(--stickyheader);
+    margin: 12px;
+    margin-top: 35px;
+}
+
+.dropbtn{
+  width: 100px;
+}
+
+.dropbtn:hover{
+    cursor: pointer;
+    background-color: var(--cursor);
+    color: var(--white);
+    transition: background-color 0.3s ease;
+}
+
+#order option, #search:focus {
+  background-color: var(--halvanysarga);   
+}
