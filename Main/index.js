@@ -7,7 +7,7 @@ function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-function currentSlide(n) {
+function prevtSlide(n) {
   showSlides(slideIndex = n - 1);
 }
 
@@ -34,3 +34,4 @@ function showSlides() {
   $("footer").load("../Footer/footer.html")
 
 })
+

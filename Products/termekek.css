@@ -34,6 +34,7 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
+    width: 80px;
   }
   
   .dropdown-content {
@@ -75,11 +76,9 @@
     color: var(--stickyheader);
     margin: 12px;
     margin-top: 35px;
+    height: 30px;
 }
 
-.dropbtn{
-  width: 100px;
-}
 
 .dropbtn:hover{
     cursor: pointer;
@@ -90,4 +89,19 @@
 
 #order option, #search:focus {
   background-color: var(--halvanysarga);   
+  font-size: 16px;
 }
+
+#order, #search{
+  width: 180px;
+}
+
+/*#order::after {
+  content: '\25BC'; /* nyíl ikon megjelenítése *//*
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}*/
+
