@@ -138,5 +138,10 @@ function createPager(dataCount, resultsPerPage) {
   // Az első oldal kiemelése kezdeti állapotként
   document.querySelector("#paginator button:first-child").classList.add("active");
 }
+
+
+let proba = document.createElement("div");
+proba.innerText = window.localStorage.getItem('token');
+console.log(window.localStorage.getItem('token'));  
 });
 

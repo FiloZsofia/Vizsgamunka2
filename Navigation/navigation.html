@@ -27,22 +27,22 @@
           
               <div class="form-box login">
                   <h2>Bejelentkezés</h2>
-                  <form action="#">
+                  <form action="#" onsubmit="return false">
                       <div class="input-box">
                           <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                          <input type="email" required>
-                          <label>Email</label>
+                          <input type="text" id="user-login" required>
+                          <label>Felhasználónév</label>
                       </div>
                       <div class="input-box">
                           <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                          <input type="password" required>
+                          <input type="password" id="pass-login" required>
                           <label>Password</label>
                       </div>
                       <div class="remember-forgot">
                           <label><input type="checkbox">Emlékezz rám</label>
                           <a href="#">Elfelejtettem a jelszavam</a>
                       </div>
-                      <button type="submit" class="btn">Bejelentkezés</button>
+                      <button type="submit" class="btn" id="login-btn">Bejelentkezés</button>
                       <div class="login-register">
                           <p>Nincs még fiókod? <a href="#" class="register-link">Regisztráció</a></p>
                       </div>
@@ -51,11 +51,11 @@
         
               <div class="form-box register">
                 <h2>Regisztráció</h2>
-                <form action="#">
+                <form action="#" onsubmit="return false">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="person-outline"></ion-icon></span>
-                        <input id="username" type="text" required>
+                        <input id="user-reg" type="text" required>
                         <label>Felhasználónév</label>
                     </div>
                     <div class="input-box">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="input-box">
                         <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                        <input id="password" type="password" required>
+                        <input id="pass-reg" type="password" required>
                         <label>Password</label>
                     </div>
                     <div class="remember-forgot">

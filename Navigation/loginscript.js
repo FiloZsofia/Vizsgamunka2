@@ -35,21 +35,23 @@ document.addEventListener("DOMContentLoaded", function () {
     //registration form
   
     let regButton = document.getElementById("regButton");
-    regButton.onclick = submitForm;
+    let loginButton = document.getElementById("login-btn");
+    regButton.onclick = registration;
+    loginButton.onclick = login;
   
-    function submitForm() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+    function registration() {
+      const regUsername = document.getElementById("user-reg").value;
+      const regPassword = document.getElementById("pass-reg").value;
       const email = document.getElementById("email").value;
-  
+     
       const formData = {
-        userName: username,
-        password: password,
+        userName: regUsername,
+        password: regPassword,
         email: email,
       };
   
       // Send POST request to Spring Boot backend
-      fetch("http://localhost:8080/user/registration", {
+      fetch("http://localhost:8080/auth/registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,5 +68,34 @@ document.addEventListener("DOMContentLoaded", function () {
           // Handle error, e.g., show an error message to the user
         });
     }
+
+    
+    function login(){
+      
+      const loginUsername = document.getElementById("user-login").value;
+      const loginPassword = document.getElementById("pass-login").value;
   
+    fetch("http://localhost:8080/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userName: loginUsername,
+        password: loginPassword
+      }
+      ),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        // Handle success, e.g., show a success message or redirect
+        //Elmenti a böngésző memóriájába a tokent, amit bejelentkezéskor kapunk:
+        window.localStorage.setItem('token', data.code);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle error, e.g., show an error message to the user
+      });
+    }
   })
