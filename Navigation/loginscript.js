@@ -90,12 +90,52 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         console.log("Success:", data);
         // Handle success, e.g., show a success message or redirect
-        //Elmenti a böngésző memóriájába a tokent, amit bejelentkezéskor kapunk:
+        // Elmenti a böngésző memóriájába a tokent, amit bejelentkezéskor kapunk: (   https://jwt.io/  )
         window.localStorage.setItem('token', data.code);
+        checkToken();
       })
       .catch((error) => {
         console.error("Error:", error);
         // Handle error, e.g., show an error message to the user
       });
     }
-  })
+
+    
+/* // Token ellenőrzése
+function checkToken() {
+  // Token lekérése a böngésző helyi tárolójából
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    // Ha van token, akkor valószínűleg bejelentkezett felhasználó van
+    // Ide jöhet az a logika, amit a bejelentkezett felhasználók számára szeretnél futtatni
+    console.log("User is logged in!");
+  } else {
+    // Ha nincs token, akkor valószínűleg nincs bejelentkezett felhasználó
+    // Ide jöhet az a logika, amit a nem bejelentkezett felhasználók számára szeretnél futtatni
+    console.log("User is not logged in!");
+  }
+} */
+
+ // Ellenőrizzük, hogy a "Termék feltöltése" linkre kattintás esetén van-e token
+ const uploadProductLink = document.querySelector(".logged-in-only a");
+  
+ uploadProductLink.addEventListener("click", function(event) {
+   event.preventDefault(); // Megakadályozzuk az alapértelmezett működést (a href követését)
+   
+   // Ellenőrizzük, hogy van-e token
+   const token = window.localStorage.getItem('token');
+   
+   if (!token) {
+     // Ha nincs token, megjelenítjük az alertet
+     alert("Csak bejelentkezett felhasználók tölthetnek fel terméket! Bejelentkezéshez/regisztrációhoz kattints ide.");
+   } else {
+     // Ha van token, a művelet végrehajtható
+     console.log("User is logged in! Upload product allowed.");
+     // Ide jöhet az a logika, amit a bejelentkezett felhasználók számára szeretnél futtatni
+   }
+ });
+
+ 
+});
+
+  
