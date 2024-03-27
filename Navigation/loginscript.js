@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () { 
+//document.addEventListener("DOMContentLoaded", function () { 
   
   // JavaScript kód a pop-up kezeléséhez
   let gomb = document.getElementById("btnLogin");
@@ -98,4 +98,4 @@ document.addEventListener("DOMContentLoaded", function () {
         // Handle error, e.g., show an error message to the user
       });
     }
-  })
+//  })
