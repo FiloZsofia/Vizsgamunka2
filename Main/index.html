@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="../style.css" /> 
     <link rel="stylesheet" href="../Navigation/navigation.css">
-    <script src="index.js"></script>
+
     <script src="../Navigation/loginscript.js"></script>
     <script src="../Navigation/basket.js"></script>
   </head>
@@ -78,11 +78,11 @@
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
           <div class="row">
-            <div class="col-md-4 col-bg-4">
-              <div class="our-box">
+            <div class="col-md-12 col-bg-12">
+              <div class="mySlides our-box">
                 <img src="../Assets/images/boat-6686809_1920.jpg" alt="">
                 <div class="our-content">
-                  <h3>Örvény</h3>
+                  <h3>1</h3>
                   <p class="price">60 000 Ft</p>
                   <p class="size">A festmény mérete: 80 x 60</p>
                   <button class="kosar">Kosárba</button>
@@ -90,11 +90,11 @@
               </div>
             </div>
       
-            <div class="col-md-4 col-bg-4">
-              <div class="our-box">
+            <div class="col-md-12 col-bg-12">
+              <div class="mySlides our-box">
                 <img src="../Assets/images/watercolor-4119156_1280.jpg" alt="">
                 <div class="our-content">
-                  <h3>Örvény</h3>
+                  <h3>2</h3>
                   <p class="price">40 000 Ft</p>
                   <p class="size">A festmény mérete: 80 x 60</p>
                   <button class="kosar">Kosárba</button>
@@ -102,11 +102,23 @@
               </div>
             </div>
       
-            <div class="col-md-4 col-bg-4">
-              <div class="our-box">
+            <div class="col-md-12 col-bg-12">
+              <div class="mySlides our-box">
                 <img src="../Assets/images/pexels-steve-johnson-1145720.jpg" alt="">
                 <div class="our-content">
-                  <h3>Örvény</h3>
+                  <h3>3</h3>
+                  <p class="price">45 000 Ft</p>
+                  <p class="size">A festmény mérete: 80 x 60</p>
+                  <button class="kosar">Kosárba</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-bg-12">
+              <div class="mySlides our-box">
+                <img src="../Assets/images/pexels-eberhard-grossgasteiger-2086361.jpg" alt="">
+                <div class="our-content">
+                  <h3>4</h3>
                   <p class="price">45 000 Ft</p>
                   <p class="size">A festmény mérete: 80 x 60</p>
                   <button class="kosar">Kosárba</button>
@@ -114,9 +126,25 @@
               </div>
             </div>
           </div>
-      
+  
+          <div class="col-md-12 col-bg-12">
+            <div class="mySlides our-box">
+              <img src="../Assets/images/pexels-deeana-arts-1646953.jpg" alt="">
+              <div class="our-content">
+                <h3>5</h3>
+                <p class="price">45 000 Ft</p>
+                <p class="size">A festmény mérete: 80 x 60</p>
+                <button class="kosar">Kosárba</button>
+              </div>
+            </div>
+          </div>
+  
           <!-- Következő gomb (Slideshow) -->
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+          
+      </div>
+          
           <br>
       
           <!-- Alsó pöttyök (Slideshow) -->
@@ -124,6 +152,7 @@
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
+
           </div>
         
           <!-- Tovább a termékekhez gomb -->
@@ -209,8 +238,7 @@
 
 <!-- Footer:--> 
     <footer id="footer"></footer>
-
-
+    <script src="index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

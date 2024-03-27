@@ -245,6 +245,7 @@ font-weight: 600;
 }
 
 .our-box{
+    display: none;
     width: 30%;
     float: left;
     background: var(--background);
