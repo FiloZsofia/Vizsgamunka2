@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
+function delayedFunction() {
+
     const openCartBtn = document.getElementById('fentikosar');
     const cartItems = document.getElementById('cartItems');
   
@@ -55,5 +56,5 @@ document.addEventListener("DOMContentLoaded", function() {
         cartItems.appendChild(btn);
       }
     }
-  });
+  }setTimeout(delayedFunction, 500);
   
