@@ -6,6 +6,7 @@
     --light-font: #7e7d7d;
     --stickyheader: #1c0f00;
     --cursor: orange; 
+    --halvanysarga: rgb(247, 240, 168); 
 }
 
 body::-webkit-scrollbar{
@@ -230,7 +231,8 @@ font-weight: 600;
 .img-box{
     width: 28%;
     float: left;
-    margin-left: 30px;
+    margin-left: 40px;
+    margin-top: 25px;
 }
 
 .img-box img{
@@ -442,7 +444,7 @@ footer{
 
 .our-content button.kosar:hover {
     background-color: var(--cursor);
-    color: var(--darkbrown);
+    color: var(--white);
 }
 
 ion-icon{
@@ -610,6 +612,7 @@ margin-right: 7px;
 
 .btn:hover{
     background-color: var(--cursor);
+    color: var(--white);
 }
 
 .login-register {

@@ -1,0 +1,18 @@
+:root{
+    --main-color: #fff069f1;        /*9cecb5f0*/
+    --background: #362d27;
+    --white: #eee;
+    --darkbrown: #2a2420;
+    --light-font: #7e7d7d;
+    --stickyheader: #1c0f00;
+    --cursor: orange; 
+    --halvanysarga: rgb(247, 240, 168); 
+}
+
+.img-box{
+    margin-top: 85px;
+}
+
+.section-one{
+    background: var(--darkbrown);
+}
