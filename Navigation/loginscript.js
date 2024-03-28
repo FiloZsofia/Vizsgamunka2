@@ -135,7 +135,3 @@ function checkToken() {
    }
  });
 
- 
-});
-
-  
