@@ -3,10 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   createPager(100, 5);
   getSwapiPerson(1); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
 
-  $("#navi").load("../Navigation/navigation.html")
-  $("#footer").load("../Footer/footer.html")
-
-
 function termekDoboz(number, beerData) {
   let section = document.getElementById("section");
 
@@ -143,5 +139,9 @@ function createPager(dataCount, resultsPerPage) {
 let proba = document.createElement("div");
 proba.innerText = window.localStorage.getItem('token');
 console.log(window.localStorage.getItem('token'));  
+
+$("#navi").load("../Navigation/navigation.html")
+$("#footer").load("../Footer/footer.html")
+
 });
 

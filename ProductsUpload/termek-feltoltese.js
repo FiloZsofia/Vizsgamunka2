@@ -16,4 +16,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 $("#navi").load("../Navigation/navigation.html")
-$("footer").load("../Footer/footer.html")
+$("#footer").load("../Footer/footer.html")
