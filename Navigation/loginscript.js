@@ -1,5 +1,6 @@
-//document.addEventListener("DOMContentLoaded", function () { 
-  
+function delayedFunction() {
+
+
   // JavaScript kód a pop-up kezeléséhez
   let gomb = document.getElementById("btnLogin");
   let bezar = document.getElementById("btnClose");
@@ -98,4 +99,4 @@
         // Handle error, e.g., show an error message to the user
       });
     }
-//  })
+}setTimeout(delayedFunction, 500);
