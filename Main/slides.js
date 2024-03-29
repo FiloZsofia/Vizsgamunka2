@@ -3,11 +3,11 @@ showSlides(slideIndex);
 
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  showSlides(slideIndex += n * 3);   //most hármasával lépked a prev/next button. 
 }
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  showSlides(slideIndex = n * 3);    //így a dotok is hármasával lépkednek
 }
 
 function showSlides(n) {

@@ -135,7 +135,6 @@ function createPager(dataCount, resultsPerPage) {
   document.querySelector("#paginator button:first-child").classList.add("active");
 }
 
-
 let proba = document.createElement("div");
 proba.innerText = window.localStorage.getItem('token');
 console.log(window.localStorage.getItem('token'));  
@@ -144,4 +143,3 @@ $("#navi").load("../Navigation/navigation.html")
 $("#footer").load("../Footer/footer.html")
 
 });
-

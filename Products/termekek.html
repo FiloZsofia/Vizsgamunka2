@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Termékek</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.0.0/css/ionicons.min.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../Navigation/navigation.css">
@@ -55,7 +56,7 @@
                         <button class="dropbtn" onsubmit="false">Téma</button>
                         <div class="dropdown-content">
                           <label for="csendelet"><input type="checkbox" class="checkbox" id="csendelet">Csendélet</label>
-                          <label><input type="checkbox" class="checkbox">Portré</label>
+                          <label for="portre"><input type="checkbox" class="checkbox" id="portre">Portré</label>
                           <label><input type="checkbox" class="checkbox">Tájkép</label>
                         </div>
                       </div>
@@ -79,7 +80,37 @@
 
     <footer id="footer"></footer>
 
+<script>
+  // JavaScript kód, hogy a labelre kattintáskor is bekerüljön a pipa a checkboxba:
+  document.addEventListener("DOMContentLoaded", function() {
+      // Az összes címke elem kijelölése
+      var labels = document.querySelectorAll('label');
+
+      // Minden címke elemhez hozzáadunk egy eseményfigyelőt a kattintásra
+      labels.forEach(function(label) {
+          label.addEventListener('click', function(event) {
+              // Megállapítjuk, hogy a kattintás közvetlenül a checkbox-ra vagy a címke szövegére történt-e
+              var checkbox = label.querySelector('input[type="checkbox"]');
+              if (checkbox) {
+                  // Ellenőrizzük, hogy a checkbox be van-e pipálva vagy sem
+                  checkbox.checked = !checkbox.checked;
+              }
+              // Ne zárjuk be a dropdown tartalmakat
+              event.preventDefault();
+              event.stopPropagation();
+          });
+
+          // A címkére való kattintás megakadályozása a pipa beállítása/eltávolítása során
+          label.addEventListener('mousedown', function(event) {
+              event.preventDefault();
+          });
+      });
+  });
+</script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="termekek.js"></script>

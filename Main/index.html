@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Festményvilág</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.0.0/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="../style.css" /> 
     <link rel="stylesheet" href="/Navigation/navigation.css">
-
 
   </head>
   <body>
@@ -135,6 +135,7 @@
               </div>
             </div>
           </div>
+          <div class="clearfix"></div>
   
           <!-- Következő gomb (Slideshow) -->
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -143,18 +144,18 @@
       </div>
           
           <br>
-      
-          <!-- Alsó pöttyök (Slideshow) -->
-          <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
 
-          </div>
+          <!-- Alsó pöttyök (Slideshow) -->
+    <div class="dots-wrapper">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
         
           <!-- Tovább a termékekhez gomb -->
           <div id="termekek-div" class="center-button"><button id="termekek" class="buy" onclick="window.location.href='../Products/termekek.html'">További termékek</button></div>
           <div class="clearfix"></div>
+
         </div>     
       </section>
       
@@ -266,5 +267,7 @@
     <script src="index.js"></script>
     <script src="/Navigation/loginscript.js"></script>
     <script src="/Navigation/basket.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   </body>
 </html>

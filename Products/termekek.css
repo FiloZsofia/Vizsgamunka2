@@ -105,3 +105,7 @@
   transform: translateY(-50%);
 }*/
 
+nav ul li a {
+  text-decoration: none !important;
+  color: var(--white) !important;
+}
