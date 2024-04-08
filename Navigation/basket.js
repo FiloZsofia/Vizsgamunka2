@@ -1,7 +1,25 @@
 function delayedFunction() {
 
-    const openCartBtn = document.getElementById('fentikosar');
-    const cartItems = document.getElementById('cartItems');
+  let kosarMegnyitas = document.getElementById("fentikosar");
+  let kosarBezaras = document.getElementById("btnClose2");
+  let kosar = document.getElementById("popup-basket");
+  
+  kosarBezaras.onclick = closePopup;
+  function closePopup() {
+    kosar.style.display = 'none';
+  }
+
+  /*kosarMegnyitas.onclick = openPopup;
+  kosarBezaras.onclick = closePopup;
+  
+  function openPopup() {
+    document.getElementById('popup-basket').style.display = 'block';
+  }
+  
+  function closePopup() {
+    document.getElementById('popup-bakset').style.display = 'none';
+  }*/
+
   
     // Az API-ról való adatlekérés szimulálása
     function fetchProducts() {
@@ -15,24 +33,24 @@ function delayedFunction() {
     }
  
      // Kosár megnyitása gomb eseménykezelése
-  openCartBtn.addEventListener('click', async function() {
-    if (cartItems.style.display === 'none') {
-      const products = await fetchProducts();
-      renderProducts(products);
-      cartItems.style.display = 'block';
-      // Az eseményfigyelő hozzáadása a dokumentumhoz a kosár menü megnyitásakor
-      document.addEventListener('click', closeCartOnClickOutside);
-    } else {
-      cartItems.style.display = 'none';
-      // Az eseményfigyelő eltávolítása a dokumentumból a kosár menü bezárásakor
-      document.removeEventListener('click', closeCartOnClickOutside);
-    }
-  });
+     kosarMegnyitas.addEventListener('click', async function() {
+      if (kosar.style.display === 'none') {
+        const products = await fetchProducts();
+        renderProducts(products);
+        kosar.style.display = 'block';
+        // Az eseményfigyelő hozzáadása a dokumentumhoz a kosár menü megnyitásakor
+        document.addEventListener('click', closeCartOnClickOutside);
+      } else {
+        kosar.style.display = 'none';
+        // Az eseményfigyelő eltávolítása a dokumentumból a kosár menü bezárásakor
+        document.removeEventListener('click', closeCartOnClickOutside);
+      }
+    });
 
   // Kosár bezárása, ha a felhasználó a kosár területén kívül kattint
   function closeCartOnClickOutside(event) {
-    if (!cartItems.contains(event.target) && event.target !== openCartBtn) {
-      cartItems.style.display = 'none';
+    if (!kosar.contains(event.target) && event.target !== kosarMegnyitas) {
+      kosar.style.display = 'none';
       document.removeEventListener('click', closeCartOnClickOutside);
     }
   }
