@@ -79,8 +79,6 @@ function getSwapiPerson(page) {
       });
 } 
 
-
-
 function createPager(dataCount, resultsPerPage) {
   let paginator = document.getElementById("paginator");
   let pages = Math.ceil(dataCount / resultsPerPage);
@@ -138,6 +136,34 @@ function createPager(dataCount, resultsPerPage) {
 let proba = document.createElement("div");
 proba.innerText = window.localStorage.getItem('token');
 console.log(window.localStorage.getItem('token'));  
+
+//REST API technikák betöltése:
+
+let material = []
+const technika = document.getElementById("technika");
+
+
+async function materials() {
+    const response = await fetch("http://localhost:8080/material/get-all");
+    const data = await response.json();
+    console.log(data);
+
+    data.forEach((materials) => {
+      material = data;
+      const input = document.createElement("input");
+      const label = document.createElement("label");
+
+      label.innerText = materials.name;
+      input.type = "checkbox";
+      label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
+      technika.appendChild(label); // Hozzáadjuk a labelt a technikához
+
+    });
+    console.log(data);
+  }
+  
+  
+materials();
 
 $("#navi").load("../Navigation/navigation.html")
 $("#footer").load("../Footer/footer.html")
