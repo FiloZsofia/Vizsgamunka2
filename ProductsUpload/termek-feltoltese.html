@@ -28,98 +28,81 @@
   
     <!-- Termék feltöltése: -->
 
-    <form class="container">
-      <div class="card p-4 m-4 row my-box">
-        <div class="col">
-          <h1 class="text-center">Termék feltöltése</h1>
-        </div>
-        <div class="col-md-5 col-xs-12">
-            <div class="form-group">
-              <label for="productName">Festmény neve</label>
-              <input
-                type="text"
-                class="form-control"
-                id="productName"
-                placeholder="Festmény neve"
-              />
-            </div>
 
-            <div class="form-group">
-              <label for="artist">Művész</label>
-              <input
-                type="text"
-                class="form-control"
-                id="artist"
-                placeholder="Művész"
-              />
-            </div>
+<div class="container">
+  <div class="card p-4 m-4 my-box">
+      <h1 class="text-center" style="margin-bottom: 40px">Termék feltöltése</h1>
+      <div class="row">
+          <div class="col-md-6">
+              <form>
+                  <div class="form-group">
+                      <label for="productName">Festmény neve</label>
+                      <input type="text" class="form-control" id="productName" placeholder="Festmény neve"/>
+                  </div>
 
-            <div class="form-group">
-              <label for="keszitesEve">Készítés éve</label>
-              <input
-                type="number"
-                min="0"
-                class="form-control"
-                id="keszitesEve"
-                placeholder="Készítés éve"
-              />
-            </div>
+                  <div class="form-group">
+                      <label for="artist">Művész</label>
+                      <input type="text" class="form-control" id="artist" placeholder="Művész"/>
+                  </div>
 
-            <div class="form-group mt-4">
-              <label for="anyag" class="custom-margin-right">Technika</label>
-              <select name="" id="technika">
-              </select> 
-            </div>
+                  <div class="form-group">
+                      <label for="keszitesEve">Készítés éve</label>
+                      <input type="number" min="0" class="form-control" id="keszitesEve" placeholder="Készítés éve"/>
+                  </div>
 
-            <div class="form-group mt-4">
-              <label for="kategoria" class="custom-margin-right">Kategória</label>
-              <select name="" id="kategoria">
-              </select> 
-            </div>
+                  <div class="form-group mt-4">
+                      <label for="technika" class="custom-margin-right">Technika</label>
+                      <select class="form-control" id="technika">
+                         <!-- <option value="oil">Olajfestés</option>
+                          <option value="acrylic">Akrilfestés</option>
+                          <option value="watercolor">Vízfesték</option> -->
+                      </select>
+                  </div>
+                  
+                  <div class="form-group mt-4">
+                      <label for="kategoria" class="custom-margin-right">Kategória</label>
+                      <select class="form-control" id="kategoria">
+                         <!-- <option value="landscape">Tájkép</option>
+                          <option value="portrait">Portré</option>
+                          <option value="abstract">Absztrakt</option> -->
+                      </select>
+                  </div>
 
-            <div class="form-group">
-              <label for="ar">Ár</label>
-              <input
-                type="number"
-                min="0"
-                class="form-control"
-                id="ar"
-                placeholder="Ár"
-              />
-            </div>
+                  <div class="form-group">
+                      <label for="ar">Ár</label>
+                      <input type="number" min="0" class="form-control" id="ar" placeholder="Ár"/>
+                  </div>
 
-            <div class="form-group mt-4">
-              <label for="meret" class="custom-margin-right">Méret</label>
-              <select name="" id="meret">
-                <option value="">20x40 cm</option>
-                <option value="">40x60 cm</option>
-                <option value="">60x80 cm</option>
-              </select>
-            </div>
+                  <div class="form-group mt-4">
+                      <label for="meret" class="custom-margin-right">Méret</label>
+                      <select class="form-control" id="meret">
+                          <option value="20x40">20x40 cm</option>
+                          <option value="40x60">40x60 cm</option>
+                          <option value="60x80">60x80 cm</option>
+                      </select>
+                  </div>
 
-            <div class="form-group">
-              <label for="leiras">Leírás</label>
-              <input
-                type="text"
-                class="form-control"
-                id="leiras"
-                placeholder="Leírás"
-              />
-            </div>
-            <form class="" action="/action_page.php">
-              <label for="myFile">Képfeltöltés</label>
-              <input type="file" id="myFile" name="filename" />
-            </form>
-      </div>
-      <div class="p-12 m-12 col-md-5 col-xs-12 d-flex justify-content-center">
-          <div>
-            <button id="hozzaadasGomb" type="button" class="btn btn-primary">
-              Termék hozzáadása
-            </button>
+                  <div class="form-group">
+                      <label for="leiras">Leírás</label>
+                      <textarea class="form-control" id="leiras" rows="4" placeholder="Leírás"></textarea>
+                  </div>
+              </form>
           </div>
-        </div>
-      </div> 
-    </form>
+
+          <div class="col-md-6">
+              <form class="text-center" action="/action_page.php">
+                  <label for="myFile">Képfeltöltés</label>
+                  <input type="file" id="myFile" name="filename"/>
+              </form>
+          </div>
+      </div>
+    <div class="d-flex justify-content-center mt-4">
+      <button id="hozzaadasGomb" type="button" class="btn btn-primary">
+        Termék hozzáadása
+      </button>
+    </div>
+  </div>
+</div>
 
 
     <!-- Footer:--> 
