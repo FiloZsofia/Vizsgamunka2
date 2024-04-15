@@ -30,9 +30,10 @@
 
     <form class="container">
       <div class="card p-4 m-4 row my-box">
-        <h1 class="d-flex justify-content-center">Termék feltöltése</h1>
-        <div class="p-4 m-4 row" style="flex-direction: row">
-          <div class="felosztas col-md-6 col-xs-12">
+        <div class="col">
+          <h1 class="text-center">Termék feltöltése</h1>
+        </div>
+        <div class="col-md-5 col-xs-12">
             <div class="form-group">
               <label for="productName">Festmény neve</label>
               <input
@@ -105,23 +106,19 @@
                 placeholder="Leírás"
               />
             </div>
-          </div>
-
-          <div class="felosztas col-md-6 file-upload-container">
             <form action="/action_page.php">
               <label for="myFile">Képfeltöltés</label>
               <input type="file" id="myFile" name="filename" />
             </form>
-          </div>
-        </div>
-        <div class="p-12 m-12 row d-flex justify-content-center">
+      </div>
+      <div class="p-12 m-12 col-md-5 col-xs-12 d-flex justify-content-center">
           <div>
             <button id="hozzaadasGomb" type="button" class="btn btn-primary">
               Termék hozzáadása
             </button>
           </div>
         </div>
-      </div>
+      </div> 
     </form>
 
     <!-- Footer:--> 

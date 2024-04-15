@@ -1,5 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () { 
-  
+/*document.addEventListener("DOMContentLoaded", function () { 
+
+   
   // JavaScript kód a pop-up kezeléséhez
   let gomb = document.getElementById("btnLogin");
   let bezar = document.getElementById("btnClose");
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function closePopup() {
     document.getElementById('popup').style.display = 'none';
   }
-});
+});*/
 
 
 //Technikák betöltése: 
@@ -66,20 +67,29 @@ kategoriak();
 
 
 //Termék feltöltése:
+let cim = document.getElementById("productName");
+let muvesz = document.getElementById("artist");
+let ar = document.getElementById("ar");
+let leiras = document.getElementById("leiras");
+let kep = document.getElementById("myFile");
+let keszitve = document.getElementById("keszitesEve");
+let x = 40;
+let y = 20;
 
+function feltoltes(){
+//ez a json, a kettőspont előtti szöveg jön a backendből, az Art.java (entity) classból, a kettőspont utáni pedig szabadon elnevezhető
 const formData = {    
-  //ez a json, a kettőspont előtti szöveg jön a backendből, az Art.java (entity) classból, a kettőspont utáni pedig szabadon elnevezhető
   id: id,
-  title: title,
-  artist: artist,
-  price: price,
-  description: description,
-  imgUrl: imgUrl,
-  createdYear: createdYear,
-  xCm: xCm,
-  yCm: yCm,
-  material: material,
-  user: user
+  title: cim,
+  artist: muvesz,
+  price: ar,
+  description: leiras,
+  imgUrl: kep,
+  createdYear: keszitve,
+  xCm: x,
+  yCm: y,
+  material: technika,
+  //user: user
 };
 
 // Send POST request to Spring Boot backend
@@ -99,6 +109,10 @@ fetch("http://localhost:8080/product/add", {
     console.error("Error:", error);
     // Handle error, e.g., show an error message to the user
   });
+}
+
+let hozzaad = document.getElementById("hozzaadasGomb");
+hozzaad.onclick = feltoltes;
 
 $("#navi").load("../Navigation/navigation.html")
 $("#footer").load("../Footer/footer.html")
