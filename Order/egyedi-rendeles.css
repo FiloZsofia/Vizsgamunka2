@@ -50,3 +50,48 @@ nav ul li a {
 *, ::after, ::before{
   box-sizing: unset;
   }
+
+  
+  .img_upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--white);
+    color: var(--white);
+    border-radius: 5px;
+    width: 100%;
+    height: 91%;
+}
+.gg-image {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 0 2px;
+    border-radius: 2px;
+    margin: 0 auto;
+    text-align:center;
+}
+
+#hozzaadasGomb{
+  height: 50px;
+  width: auto;
+  padding: 9px 40px;
+  font-size: 17px;
+  line-height: 30px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  border-radius: 15px;     
+  border: none;
+  background: var(--main-color);
+  color: var(--stickyheader);
+} 
+
+#hozzaadasGomb:hover{
+  cursor: pointer;
+  background-color: var(--cursor);
+  color: white;
+  transition: background-color 0.3s ease;
+}

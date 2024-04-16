@@ -36,6 +36,7 @@
         <h1 class="d-flex justify-content-center">Egyedi megrendelés leadása</h1>
         <p class="mt-3">Az alábbi űrlapon egyedi megrendelés leadására van lehetőség. A leadott rendelések elkészítése 14 munkanapon belül történik meg.</p>
         <div class="p-4 m-4 row" style="flex-direction: row">
+
           <div class="felosztas col-md-6 col-xs-12">
 
             <div class="form-group mt-4">
@@ -61,23 +62,33 @@
                 <textarea class="form-control" id="leiras" placeholder="Leírás" rows="4"></textarea>
             </div>
 
-            <div class="felosztas valami col-md-6">
+        <!-- <div class="felosztas valami col-md-6">
               <form action="/action_page.php">
                 <label for="myFile">Ha azt szeretnéd, hogy egy fénykép kerüljön lefestésre, kérjük töltsd fel a fotót!</label>
                 <input type="file" id="myFile" name="filename" />
               </form>
-            </div>
-
+            </div>  -->
           </div>
-          
-            <div class="p-12 m-12 row d-flex justify-content-center">
-              <div>
+
+            <div class="p-4 m-4 row">
+              <form class="text-center img_upload" action="/action_page.php" id="upload-form">
+                  <i class="gg-image" id="file-selector"></i> 
+                  <!-- Ezt a bemenetet használjuk a fájlok kiválasztásához, de elrejtjük a felhasználó elől --> 
+                  <input type="file" id="file-input" style="display: none;"> 
+              </form> 
+          </div> 
+              </div> 
+            
+              <div class="p-12 m-12 row d-flex justify-content-center"> 
+              <div class="col-md-6 d-flex align-items-end justify-content-center">
                 <button id="hozzaadasGomb" type="button" class="btn btn-primary">Ajánlat kérése</button>
               </div>
             </div>
+            
         </div>
       </div>
     </form>
+    
 
     <!-- Footer:--> 
 
