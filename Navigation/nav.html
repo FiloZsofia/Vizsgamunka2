@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/close.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            width: 100%;
+            height: 100px;
+            background-color: bisque;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 25px;
+        }
+        nav a {
+            height: 100%;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav .home_link {
+            margin-right: auto;
+        }
+        .navigation_menu {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+        }
+        #sidebar_active {
+            display: none;
+        }
+        .open_sidebar_btn, .close_sidebar_btn {
+            display: none;
+        }
+        .links_container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .proba{
+            display: none;
+        }
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                padding: 25px;
+            }
+            nav a {
+                box-sizing: border-box;
+                height: auto;
+                width: 100%;
+                padding: 20px 20px;
+                justify-content: center; /* flex-start */
+            }
+            .open_sidebar_btn, .close_sidebar_btn {
+                display: block;
+                /* padding: 20px; */
+                font-size: 30px;
+            }
+            .close_sidebar_btn {
+                padding: 15px;
+            }
+            #sidebar_active:checked ~ .links_container {
+                /* display: flex; */
+                top: 0;
+            }
+            .links_container {
+                /* display: none; */
+                flex-direction: column;
+                align-items: flex-start;
+                position: fixed;
+                top: -100%;
+                right: 0;
+                z-index: 5;
+                width: 100%;
+                background-color: bisque;
+                box-shadow: -5px 0 5px rgba(0, 0, 0, 0.2);
+                transition: 0.2s ease-out;
+            }
+        }
+    </style>
+
+    <nav>
+
+        <input type="checkbox" id="sidebar_active">
+        <label for="sidebar_active" class="open_sidebar_btn">
+            <ion-icon name="menu-outline"></ion-icon>
+        </label>
+
+        <div class="links_container">
+            <label for="sidebar_active" class="close_sidebar_btn">
+                <ion-icon name="close-outline"></ion-icon>
+            </label>
+
+            <a class="home_link" href="/Main/index.html">Festményvilág</a>
+            <a href="/Products/termekek.html">Termékek</a>
+            <a href="/AboutUs/rolunk.html">Rólunk</a>
+            <a href="/ProductsUpload/termek-feltoltese.html">Termék feltöltése</a>
+            <a href="/Order/egyedi-rendeles.html">Egyedi rendelés</a>
+
+        </div>
+    </nav>
+</body>
+</html>
