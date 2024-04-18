@@ -104,7 +104,7 @@ h1{
 }
 
 input{
-  background-color: var(--stickyheader) !important;
+  background-color: var(--darkbrown) !important;
   color: var(--white) !important;
 }
 
@@ -113,7 +113,7 @@ input{
 }
 
 .form-group select{
-  background-color: var(--stickyheader) !important;
+  background-color: var(--darkbrown) !important;
 }
 
 .form-control option{
@@ -125,7 +125,7 @@ color: var(--white);
 }
 
 textarea{
-  background-color: var(--stickyheader) !important;
+  background-color: var(--darkbrown) !important;
   color: var(--white) !important;
 }
 

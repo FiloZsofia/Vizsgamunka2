@@ -839,6 +839,71 @@ margin-right: 7px;
     box-sizing: unset;
     }
 
+/*  Technikára vonatkozó formázás a főoldalon:  */
+
+.clearfix{
+    clear: both;
+}
+.col-div-6{
+    width: 50%;
+    float: left;
+}
+.p1{
+    font-size: 16px;
+    color: var(--light-font);
+    font-weight: 600;
+}
+.cim{
+    font-size: 35px;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 50px;
+}
+.section-three{
+    padding: 100px 0px;
+    background: var(--background);
+    overflow: hidden;
+}
+.s-box{
+    float: left;
+    padding: 15px;
+    text-align: center;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.25);
+}
+.s-box h3{
+    color: var(--white);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.s-box p{
+    color: var(--light-font);
+    font-weight: 600;
+    line-height: 25px;
+}
+.section-four{
+    padding: 100px 0px;
+    background: var(--darkbrown);
+}
+ion-icon{
+    font-size: 40px;
+    color: var(--main-color);
+    margin-right: 7px;
+}
+.container_s4 {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: block;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+
 @media screen and (max-width: 1282px){
     .container{width: 900px;}
     .our-box{margin: 15px;}
