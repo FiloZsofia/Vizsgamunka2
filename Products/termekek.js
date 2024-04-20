@@ -1,31 +1,35 @@
+$("#navi").load("../Navigation/navigation.html");
+$("#footer").load("../Footer/footer.html");
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  createPager(100, 5);
-  getSwapiPerson(1); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
+ createPager(100, 5);
+  getProducts(); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
+  termekDoboz(1);
 
-function termekDoboz(number, beerData) {
-  let section = document.getElementById("section");
+function termekDoboz(number, termekek) {
+  let section = document.getElementById("termekek");
 
   let ourBox = document.createElement("div");
   ourBox.className = "our-box";
 
   let image = document.createElement("img");
-  image.id = `image${number}`;
-  image.src = beerData.image_url;
+  image.id = `$image{number}`;
+  image.src = termekek.image_url;
 
   let ourContent = document.createElement("div");
   ourContent.className = "our-content";
 
   let festmenyNevek = document.createElement("h3");
-  festmenyNevek.innerText = beerData.name;
+  festmenyNevek.innerText = termekek.title;
 
   let price = document.createElement("p");
   price.className = "price";
-  price.innerText = `"${beerData.first_brewed}" Ft`;
+  price.innerText = `"${termekek.price}" Ft`;
 
   let size = document.createElement("p");
   size.className = "size";
-  size.innerText = `A termék mérete: "${beerData.ibu}"`;
+  size.innerText = `A termék mérete: "${termekek.xcm}"`;
 
   let kosar = document.createElement("button");
   kosar.className = "kosar";
@@ -43,8 +47,8 @@ function termekDoboz(number, beerData) {
 } 
 
 
-function getSwapiPerson(page) {
-  let url = "https://api.punkapi.com/v2/beers";
+function getProducts(page) {
+  let url = "http://localhost:8080/product/get-all";
   let resultsPerPage = 12;
   let startIndex = (page - 1) * resultsPerPage;
 
@@ -61,11 +65,11 @@ function getSwapiPerson(page) {
           console.log("API válasz:", data);
 
           // Törölje a korábbi termékeket az oldalról
-          document.getElementById("section").innerHTML = "";
+          document.getElementById("termekek").innerHTML = "";
 
           // Iteráljon az új termékeken és hozzon létre dobozokat
-          data.forEach((beer, index) => {
-              termekDoboz(index + 1, beer);
+          data.forEach((termek, index) => {
+              termekDoboz(index + 1, data);
           });
 
           // Az aktuális oldal színének beállítása
@@ -104,7 +108,7 @@ function createPager(dataCount, resultsPerPage) {
   prevBtn.addEventListener("click", () => {
       let currentPage = parseInt(document.querySelector(".active").innerText);
       if (currentPage > 1) {
-          getSwapiPerson(currentPage - 1);
+          getProducts(currentPage - 1);
       }
   });
   paginator.appendChild(prevBtn);
@@ -114,7 +118,7 @@ function createPager(dataCount, resultsPerPage) {
       let btn = document.createElement("button");
       btn.innerText = i;
       btn.addEventListener("click", () => {
-          getSwapiPerson(i);
+          getProducts(i);
       });
       paginator.appendChild(btn);
   }
@@ -124,7 +128,7 @@ function createPager(dataCount, resultsPerPage) {
   nextBtn.addEventListener("click", () => {
       let currentPage = parseInt(document.querySelector(".active").innerText);
       if (currentPage < pages) {
-          getSwapiPerson(currentPage + 1);
+          getProducts(currentPage + 1);
       }
   });
   paginator.appendChild(nextBtn);
@@ -165,7 +169,39 @@ async function materials() {
   
 materials();
 
-$("#navi").load("../Navigation/navigation.html")
-$("#footer").load("../Footer/footer.html")
+/*let section = document.getElementById("termekek");
+
+  let ourBox = document.createElement("div");
+  ourBox.className = "our-box";
+
+  let image = document.createElement("img");
+  image.id = `egy`;
+
+  let ourContent = document.createElement("div");
+  ourContent.className = "our-content";
+
+  let festmenyNevek = document.createElement("h3");
+  festmenyNevek.innerText = "valami";
+
+  let price = document.createElement("p");
+  price.className = "price";
+  price.innerText = `1`;
+
+  let size = document.createElement("p");
+  size.className = "size";
+  size.innerText = `A termék mérete: "1"`;
+
+  let kosar = document.createElement("button");
+  kosar.className = "kosar";
+  kosar.innerText = "Kosárba";
+
+  ourContent.appendChild(festmenyNevek);
+  ourContent.appendChild(price);
+  ourContent.appendChild(size);
+  ourContent.appendChild(kosar);
+  ourBox.appendChild(image);
+  ourBox.appendChild(ourContent);
+
+  section.appendChild(ourBox);*/
 
 });

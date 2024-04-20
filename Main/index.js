@@ -1,2 +1,2 @@
-$("#navi").load("../Navigation/nav.html")    
+$("#navi").load("../Navigation/navigation.html")    
 $("#footer").load("../Footer/footer.html")

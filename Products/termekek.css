@@ -40,7 +40,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: none;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
   }
@@ -49,6 +49,8 @@
     display: block;
     padding: 10px;
     background-color: var(--halvanysarga);
+    width: 180px;
+    margin: 0 12px;
   }
   
   .checkbox {
@@ -65,18 +67,19 @@
   
 
   .dropbtn, #search, #order {
-    padding: 9px 40px;
-    font-size: 18px;
-    line-height: 30px;
+    padding: 0px 10px;
+    font-size: 17px;
+    line-height: 15px;
     font-weight: 500;
     letter-spacing: .5px;
-    border-radius: 35px;
+    border-radius: 12px;
     border: none;
     background: var(--main-color);
     color: var(--stickyheader);
     margin: 12px;
     margin-top: 35px;
-    height: 30px;
+    width: 180px;
+    height: 35px;
 }
 
 
@@ -92,8 +95,8 @@
   font-size: 16px;
 }
 
-#order, #search{
-  width: 180px;
+#search {
+  width: 230px;
 }
 
 /*#order::after {
@@ -108,4 +111,10 @@
 nav ul li a {
   text-decoration: none !important;
   color: var(--white) !important;
+}
+
+#termekek{
+  height: 500px;
+  width: 100%;
+  z-index: 9999;
 }

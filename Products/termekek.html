@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../Navigation/navigation.css">
     <link rel="stylesheet" href="termekek.css">
-    <script src="termekek.js"></script>
     <script src="../Navigation/loginscript.js"></script>
     <script src="../Navigation/basket.js"></script>
     <script src="proba.js"></script>
@@ -19,7 +18,7 @@
 
     <!-- Navigációs sáv:--> 
  
-    <header id="navi"></header>
+    <nav id="navi"></nav>
 
 
  <!-- Termékek: https://www.w3schools.com/howto/howto_css_modal_images.asp    Modal Images    -->   
@@ -31,12 +30,11 @@
                 <h2 class="heading-1">Termékek</h2>
             </div>
             <form id="filter">
-                <div>
                     <input id="search" type="text" placeholder="Keresés">
                     <div class="dropdown">
                         <button class="dropbtn" onsubmit="false">Technika</button>
                         <div class="dropdown-content" id="technika">
-                        <!--  <label><input type="checkbox" class="checkbox">Olaj</label>
+                         <!-- <label><input type="checkbox" class="checkbox">Olaj</label>
                           <label><input type="checkbox" class="checkbox">Grafit</label>
                           <label><input type="checkbox" class="checkbox">Akril</label> -->
                         </div>
@@ -69,11 +67,13 @@
                         <option value="">Anyag szerint ABC sorrend</option>
                         <option value="">Legfrissebb legelől</option>
                     </select>
-                </div>
             </form>
         </div>
     </section>
 
+    <section id="termekek">
+
+    </section>
           <div id="paginator"></div>
 
     <!-- Footer:--> 

@@ -12,6 +12,8 @@
 .my-box {
   background-color: var(--darkbrown);
   border-radius: 30px;
+  max-width: 1000px;
+  justify-content: center;
 }
 
 .container {
