@@ -93,7 +93,7 @@
         nav ul li:not(:nth-last-child(-n+2)) a::after {
             content: '';
             position: absolute;
-            bottom: -1px;
+            bottom: 1px;
             left: 50%;
             transform: translateX(-50%);
             width: 0;

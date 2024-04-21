@@ -1,5 +1,13 @@
+
 :root{
-  --halvanysarga: rgb(247, 240, 168);   
+  --main-color: #fff069f1;        /*9cecb5f0*/
+  --background: #362d27;
+  --white: #eee;
+  --darkbrown: #2a2420;
+  --light-font: #7e7d7d;
+  --stickyheader: #1c0f00;
+  --cursor: #B99470; 
+  --halvanysarga: rgb(247, 240, 168); 
 }
 
 #paginator {
@@ -58,7 +66,7 @@
   }
   
   .dropdown-content label:hover {
-    background-color: orange;
+    background-color: var(--cursor);
   }
   
   .show {
@@ -97,6 +105,10 @@
 
 #search {
   width: 230px;
+}
+
+#order {
+width: 200px;
 }
 
 /*#order::after {
