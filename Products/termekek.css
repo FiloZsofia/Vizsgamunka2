@@ -113,8 +113,14 @@ nav ul li a {
   color: var(--white) !important;
 }
 
+.our-box{
+  display: flex;
+}
+
 #termekek{
-  height: 500px;
-  width: 100%;
-  z-index: 9999;
+  min-height: 400px;
+}
+
+.section-two{
+  padding: 10px 0;
 }

@@ -1,11 +1,8 @@
 $("#navi").load("../Navigation/navigation.html");
 $("#footer").load("../Footer/footer.html");
 
-document.addEventListener("DOMContentLoaded", function () {
-
- createPager(100, 5);
-  getProducts(); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
-  termekDoboz(1);
+createPager(100, 5);
+getProducts(); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
 
 function termekDoboz(number, termekek) {
   let section = document.getElementById("termekek");
@@ -14,8 +11,8 @@ function termekDoboz(number, termekek) {
   ourBox.className = "our-box";
 
   let image = document.createElement("img");
-  image.id = `$image{number}`;
-  image.src = termekek.image_url;
+  image.id = number;
+  image.src = termekek.imgUrl;
 
   let ourContent = document.createElement("div");
   ourContent.className = "our-content";
@@ -69,7 +66,7 @@ function getProducts(page) {
 
           // Iteráljon az új termékeken és hozzon létre dobozokat
           data.forEach((termek, index) => {
-              termekDoboz(index + 1, data);
+              termekDoboz(index + 1, termek);
           });
 
           // Az aktuális oldal színének beállítása
@@ -169,39 +166,3 @@ async function materials() {
   
 materials();
 
-/*let section = document.getElementById("termekek");
-
-  let ourBox = document.createElement("div");
-  ourBox.className = "our-box";
-
-  let image = document.createElement("img");
-  image.id = `egy`;
-
-  let ourContent = document.createElement("div");
-  ourContent.className = "our-content";
-
-  let festmenyNevek = document.createElement("h3");
-  festmenyNevek.innerText = "valami";
-
-  let price = document.createElement("p");
-  price.className = "price";
-  price.innerText = `1`;
-
-  let size = document.createElement("p");
-  size.className = "size";
-  size.innerText = `A termék mérete: "1"`;
-
-  let kosar = document.createElement("button");
-  kosar.className = "kosar";
-  kosar.innerText = "Kosárba";
-
-  ourContent.appendChild(festmenyNevek);
-  ourContent.appendChild(price);
-  ourContent.appendChild(size);
-  ourContent.appendChild(kosar);
-  ourBox.appendChild(image);
-  ourBox.appendChild(ourContent);
-
-  section.appendChild(ourBox);*/
-
-});
