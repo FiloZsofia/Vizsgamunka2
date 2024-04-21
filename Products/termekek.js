@@ -10,6 +10,9 @@ function termekDoboz(number, termekek) {
   let ourBox = document.createElement("div");
   ourBox.className = "our-box";
 
+  let imgdiv = document.createElement("div");
+  imgdiv.className = "img-div";
+
   let image = document.createElement("img");
   image.id = number;
   image.src = termekek.imgUrl;
@@ -22,7 +25,7 @@ function termekDoboz(number, termekek) {
 
   let price = document.createElement("p");
   price.className = "price";
-  price.innerText = `"${termekek.price}" Ft`;
+  price.innerText = `${termekek.price} Ft`;
 
   let size = document.createElement("p");
   size.className = "size";
@@ -36,7 +39,8 @@ function termekDoboz(number, termekek) {
   ourContent.appendChild(price);
   ourContent.appendChild(size);
   ourContent.appendChild(kosar);
-  ourBox.appendChild(image);
+  imgdiv.appendChild(image);
+  ourBox.appendChild(imgdiv);
   ourBox.appendChild(ourContent);
 
   section.appendChild(ourBox);
