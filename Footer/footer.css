@@ -1,22 +1,4 @@
-/*footer {
-    margin-top: 20px;
-    padding: 20px;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .col-div-4 {
-    width: 30%; 
-  }
-  
-  .foot-bottom {
-    text-align: center;
-  }*/
-
-  :root{
+:root{
     --main-color: #fff069f1;        /*9cecb5f0*/
     --background: #362d27;
     --white: #eee;
@@ -26,14 +8,12 @@
     --cursor: #B99470; 
     --halvanysarga: rgb(247, 240, 168); 
 }
-    body {
-      font-size: 17px;
-      /* line-height: 22px; */
-    }
+
     p {
       color: #eee;
       margin-bottom: 0;
     }
+
     footer{
       background-color: #362d27;
       position: relative;
@@ -41,6 +21,7 @@
       min-height: 300px;
       padding: 2rem 0 0 0;
     }
+
     .footer_container {
       max-width: 1140px;
       margin: 0 auto;
@@ -49,10 +30,12 @@
       align-items: center;
       flex-direction: column;
     }
+    
     .row{
       display: flex;
       justify-content: space-between;
     }
+
     .col{
       min-width: 300px;
       color: #fff069f1;
@@ -60,16 +43,19 @@
       padding-right: 0;
       padding-left: 0;
     }
+
     .col .logo{
       width: 100px;
       margin-bottom: 25px;
     }
+
     .col h3{
       font-size: 22px;
       color: #7e7d7d;
       font-weight: bold;
       margin-bottom: 20px;
     }
+
     .col .social a i{
       color: #fff069f1;
       font-size: 30px;
@@ -77,6 +63,7 @@
       margin-right: 5px;
       transition: 0.3s ease;
     }
+
     .col .social a ion-icon:hover{
       transform: scale(1.2);
     }

@@ -40,11 +40,9 @@ body{
     clear: both;
 }
 
-/* header{
-    padding: 15px;
-    margin-top: 10px;
-    z-index: 9999999;
-} */
+p{
+   font-size: 15px;
+}
 
 .sticky{
     position: fixed;
@@ -119,11 +117,12 @@ body{
 
     .video-header p {
         color: white;
-        letter-spacing: 1px;
-        line-height: 25px;
+        letter-spacing: 1.2px;
+        line-height: 30px;
         width: 600px;
         margin-bottom: 25px;
         /*text-align: center;*/
+        font-size: 17px;
     }
 
     .dark-overlay {
@@ -831,10 +830,6 @@ margin-right: 7px;
   to {opacity: 1}
 }
 
-/* #navi{ ADV IDEJEN
-    height: 100px;
-} */
-
 *, ::after, ::before{
     box-sizing: unset;
     }
@@ -848,11 +843,7 @@ margin-right: 7px;
     width: 50%;
     float: left;
 }
-.p1{
-    font-size: 16px;
-    color: var(--light-font);
-    font-weight: 600;
-}
+
 .cim{
     font-size: 35px;
     color: var(--white);

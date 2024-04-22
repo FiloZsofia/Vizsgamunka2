@@ -25,15 +25,15 @@ function termekDoboz(number, termekek) {
 
   let price = document.createElement("p");
   price.className = "price";
-  price.innerText = `${termekek.price} Ft`;
+  price.innerText = `${termekek.price.toLocaleString()} Ft`;
 
   let size = document.createElement("p");
   size.className = "size";
-  size.innerText = `A termék mérete: "${termekek.xcm}"`;
+  size.innerText = `A termék mérete: "${termekek.xcm} x ${termekek.ycm} cm"`;
 
   let kosar = document.createElement("button");
   kosar.className = "kosar";
-  kosar.innerText = "Kosárba";
+  kosar.innerText = "Bővebben";
 
   ourContent.appendChild(festmenyNevek);
   ourContent.appendChild(price);
@@ -47,69 +47,7 @@ function termekDoboz(number, termekek) {
 
 } 
 
-/*function termek(termek) {
-    let section = document.getElementById("termek");
-
-    let box = document.createElement("div");
-    box.className = "box";
-
-    let imageDiv = document.createElement("div");
-    imageDiv.className = "image-div";
-
-    let image = document.createElement("img");
-    image.src = termek.imgUrl;
-
-    let content = document.createElement("div");
-    content.className = "content";
-  
-    let festmenyNevek = document.createElement("h3");
-    festmenyNevek.innerText = termek.title;
-
-    let artist = document.createElement("p");
-    artist.innerText = termek.artist;
-
-    let createdYear = document.createElement("p");
-    createdYear.innerText = termek.createdYear;
-
-    let material = document.createElement("p");
-    material.innerText = termek.material;
-
-    let style = document.createElement("p");
-    style.innerText = termek.style;
-
-    let description = document.createElement("p");
-    description.innerText = termek.description;
-
-    let price = document.createElement("p");
-    price.className = "price";
-    price.innerText = `${termek.price} Ft`;
-
-    let size = document.createElement("p");
-    size.className = "size";
-    size.innerText = `A termék mérete: "${termek.xcm}"`;
-
-    let kosar = document.createElement("button");
-    kosar.className = "kosar";
-    kosar.innerText = "Kosárba";
-
-    imageDiv.appendChild(image);
-    box.appendChild(content);
-    box.appendChild(imageDiv);
-    content.appendChild(festmenyNevek);
-    content.appendChild(artist);
-    content.appendChild(createdYear);
-    content.appendChild(material);
-    content.appendChild(style);
-    content.appendChild(description);
-    content.appendChild(price);
-    content.appendChild(size);
-    content.appendChild(kosar);
-    section.appendChild(box);
-}
-
-termek(termek);*/
-
-function termek() {
+/*function termek() {
     let section = document.getElementById("termek");
 
     // AJAX kérés létrehozása
@@ -183,7 +121,7 @@ function termek() {
     xhr.send();
 }
 
-termek();
+termek(); */
 
 function getProducts(page) {
   let url = "http://localhost:8080/product/get-all";
