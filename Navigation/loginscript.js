@@ -1,6 +1,9 @@
 /*Első verzió: disabled helyett másik módszer (mert az nem használható "a" tageknél):*/
+import { redirectToLogin } from "../Navigation/permission-checker.js";
 
 document.addEventListener("DOMContentLoaded", function() {
+
+
   // A kód, amely a DOM betöltése után fut le
   function delayedFunction() {
     // JavaScript kód a pop-up kezeléséhez
@@ -10,7 +13,14 @@ document.addEventListener("DOMContentLoaded", function() {
     bezar.onclick = closePopup;
     
     function openPopup() {
-      document.getElementById('popup').style.display = 'block';
+      if(redirectToLogin){
+        console.log("bejentkezve(loginscript.js)");
+        localStorage.removeItem("token");
+        //window.location.href = "/Main/index.html";
+      }
+      else{
+        document.getElementById('popup').style.display = 'block';
+      }
     }
     
     function closePopup() {
@@ -87,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log("Success:", data);
           // Handle success, e.g., show a success message or redirect
           window.localStorage.setItem('token', data.code);
-          window.location.href = "main-dashboard.html";
+          //window.location.href = "main-dashboard.html";
         })
         .catch((error) => {
           console.error("Error:", error);
