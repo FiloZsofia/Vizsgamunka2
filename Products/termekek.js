@@ -47,6 +47,143 @@ function termekDoboz(number, termekek) {
 
 } 
 
+/*function termek(termek) {
+    let section = document.getElementById("termek");
+
+    let box = document.createElement("div");
+    box.className = "box";
+
+    let imageDiv = document.createElement("div");
+    imageDiv.className = "image-div";
+
+    let image = document.createElement("img");
+    image.src = termek.imgUrl;
+
+    let content = document.createElement("div");
+    content.className = "content";
+  
+    let festmenyNevek = document.createElement("h3");
+    festmenyNevek.innerText = termek.title;
+
+    let artist = document.createElement("p");
+    artist.innerText = termek.artist;
+
+    let createdYear = document.createElement("p");
+    createdYear.innerText = termek.createdYear;
+
+    let material = document.createElement("p");
+    material.innerText = termek.material;
+
+    let style = document.createElement("p");
+    style.innerText = termek.style;
+
+    let description = document.createElement("p");
+    description.innerText = termek.description;
+
+    let price = document.createElement("p");
+    price.className = "price";
+    price.innerText = `${termek.price} Ft`;
+
+    let size = document.createElement("p");
+    size.className = "size";
+    size.innerText = `A termék mérete: "${termek.xcm}"`;
+
+    let kosar = document.createElement("button");
+    kosar.className = "kosar";
+    kosar.innerText = "Kosárba";
+
+    imageDiv.appendChild(image);
+    box.appendChild(content);
+    box.appendChild(imageDiv);
+    content.appendChild(festmenyNevek);
+    content.appendChild(artist);
+    content.appendChild(createdYear);
+    content.appendChild(material);
+    content.appendChild(style);
+    content.appendChild(description);
+    content.appendChild(price);
+    content.appendChild(size);
+    content.appendChild(kosar);
+    section.appendChild(box);
+}
+
+termek(termek);*/
+
+function termek() {
+    let section = document.getElementById("termek");
+
+    // AJAX kérés létrehozása
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8080/product/get-all", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Az adatok feldolgozása
+            let termekAdatok = JSON.parse(xhr.responseText);
+
+            // A feldolgozott adatok használata a termek függvényben
+            termekAdatok.forEach(function(termekAdat) {
+                let box = document.createElement("div");
+                box.className = "box";
+        
+                let imageDiv = document.createElement("div");
+                imageDiv.className = "image-div";
+        
+                let image = document.createElement("img");
+                image.src = termekAdat.imgUrl;
+        
+                let content = document.createElement("div");
+                content.className = "content";
+              
+                let festmenyNevek = document.createElement("h3");
+                festmenyNevek.innerText = termekAdat.title;
+        
+                let artist = document.createElement("p");
+                artist.innerText = termekAdat.artist;
+        
+                let createdYear = document.createElement("p");
+                createdYear.innerText = termekAdat.createdYear;
+        
+                let material = document.createElement("p");
+                material.innerText = termekAdat.material;
+        
+                let style = document.createElement("p");
+                style.innerText = termekAdat.style;
+        
+                let description = document.createElement("p");
+                description.innerText = termekAdat.description;
+        
+                let price = document.createElement("p");
+                price.className = "price";
+                price.innerText = `${termekAdat.price} Ft`;
+        
+                let size = document.createElement("p");
+                size.className = "size";
+                size.innerText = `A termék mérete: "${termekAdat.xcm}"`;
+        
+                let kosar = document.createElement("button");
+                kosar.className = "kosar";
+                kosar.innerText = "Kosárba";
+        
+                imageDiv.appendChild(image);
+                box.appendChild(content);
+                box.appendChild(imageDiv);
+                content.appendChild(festmenyNevek);
+                content.appendChild(artist);
+                content.appendChild(createdYear);
+                content.appendChild(material);
+                content.appendChild(style);
+                content.appendChild(description);
+                content.appendChild(price);
+                content.appendChild(size);
+                content.appendChild(kosar);
+                section.appendChild(box);
+            });
+        }
+    };
+    xhr.send();
+}
+
+termek();
 
 function getProducts(page) {
   let url = "http://localhost:8080/product/get-all";

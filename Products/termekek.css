@@ -7,7 +7,6 @@
   --light-font: #7e7d7d;
   --stickyheader: #1c0f00;
   --cursor: #B99470; 
-  --halvanysarga: rgb(247, 240, 168); 
   --halvanysarga: rgb(247, 240, 168);  
   --darkbrown: #2a2420; 
 }
@@ -24,6 +23,10 @@ body{
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
 }
 
 #paginator button {
@@ -31,15 +34,27 @@ body{
     padding: 5px 10px;
     cursor: pointer;
     margin-top: 40px;
+    border-radius: 5px;
+    transition: background-color .3s;
+}
+
+#paginator button:hover{
+  background-color: rgb(216, 212, 212);
 }
 
 #paginator button.active {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
 }
 
 
-/* legördülő menü*/
+.paginator a:hover:not(.active) {
+  background-color: #dddddd97;}
+
+
+/*  Legördülő menü:  */
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -175,13 +190,16 @@ nav ul li a {
 
 .our-content h3 {
 float: none;
+font-size: 1.20rem;
 }
 
 .our-content p.price {
 position: unset;
+font-size: 1rem;
 }
 
 .our-content p.size {
   margin: auto;
+  font-size: 0.90rem;
 }
 
