@@ -29,8 +29,8 @@
         <ul>
             <li><a href="/Products/termekek.html">Termékek</a></li>
             <li><a href="/AboutUs/rolunk.html">Rólunk</a></li>
-            <li class="logged-in-only"><a href="/ProductsUpload/termek-feltoltese.html">Termék feltöltése</a></li>
-            <li class="logged-in-only"><a href="/Order/egyedi-rendeles.html">Egyedi rendelés</a></li>
+            <li><a href="/ProductsUpload/termek-feltoltese.html" onclick="redirectToLogin()">Termék feltöltése</a></li>
+            <li><a href="/Order/egyedi-rendeles.html">Egyedi rendelés</a></li>
             <li><a id="btnLogin" class="btnLogin-popup"><ion-icon class="nav_icon" name="person-outline" size="large"></ion-icon></a></li>
             <li><a id="fentikosar"><ion-icon class="nav_icon" name="cart-outline" size="large"></ion-icon></a></li>
         </ul>
@@ -127,6 +127,6 @@
 
       }
   </script>
-
+    <script src="permission-checker.js"></script>
 </body>
 </html>
