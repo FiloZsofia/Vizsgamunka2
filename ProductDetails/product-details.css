@@ -1,3 +1,8 @@
+nav ul li a {
+    text-decoration: none !important;
+    color: var(--white) !important;
+}
+
 .image-div img {
     max-width: 800px;
     width: 100%;
@@ -5,4 +10,29 @@
 
 h3{
     color: white;
+}
+
+.box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.content h3 {
+    font-size: 24px;
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+.image-div img {
+    max-width: 100%;
+    height: auto;
+}
+
+#kosar{
+    width: 30%;
+    justify-content: center;
+    border-radius: 15px;
 }
