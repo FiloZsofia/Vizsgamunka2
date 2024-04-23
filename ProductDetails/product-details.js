@@ -76,7 +76,8 @@ $("#footer").load("../Footer/footer.html");
 }
 
 termek();*/
-let section = document.getElementById("termek");
+let termek = document.getElementById("termek");
+
 const urlParams = new URLSearchParams(window.location.search);
 const termekAzonosito = urlParams.get('id');
 const url = "http://localhost:8080/product/get/" + termekAzonosito ;
@@ -143,7 +144,7 @@ fetch(url)
                 content.appendChild(price);
                 content.appendChild(size);
                 content.appendChild(kosar);
-                section.appendChild(box);
+                termek.appendChild(box);
             })
             .catch(error => {
                 // Ha hiba történik, kiírjuk a konzolra
