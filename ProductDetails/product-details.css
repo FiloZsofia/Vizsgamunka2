@@ -19,7 +19,9 @@ h3{
 }
 
 .content h3 {
-    font-size: 24px;
+    font-size: 30px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
 .content p {
@@ -35,4 +37,31 @@ h3{
     width: 30%;
     justify-content: center;
     border-radius: 15px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+#price {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.center_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .box {
+        margin: 50px 0 0 0;
+    }
 }

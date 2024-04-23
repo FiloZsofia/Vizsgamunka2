@@ -84,10 +84,16 @@ body{
     background-color: var(--halvanysarga);
     width: 180px;
     margin: 0 12px;
+    text-align: left;
   }
   
   .checkbox {
     margin-right: 10px;
+  }
+
+  input[type=checkbox]{
+    margin-right: 10px;
+    margin-left: 5px;
   }
   
   .dropdown-content label:hover {
@@ -199,7 +205,6 @@ font-size: 1rem;
 }
 
 .our-content p.size {
-  margin: auto;
   font-size: 0.90rem;
 }
 

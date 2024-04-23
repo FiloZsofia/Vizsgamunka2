@@ -51,7 +51,7 @@
             <div class="col-md-9">
                 <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="productName" placeholder="Festmény neve"/>
+                        <input type="text" class="form-control" id="productName" placeholder="Festmény neve" required/>
                     </div>
 
                     <div class="form-group">
@@ -63,7 +63,7 @@
                             <input type="number" min="0" class="form-control" id="keszitesEve" placeholder="Készítés éve"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <input type="number" min="0" class="form-control" id="ar" placeholder="Ár"/>
+                            <input type="number" min="0" class="form-control" id="ar" placeholder="Ár" required/>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="col-md-12">
                     <div class="form-row">
                       <div class="form-group col-md-4">
-                          <select class="form-control" id="technika">
+                          <select class="form-control" id="technika" required>
                               <option value="oil">Olajfestés</option>
                               <option value="acrylic">Akrilfestés</option>
                               <option value="watercolor">Vízfesték</option>
@@ -79,7 +79,7 @@
                       </div>
 
                       <div class="form-group col-md-4">
-                          <select class="form-control" id="kategoria">
+                          <select class="form-control" id="kategoria" required>
                               <option value="landscape">Tájkép</option>
                               <option value="portrait">Portré</option>
                               <option value="abstract">Absztrakt</option>
@@ -87,7 +87,7 @@
                       </div>
 
                       <div class="form-group col-md-4">
-                          <select class="form-control" id="meret">
+                          <select class="form-control" id="meret" required>
                               <option value="20x40">20x40 cm</option>
                               <option value="40x60">40x60 cm</option>
                               <option value="60x80">60x80 cm</option>
