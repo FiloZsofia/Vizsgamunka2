@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if(redirectToLogin){
         console.log("bejentkezve(loginscript.js)");
         localStorage.removeItem("token");
-        //window.location.href = "/Main/index.html";
+        window.location.href = "/Main/index.html";
       }
       else{
         document.getElementById('popup').style.display = 'block';
