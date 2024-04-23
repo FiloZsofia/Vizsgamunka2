@@ -77,10 +77,10 @@ $("#footer").load("../Footer/footer.html");
 
 termek();*/
 
-async function productById(id) {
+/*async function productById(id) {
     const url = "http://localhost:8080/product/get/" + id ;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
     window.location.href = "../ProductDetails/product-details.html";
-  }
+  }*/

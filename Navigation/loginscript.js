@@ -1,4 +1,4 @@
-/*Első verzió: disabled helyett másik módszer (mert az nem használható "a" tageknél):*/
+
 import { redirectToLogin } from "../Navigation/permission-checker.js";
 
 document.addEventListener("DOMContentLoaded", function() {
