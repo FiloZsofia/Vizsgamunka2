@@ -34,6 +34,13 @@ function termekDoboz(number, termekek) {
   let kosar = document.createElement("button");
   kosar.className = "kosar";
   kosar.innerText = "Bővebben";
+  kosar.id = termekek.id;
+
+  kosar.onclick = function() {      //gombnyomásra hívjuk meg a függvényt
+    oldalTovabbitas(kosar.id); 
+
+};
+
 
   ourContent.appendChild(festmenyNevek);
   ourContent.appendChild(price);
@@ -46,6 +53,18 @@ function termekDoboz(number, termekek) {
   section.appendChild(ourBox);
 
 } 
+ 
+function oldalTovabbitas(id){
+    window.location.href = "../ProductDetails/product-details.html" + "/" + id;
+}
+
+/*async function productById(id) {
+    const url = "http://localhost:8080/product/get/" + id ;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    window.location.href = "../ProductDetails/product-details.html";
+  }*/
 
 /*function termek() {
     let section = document.getElementById("termek");
