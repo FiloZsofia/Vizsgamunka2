@@ -55,7 +55,7 @@ function termekDoboz(number, termekek) {
 } 
  
 function oldalTovabbitas(id){
-    window.location.href = "../ProductDetails/product-details.html" + "/" + id;
+    window.location.href = "../ProductDetails/product-details.html?id=" + id;
 }
 
 /*function termek() {
