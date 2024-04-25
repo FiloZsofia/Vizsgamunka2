@@ -166,6 +166,7 @@ nav ul li a {
 #termekek{
   min-height: 400px;
   display: inline-block;
+  margin-left: 80px;
 }
 
 .img-div{

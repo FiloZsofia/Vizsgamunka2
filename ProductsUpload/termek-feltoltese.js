@@ -3,52 +3,43 @@ $("#footer").load("../Footer/footer.html")
 
 // import { redirectToLogin } from "../Navigation/permission-checker.js";
 
-redirectToLogin();
+//redirectToLogin();
 
 //Technikák betöltése: 
- 
-let material = []
-const technika = document.getElementById("technika");
-
-
 async function materials() {
+    let material = []
+    const technika = document.getElementById("technika");
     const response = await fetch("http://localhost:8080/material/get-all");
     const data = await response.json();
-    console.log(data);
 
     data.forEach((materials) => {
-      material = data;
+      material.push(kategoriak); // Helyesen push-oljuk a stílusokat a tömbbe
       const option = document.createElement("option");
       option.value = materials.id;
       option.text = materials.name;
       technika.appendChild(option);
     });
-    console.log(data);
+    console.log(material);
   }
   
 materials();
 
 
 //Kategória betöltése:
-
-
-let style = []
-const kategoria = document.getElementById("kategoria");
-
-
 async function kategoriak() {
+    let style = []
+    const kategoria = document.getElementById("kategoria");
     const response = await fetch("http://localhost:8080/style/get-all");
     const data = await response.json();
-    console.log(data);
 
     data.forEach((kategoriak) => {
-      style = data;
+      style.push(kategoriak); // Helyesen push-oljuk a stílusokat a tömbbe
       const option = document.createElement("option");
       option.value = kategoriak.id;
       option.text = kategoriak.name;
       kategoria.appendChild(option);
-    });
-    console.log(data);
+  });
+    console.log(kategoria);
   }
   
 kategoriak();

@@ -179,3 +179,32 @@ async function materials() {
   
   
 materials();
+
+
+//REST API témák betöltése:
+
+let style = []
+const tema = document.getElementById("tema");
+
+
+async function styles() {
+    const response = await fetch("http://localhost:8080/style/get-all");
+    const data = await response.json();
+    console.log(data);
+
+    data.forEach((styles) => {
+      style = data;
+      const input = document.createElement("input");
+      const label = document.createElement("label");
+
+      label.innerText = styles.name;
+      input.type = "checkbox";
+      label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
+      tema.appendChild(label); // Hozzáadjuk a labelt a technikához
+
+    });
+    console.log(data);
+  }
+  
+  
+styles();

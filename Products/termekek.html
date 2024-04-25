@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="termekek.css">
     <script type="module" src="../Navigation/loginscript.js"></script>
     <script src="../Navigation/basket.js"></script>
-    <script src="proba.js"></script>
+    <script src="filter.js"></script>
     
 </head>
 <body>
@@ -43,7 +43,7 @@
                       
                       <div class="dropdown">
                         <button class="dropbtn" onsubmit="false">Méret</button>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" id="meret">
                           <label><input type="checkbox" class="checkbox">Nagy</label>
                           <label><input type="checkbox" class="checkbox">Közepes</label>
                   
@@ -53,7 +53,7 @@
 
                       <div class="dropdown">
                         <button class="dropbtn" onsubmit="false">Téma</button>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" id="tema">
                           <label for="csendelet"><input type="checkbox" class="checkbox" id="csendelet">Csendélet</label>
                           <label for="portre"><input type="checkbox" class="checkbox" id="portre">Portré</label>
                           <label><input type="checkbox" class="checkbox">Tájkép</label>
