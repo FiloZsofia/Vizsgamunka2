@@ -2,6 +2,7 @@ $("#navi").load("../Navigation/navigation.html");
 $("#footer").load("../Footer/footer.html");
 
 let termek = document.getElementById("termek");
+let prodId;
 
 const urlParams = new URLSearchParams(window.location.search);
 const termekAzonosito = urlParams.get('id');
@@ -11,7 +12,7 @@ fetch(url)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                
+                prodId = data.id
                 function getMaterial(jsonObj) {
                     if (!jsonObj.material) {
                         return "Nincs elegendő adat a JSON objektumban.";
@@ -44,3 +45,39 @@ fetch(url)
                 console.error('Hiba történt a termék adatok lekérdezésekor:', error);
             });
 
+let gomb = document.getElementById("kosar");
+gomb.onclick=kosarba;
+
+function kosarba(){
+    
+    const formData = {
+        user: felhasznalo(),
+        art: prodId
+      };
+  
+      // Send POST request to Spring Boot backend
+      fetch("http://localhost:8080/basket/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          // Handle error, e.g., show an error message to the user
+        });
+    }
+
+    function felhasznalo(){
+      var jwt = localStorage.getItem("token");
+      var parts = jwt.split('.');
+      var payload = JSON.parse(atob(parts[1]));
+      var userId = payload.id;
+      console.log("Felhasználó azonosítója:", userId);
+      return userId;
+  }
