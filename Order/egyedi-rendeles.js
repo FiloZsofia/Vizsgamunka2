@@ -1,10 +1,6 @@
 $("#navi").load("../Navigation/navigation.html")
 $("#footer").load("../Footer/footer.html")
 
-// import { redirectToLogin } from "../Navigation/permission-checker.js";
-
-redirectToLogin();
-
 let material = []
 const technika = document.getElementById("technika");
 
