@@ -149,3 +149,79 @@ textarea{
   color: white;
   transition: background-color 0.3s ease;
 }
+
+/*  Legördülő menü:  */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #f1f1f1;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 80px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: none;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content label {
+  display: block;
+  padding: 10px;
+  background-color: var(--halvanysarga);
+  width: 180px;
+  margin: 0 12px;
+  text-align: left;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+input[type=checkbox]{
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.dropdown-content label:hover {
+  background-color: var(--cursor);
+}
+
+.show {
+  display: block;
+}
+
+
+.dropbtn, #search, #order {
+  padding: 0px 10px;
+  font-size: 17px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  border-radius: 12px;
+  border: none;
+  background: var(--main-color);
+  color: var(--stickyheader);
+  margin: 12px;
+  margin-top: 35px;
+  width: 180px;
+  height: 35px;
+}
+
+
+.dropbtn:hover{
+  cursor: pointer;
+  background-color: var(--cursor);
+  color: var(--white);
+  transition: background-color 0.3s ease;
+}
