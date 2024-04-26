@@ -1,8 +1,10 @@
 $("#navi").load("../Navigation/navigation.html");
 $("#footer").load("../Footer/footer.html");
 
-createPager(100, 5);
+//createPager(100, 5);
 getProducts(); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
+
+
 
 function termekDoboz(number, termekek) {
   let section = document.getElementById("termekek");
@@ -58,12 +60,8 @@ function oldalTovabbitas(id){
     window.location.href = "../ProductDetails/product-details.html?id=" + id;
 }
 
-function getProducts(page) {
+function getProducts() {
   let url = "http://localhost:8080/product/get-all";
-  let resultsPerPage = 12;
-  let startIndex = (page - 1) * resultsPerPage;
-
-  url += `?per_page=${resultsPerPage}&page=${page}`;
 
   fetch(url)
       .then((response) => {
@@ -74,20 +72,13 @@ function getProducts(page) {
       })
       .then((data) => {
           console.log("API válasz:", data);
-
           // Törölje a korábbi termékeket az oldalról
           document.getElementById("termekek").innerHTML = "";
 
           // Iteráljon az új termékeken és hozzon létre dobozokat
           data.forEach((termek, index) => {
               termekDoboz(index + 1, termek);
-          });
-
-          // Az aktuális oldal színének beállítása
-          document.querySelectorAll("#paginator button").forEach(btn => {
-              btn.classList.remove("active");
-          });
-          document.querySelector(`#paginator button:nth-child(${page + 1})`).classList.add("active");
+          });             
       })
       .catch((error) => {
           console.error("Hiba történt:", error);
@@ -148,9 +139,6 @@ function createPager(dataCount, resultsPerPage) {
   document.querySelector("#paginator button:first-child").classList.add("active");
 }
 
-let proba = document.createElement("div");
-proba.innerText = window.localStorage.getItem('token');
-console.log(window.localStorage.getItem('token'));  
 
 //REST API technikák betöltése:
 
@@ -208,3 +196,5 @@ async function styles() {
   
   
 styles();
+
+

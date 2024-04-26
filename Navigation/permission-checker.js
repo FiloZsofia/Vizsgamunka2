@@ -1,5 +1,5 @@
-/*export function redirectToLogin() {
-  //console.log(localStorage.getItem("token"));
+export function redirectToLogin() {
+  console.log(localStorage.getItem("token"));
   const url = "http://127.0.0.1:8080/auth/validate";
 
   fetch(url, {
@@ -11,9 +11,10 @@
   })  
     .then((response) => response.json())
     .then((data) => {
+      console.log(data)
       if (data == false) {
         alert("Bejelentkezés szükséges");
-        //window.location.href = "/Main/index.html";
+        window.location.href = "/Main/index.html";
       } else {
         console.log("Be vagy jelentkezve");
       }
@@ -22,7 +23,7 @@
       console.log(error);
       window.location.href = "/Main/index.html";
     });
-}*/
+}
 
 
 

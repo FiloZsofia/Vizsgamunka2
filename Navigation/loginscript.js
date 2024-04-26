@@ -13,10 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
     bezar.onclick = closePopup;
     
     function openPopup() {
-      if(redirectToLogin){
+      if(localStorage.getItem("token") !== null){
         console.log("bejentkezve(loginscript.js)");
         localStorage.removeItem("token");
         window.location.href = "/Main/index.html";
+        alert("Kijelentkezés")
       }
       else{
         document.getElementById('popup').style.display = 'block';
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then((response) => response.json())
         .then((data) => {
           console.log("Success:", data);
-          // Handle success, e.g., show a success message or redirect
+          closePopup()
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -97,7 +98,8 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log("Success:", data);
           // Handle success, e.g., show a success message or redirect
           window.localStorage.setItem('token', data.code);
-          //window.location.href = "main-dashboard.html";
+          closePopup();
+          alert("Sikeres bejelentkezés!")
         })
         .catch((error) => {
           console.error("Error:", error);
