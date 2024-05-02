@@ -199,4 +199,31 @@ async function styles() {
   
 styles();
 
+//A SZŰRÉS:
+
+var products = [];
+
+    function updateDisplayedProducts(products) {
+        var section = document.getElementById("termekek");
+        section.innerHTML = ""; // Törölje a korábbi termékeket
+
+        products.forEach(function(product, index) {
+            termekDoboz(index + 1, product);
+        });
+    }
+
+    fetch('http://localhost:8080/product/get-all')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            products = data; // a products változó feltöltése a szerverről érkező adatokkal
+            updateDisplayedProducts(products); // a megjelenített termékek frissítése
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
 

@@ -71,11 +71,13 @@ document.addEventListener("DOMContentLoaded", function() {
         li.appendChild(img);
         
         const title = document.createElement('span');
+        title.className = 'title';
         title.textContent = product.title; // Termék címe
         li.appendChild(title);
         
         const price = document.createElement('span');
-        price.textContent = product.price + " Ft"; // Termék ára
+        price.className = 'price';
+        price.textContent = product.price.toLocaleString() + " Ft"; // Termék ára
         li.appendChild(price);
         x.appendChild(xIcon);
         li.appendChild(x);
