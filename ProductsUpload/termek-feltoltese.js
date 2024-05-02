@@ -1,46 +1,64 @@
 $("#navi").load("../Navigation/navigation.html")
 $("#footer").load("../Footer/footer.html")
 
+//REST API technikák betöltése:
 
-//Technikák betöltése: 
+let material = []
+const technika = document.getElementById("technika");
+
+
 async function materials() {
-    let material = []
-    const technika = document.getElementById("technika");
     const response = await fetch("http://localhost:8080/material/get-all");
     const data = await response.json();
+    console.log(data);
 
     data.forEach((materials) => {
-      material.push(kategoriak); // Helyesen push-oljuk a stílusokat a tömbbe
-      const option = document.createElement("option");
-      option.value = materials.id;
-      option.text = materials.name;
-      technika.appendChild(option);
+      material = data;
+      const input = document.createElement("input");
+      const label = document.createElement("label");
+
+      label.innerText = materials.name;
+      input.className = "checkbox";
+      input.type = "checkbox";
+      label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
+      technika.appendChild(label); // Hozzáadjuk a labelt a technikához
+
     });
-    console.log(material);
+    console.log(data);
   }
+  
   
 materials();
 
 
-//Kategória betöltése:
-async function kategoriak() {
-    let style = []
-    const kategoria = document.getElementById("kategoria");
+//REST API témák betöltése:
+
+let style = []
+const tema = document.getElementById("tema");
+
+
+async function styles() {
     const response = await fetch("http://localhost:8080/style/get-all");
     const data = await response.json();
+    console.log(data);
 
-    data.forEach((kategoriak) => {
-      style.push(kategoriak); // Helyesen push-oljuk a stílusokat a tömbbe
-      const option = document.createElement("option");
-      option.value = kategoriak.id;
-      option.text = kategoriak.name;
-      kategoria.appendChild(option);
-  });
-    console.log(kategoria);
+    data.forEach((styles) => {
+      style = data;
+      const input = document.createElement("input");
+      const label = document.createElement("label");
+
+      label.innerText = styles.name;
+      input.className = "checkbox";
+      input.type = "checkbox";
+      label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
+      tema.appendChild(label); // Hozzáadjuk a labelt a technikához
+
+    });
+    console.log(data);
   }
   
-kategoriak();
-
+  
+styles();
 
 //Termék feltöltése:
 let cim = document.getElementById("productName");

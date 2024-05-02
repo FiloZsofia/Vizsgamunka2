@@ -157,6 +157,7 @@ async function materials() {
       const label = document.createElement("label");
 
       label.innerText = materials.name;
+      input.className = "checkbox";
       input.type = "checkbox";
       label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
       technika.appendChild(label); // Hozzáadjuk a labelt a technikához
@@ -186,6 +187,7 @@ async function styles() {
       const label = document.createElement("label");
 
       label.innerText = styles.name;
+      input.className = "checkbox";
       input.type = "checkbox";
       label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
       tema.appendChild(label); // Hozzáadjuk a labelt a technikához

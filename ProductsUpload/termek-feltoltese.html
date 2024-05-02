@@ -24,6 +24,7 @@
     <script type="module" src="../Navigation/loginscript.js"></script>
     <script type="module" src="../Navigation/permission-checker.js"></script>
     <script src="../Navigation/basket.js"></script> 
+    
 
 </head>
   <body>
@@ -70,24 +71,29 @@
 					
                     <div class="col-md-12">
                     <div class="form-row">
-                      <div class="form-group col-md-4">
-                          <select class="form-control" id="technika" required>
-                        <!-- Ide töltődnek be a technikák -->
-                          </select>
-                      </div>
+             
 
-                      <div class="form-group col-md-4">
-                          <select class="form-control" id="kategoria" required>
-                       <!-- Ide töltődnek be a kategóriák -->
-                          </select>
+                      <form id="filter">
+                        <div class="dropdown form-group col-md-4">
+                            <button class="dropbtn" onsubmit="false">Technika</button>
+                            <div class="dropdown-content" id="technika">
+                            </div>
+                          </div>
+
+                      <div class="dropdown form-group col-md-4">
+                        <button class="dropbtn" onsubmit="false">Téma</button>
+                        <div class="dropdown-content" id="tema">
+                        </div>
                       </div>
+                      
                       <div class="form-group col-md-4">
-                          <select class="form-control" id="meret" required>
-                              <option value="20x40">20x40 cm</option>
-                              <option value="40x60">40x60 cm</option>
-                              <option value="60x80">60x80 cm</option>
-                          </select>
-                      </div>
+                        <select class="form-control" id="meret" required>
+                            <option value="20x40">20x40 cm</option>
+                            <option value="40x60">40x60 cm</option>
+                            <option value="60x80">60x80 cm</option>
+                        </select>
+                    </div>
+                    </form>
                     </div>
 
                     <div class="form-group">
@@ -115,5 +121,6 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="termek-feltoltese.js"></script>
+    <script src="filter.js"></script>
   </body>
 </html>

@@ -62,6 +62,10 @@ document.addEventListener("DOMContentLoaded", function() {
       products.forEach(product => {
         const li = document.createElement('li');
         const img = document.createElement('img');
+        const x = document.createElement('span');
+        const xIcon = document.createElement('ion-icon');
+        x.className = 'close';
+        xIcon.name="close";
         img.src = product.imgUrl; // Termék képe
         img.alt = product.title; // Alternatív szöveg a képhez
         li.appendChild(img);
@@ -73,7 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const price = document.createElement('span');
         price.textContent = product.price + " Ft"; // Termék ára
         li.appendChild(price);
-        
+        x.appendChild(xIcon);
+        li.appendChild(x);
         ul.appendChild(li);
       });
       cartItems.innerHTML = '';

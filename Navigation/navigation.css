@@ -116,10 +116,25 @@
             transform: scale(1.2);
         }
 
+        /*  Kosár formázása:    */
+
         #cartItems img {
-            max-width: 50px;
-            max-height: 50px;
+            max-width: 90px;
+            max-height: 90px;
+            margin: 10px;
         }
+
+        #cartItems ul li{
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+        }
+
+        #cartItems ul li .close{
+            position: unset;
+            margin-top: 30px;
+        }
+
 
         @media (max-width: 1070px) {
             .check_button {
