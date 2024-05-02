@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const response = await fetch("http://localhost:8080/basket/get", {headers: {"Authorization": localStorage.getItem("token")}});
       const data = await response.json();
       const productList = [];
+      console.log("Basket id "+ data)
       for (const item of data) {
         const product = {};
         for (const key in item) {
@@ -65,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const x = document.createElement('span');
         const xIcon = document.createElement('ion-icon');
         x.className = 'close';
+        x.id = product.id;
+        //x.onclick = torles(product.id);
         xIcon.name="close";
         img.src = product.imgUrl; // Termék képe
         img.alt = product.title; // Alternatív szöveg a képhez
@@ -88,7 +91,33 @@ document.addEventListener("DOMContentLoaded", function() {
       cartItems.appendChild(btn);
     }
   }
-  
-  
+
+
+//Adott termék törlése
+  function torles(artId){
+    const formData = {      
+        "id":artId,
+        "basket":{
+            "id":2
+        }
+    };
+    fetch("http://localhost:8080/basket/remove-art-from-basket", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token")
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        // Handle success, e.g., show a success message or redirect
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle error, e.g., show an error message to the user
+      });
+    }
 });
   
