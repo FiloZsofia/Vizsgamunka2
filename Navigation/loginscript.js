@@ -1,5 +1,4 @@
 
-import { redirectToLogin } from "../Navigation/permission-checker.js";
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -79,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
   
-    function login(){
+   /*function login(){
       const loginUsername = document.getElementById("user-login").value;
       const loginPassword = document.getElementById("pass-login").value;
   
@@ -105,9 +104,42 @@ document.addEventListener("DOMContentLoaded", function() {
           console.error("Error:", error);
           // Handle error, e.g., show an error message to the user
         });
-    }
+    }*/
+  
+  function login(){
+    const loginUsername = document.getElementById("user-login").value;
+    const loginPassword = document.getElementById("pass-login").value;
+  
+    fetch("http://localhost:8080/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userName: loginUsername,
+        password: loginPassword
+      }),
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      } else {
+        throw new Error("Hibás felhasználónév vagy jelszó");
+      }
+    })
+    .then((data) => {
+      console.log("Sikeres bejelentkezés:", data);
+      window.localStorage.setItem('token', data.code);
+      closePopup();
+      alert("Sikeres bejelentkezés!");
+    })
+    .catch((error) => {
+      console.error("Hiba történt:", error.message);
+      alert(error.message);
+    });
   }
-
+  
+  }
   setTimeout(delayedFunction, 500);
 });
  

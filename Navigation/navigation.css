@@ -116,6 +116,11 @@
             transform: scale(1.2);
         }
 
+        #cartItems img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+
         @media (max-width: 1070px) {
             .check_button {
                 display: block;
