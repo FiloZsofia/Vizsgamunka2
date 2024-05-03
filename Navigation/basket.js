@@ -17,11 +17,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const response = await fetch("http://localhost:8080/basket/get", {headers: {"Authorization": localStorage.getItem("token")}});
       const data = await response.json();
       const productList = [];
-      console.log("Basket id "+ data)
+      console.log(data[0].basket.id)
       for (const item of data) {
         const product = {};
         for (const key in item) {
             product[key] = item[key];
+            console.log("Prod "+ product)
         }
         productList.push(product);
       }
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   kosarMegnyitas.addEventListener('click', async function() {
-    if (kosar.style.display === 'none' && localStorage.getItem("token") !== null) {
+    if (kosar.style.display === 'none' || localStorage.getItem("token") !== null) {
       const products = await fetchProducts();
       renderProducts(products);
       kosar.style.display = 'block';
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
       alert("Be kell jelentkezned!")
       //document.removeEventListener('click', closeCartOnClickOutside);
     }
-  });
+});
   
   function closeCartOnClickOutside(event) {
     if (!kosar.contains(event.target) && event.target !== kosarMegnyitas) {
@@ -67,7 +68,14 @@ document.addEventListener("DOMContentLoaded", function() {
         const xIcon = document.createElement('ion-icon');
         x.className = 'close';
         x.id = product.id;
-        //x.onclick = torles(product.id);
+        function torlesgomb(){        
+        torles(product.id, product.basket.id); 
+        
+        const products = fetchProducts();
+        renderProducts(products);          
+        kosar.style.display = 'none';
+        }
+        x.onclick = torlesgomb;
         xIcon.name="close";
         img.src = product.imgUrl; // Termék képe
         img.alt = product.title; // Alternatív szöveg a képhez
@@ -94,11 +102,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //Adott termék törlése
-  function torles(artId){
+  function torles(artId, basketId){
     const formData = {      
         "id":artId,
         "basket":{
-            "id":2
+            "id":basketId
         }
     };
     fetch("http://localhost:8080/basket/remove-art-from-basket", {

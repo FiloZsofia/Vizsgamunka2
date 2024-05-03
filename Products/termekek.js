@@ -1,5 +1,8 @@
-$("#navi").load("../Navigation/navigation.html");
-$("#footer").load("../Footer/footer.html");
+setTimeout(function() {
+    $("#navi").load("../Navigation/navigation.html");
+    $("#footer").load("../Footer/footer.html");
+}, 500);
+
 
 //createPager(100, 5);
 getProducts(); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
@@ -226,4 +229,3 @@ var products = [];
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
-

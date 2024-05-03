@@ -44,7 +44,15 @@ fetch(url)
             });
 
 let gomb = document.getElementById("kosar");
-gomb.onclick=kosarba;
+
+function kosarbaRakas(){
+  if(localStorage.getItem("token") == null){
+    alert("Be kell jelentkezned")
+  }
+  kosarba();
+}
+
+gomb.onclick=kosarbaRakas;
 
 function kosarba(){
     
