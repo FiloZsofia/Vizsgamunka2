@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+setTimeout(function() {
     var dropdowns = document.querySelectorAll('.dropdown');
   
     dropdowns.forEach(function(dropdown) {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("Kiválasztás")
         });
     });
-  });
+}, 1000);
   
   /*document.addEventListener("DOMContentLoaded", function() {
     // Handle checkbox clicks

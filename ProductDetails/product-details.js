@@ -10,7 +10,7 @@ const url = "http://localhost:8080/product/get/" + termekAzonosito;
 fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                
                 function getMaterial(jsonObj) {
                     if (!jsonObj.material) {
                         return "Nincs elegendő adat a JSON objektumban.";
@@ -71,6 +71,12 @@ function kosarba(){
       })
         .then((response) => response.json())
         .then((data) => {
+          if (data.status !== 500) {
+            alert("Hozzáadtad a kosárhoz")
+          }
+          else{
+            alert(data.message)
+          }
           console.log("Success:", data);
         })
         .catch((error) => {

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+setTimeout(function() {
     var dropdowns = document.querySelectorAll('.dropdown');
   
     dropdowns.forEach(function(dropdown) {
@@ -70,6 +70,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Frissítse a megjelenített termékeket a szűrési eredmények alapján
         updateDisplayedProducts(filteredProducts);
     }
-  });
+}, 1000);
   
     

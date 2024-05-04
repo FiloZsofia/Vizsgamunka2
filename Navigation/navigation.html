@@ -9,6 +9,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.0.0/ionicons.min.js"></script>
+    <script type="module" src="../Navigation/permission-checker.js"></script>
 
     <title>Document</title>
 </head>
@@ -31,8 +32,8 @@
         <ul>
             <li><a href="/Products/termekek.html">Termékek</a></li>
             <li><a href="/AboutUs/rolunk.html">Rólunk</a></li>
-            <li><a href="/ProductsUpload/termek-feltoltese.html" onclick="redirectToLogin()">Termék feltöltése</a></li>
-            <li><a href="/Order/egyedi-rendeles.html">Egyedi rendelés</a></li>
+            <li><a id="feltoltes">Termék feltöltése</a></li>
+            <li><a id="rendeles">Egyedi rendelés</a></li>
             <li><a id="btnLogin" class="btnLogin-popup"><ion-icon class="nav_icon" name="person-outline" size="large"></ion-icon></a></li>
             <li><a id="fentikosar"><ion-icon class="nav_icon" name="cart-outline" size="large"></ion-icon></a></li>
         </ul>

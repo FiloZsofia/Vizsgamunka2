@@ -69,42 +69,22 @@ document.addEventListener("DOMContentLoaded", function() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Success:", data);
-          closePopup()
+          if (data.status !== 500) {
+            alert("Sikeres regisztráció")
+            closePopup()
+          }
+          else{
+            console.log("Success:", data);
+            closePopup()
+            alert(data.message)
+          }
         })
         .catch((error) => {
           console.error("Error:", error);
+          alert(error);
           // Handle error, e.g., show an error message to the user
         });
     }
-  
-   /*function login(){
-      const loginUsername = document.getElementById("user-login").value;
-      const loginPassword = document.getElementById("pass-login").value;
-  
-      fetch("http://localhost:8080/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userName: loginUsername,
-          password: loginPassword
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Success:", data);
-          // Handle success, e.g., show a success message or redirect
-          window.localStorage.setItem('token', data.code);
-          closePopup();
-          alert("Sikeres bejelentkezés!")
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          // Handle error, e.g., show an error message to the user
-        });
-    }*/
   
   function login(){
     const loginUsername = document.getElementById("user-login").value;
@@ -140,6 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   }
-  setTimeout(delayedFunction, 500);
+  setTimeout(delayedFunction, 700);
 });
  

@@ -1,6 +1,4 @@
-
-
-document.addEventListener("DOMContentLoaded", function() {
+setTimeout(function() {
   let kosarMegnyitas = document.getElementById("fentikosar");
   let kosarBezaras = document.getElementById("btnClose2");
   let kosar = document.getElementById("popup-basket");
@@ -69,11 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
         x.className = 'close';
         x.id = product.id;
         function torlesgomb(){        
-        torles(product.id, product.basket.id); 
-        
-        const products = fetchProducts();
-        renderProducts(products);          
-        kosar.style.display = 'none';
+        torles(product.id, product.basket.id);           
+          kosar.style.display = 'none';
         }
         x.onclick = torlesgomb;
         xIcon.name="close";
@@ -127,5 +122,5 @@ document.addEventListener("DOMContentLoaded", function() {
         // Handle error, e.g., show an error message to the user
       });
     }
-});
+}, 700);
   

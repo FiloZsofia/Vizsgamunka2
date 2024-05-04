@@ -72,18 +72,17 @@ let y = 20;
 
 function feltoltes(){
 //ez a json, a kettőspont előtti szöveg jön a backendből, az Art.java (entity) classból, a kettőspont utáni pedig szabadon elnevezhető
-const formData = {    
-  id: id,
-  title: cim,
-  artist: muvesz,
-  price: ar,
-  description: leiras,
+const formData = {   
+  title: cim.value,
+  artist: muvesz.value,
+  price: ar.value,
+  description: leiras.value,
   imgUrl: kep,
-  createdYear: keszitve,
+  createdYear: keszitve.value,
   xCm: x,
   yCm: y,
-  material: technika,
-  //user: user
+  //material: technika,
+
 };
 
 // Send POST request to Spring Boot backend
@@ -91,6 +90,7 @@ fetch("http://localhost:8080/product/add", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
+    "Authorization": localStorage.getItem("token")
   },
   body: JSON.stringify(formData),
 })
