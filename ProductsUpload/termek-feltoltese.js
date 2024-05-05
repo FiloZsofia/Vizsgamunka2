@@ -70,6 +70,7 @@ let keszitve = document.getElementById("keszitesEve");
 let x = 40;
 let y = 20;
 
+
 function feltoltes(){
 //ez a json, a kettőspont előtti szöveg jön a backendből, az Art.java (entity) classból, a kettőspont utáni pedig szabadon elnevezhető
 const formData = {   
@@ -77,12 +78,11 @@ const formData = {
   artist: muvesz.value,
   price: ar.value,
   description: leiras.value,
-  imgUrl: kep,
+  imgUrl: imgUrl,
   createdYear: keszitve.value,
   xCm: x,
   yCm: y,
   //material: technika,
-
 };
 
 // Send POST request to Spring Boot backend
