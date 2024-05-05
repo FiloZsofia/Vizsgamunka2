@@ -30,7 +30,7 @@ setTimeout(function() {
 
     //A SZŰRÉS:
 
-    var technikaCheckboxes = document.querySelectorAll('#technika input.checkbox');
+    /*var technikaCheckboxes = document.querySelectorAll('#technika input.checkbox');
     var temaCheckboxes = document.querySelectorAll('#tema input.checkbox');
 
     technikaCheckboxes.forEach(function(checkbox) {
@@ -69,7 +69,7 @@ setTimeout(function() {
 
         // Frissítse a megjelenített termékeket a szűrési eredmények alapján
         updateDisplayedProducts(filteredProducts);
-    }
+    }*/
 }, 1000);
   
     

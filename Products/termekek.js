@@ -4,8 +4,7 @@ setTimeout(function() {
 }, 500);
 
 
-//createPager(100, 5);
-getProducts(); // Hozzáadtam az oldalszámozás kezdeti állapotához szükséges hívást
+getProducts(); 
 
 
 
@@ -63,6 +62,49 @@ function oldalTovabbitas(id){
     window.location.href = "../ProductDetails/product-details.html?id=" + id;
 }
 
+
+
+//REST API termékek lekérése és listába mentése
+/*let prodList = [];
+
+function getProducts() {
+  let url = "http://localhost:8080/product/get-all";
+
+  fetch(url)
+      .then((response) => {
+          if (!response.ok) {
+              throw new Error(`Hiba a kérés során: ${response.status}`);
+          }
+          return response.json();
+      })
+      .then((data) => {
+          // Törölje a korábbi termékeket az oldalról
+          document.getElementById("termekek").innerHTML = "";
+
+          // Mentse el a termékek listáját a prodList tömbbe
+          prodList = data;
+        console.log(prodList)
+          // A termékek betöltése után egyéb műveletek
+          //termekListaFrissitese();             
+      })
+      .catch((error) => {
+          console.error("Hiba történt:", error);
+      });
+}
+
+// Ez a függvény a termék listát frissíti az új adatokkal
+function termekListaFrissitese() {
+    // Törölje a korábbi termékeket az oldalról
+    document.getElementById("termekek").innerHTML = "";
+
+    // Iteráljon az új termékeken és hozzon létre dobozokat
+    prodList.forEach((termek, index) => {
+        termekDoboz(index + 1, termek);
+    }); 
+}*/
+
+let prodList = []; // Ebben a tömbben tároljuk az összes terméket
+
 function getProducts() {
   let url = "http://localhost:8080/product/get-all";
 
@@ -75,72 +117,84 @@ function getProducts() {
       })
       .then((data) => {
           console.log("API válasz:", data);
-          // Törölje a korábbi termékeket az oldalról
-          document.getElementById("termekek").innerHTML = "";
-
-          // Iteráljon az új termékeken és hozzon létre dobozokat
-          data.forEach((termek, index) => {
-              termekDoboz(index + 1, termek);
-          });             
+          prodList = data; // Az összes termék tárolása a prodList tömbben
+          renderProducts(); // Termékek megjelenítése
       })
       .catch((error) => {
           console.error("Hiba történt:", error);
       });
-} 
-
-function createPager(dataCount, resultsPerPage) {
-  let paginator = document.getElementById("paginator");
-  let pages = Math.ceil(dataCount / resultsPerPage);
-
-  // Ellenőrizzük, hogy a feliratok még nem léteznek-e
-  if (!document.querySelector("#section p.p1")) {
-      // Új elemek létrehozása
-      let p1 = document.createElement("p");
-      p1.className = "p1";
-      p1.innerText = "TERMÉKEINK";
-
-      let h2 = document.createElement("h2");
-      h2.className = "heading-1";
-      h2.innerText = "Termékeink";
-
-      // Az új elemek hozzáadása a section-hoz
-      document.getElementById("section").appendChild(p1);
-      document.getElementById("section").appendChild(h2);
-  }
-
-  let prevBtn = document.createElement("button");
-  prevBtn.innerText = "Előző";
-  prevBtn.addEventListener("click", () => {
-      let currentPage = parseInt(document.querySelector(".active").innerText);
-      if (currentPage > 1) {
-          getProducts(currentPage - 1);
-      }
-  });
-  paginator.appendChild(prevBtn);
-
-  // Page buttons
-  for (let i = 1; i <= pages; i++) {
-      let btn = document.createElement("button");
-      btn.innerText = i;
-      btn.addEventListener("click", () => {
-          getProducts(i);
-      });
-      paginator.appendChild(btn);
-  }
-
-  let nextBtn = document.createElement("button");
-  nextBtn.innerText = "Következő";
-  nextBtn.addEventListener("click", () => {
-      let currentPage = parseInt(document.querySelector(".active").innerText);
-      if (currentPage < pages) {
-          getProducts(currentPage + 1);
-      }
-  });
-  paginator.appendChild(nextBtn);
-
-  // Az első oldal kiemelése kezdeti állapotként
-  document.querySelector("#paginator button:first-child").classList.add("active");
 }
+
+
+async function renderProducts() {
+    const selectedStyles = getSelectedStyles(); // Kiválasztott stílusok lekérése
+    const selectedMaterials = getSelectedMaterials(); // Kiválasztott anyagok lekérése
+
+    let filteredProducts = [];
+
+    // Ellenőrizzük, hogy van-e kiválasztott szűrő
+    if (selectedStyles.length === 0 && selectedMaterials.length === 0) {
+        // Ha nincs kiválasztott szűrő, akkor az összes termék megjelenjen
+        filteredProducts = prodList;
+    } else {
+        // Ha csak az egyik szűrő van kiválasztva, akkor az összes többi opció automatikusan kiválasztódik
+        if (selectedStyles.length === 0 && selectedMaterials.length > 0) {
+            console.log("csak material")
+            filteredProducts = prodList.filter((termek) => {
+                return selectedMaterials.some((material) => termek.material.find((m) => m.name === material))})
+        } else if (selectedMaterials.length === 0 && selectedStyles.length > 0) {
+            console.log("csak style")
+            filteredProducts = prodList.filter((termek) => {
+                return selectedStyles.some((style) => termek.style.find((s) => s.name === style))})
+        } else if (selectedMaterials.length > 0 && selectedStyles.length > 0) {
+            console.log("mind kettő")
+            filteredProducts = prodList.filter((termek) => {
+                return selectedStyles.some((style) => termek.style.find((s) => s.name === style)) &&
+                       selectedMaterials.some((material) => termek.material.find((m) => m.name === material))})
+        }
+    }
+
+    // Törölje a korábbi termékeket az oldalról
+    document.getElementById("termekek").innerHTML = "";
+
+    // Iteráljon az új szűrt termékeken és hozzon létre dobozokat
+    filteredProducts.forEach((termek, index) => {
+        termekDoboz(index + 1, termek);
+    });
+}
+
+
+
+
+// Kiválasztott stílusok lekérése a szűrőből
+function getSelectedStyles() {
+    const selectedStyles = [];
+    const styleCheckboxes = document.querySelectorAll('#tema input.checkbox:checked');
+    styleCheckboxes.forEach((checkbox) => {
+        selectedStyles.push(checkbox.value);
+    });
+    console.log(selectedStyles)
+    return selectedStyles;
+}
+
+function getSelectedMaterials() {
+    const selectedMaterials = [];
+    const materialCheckboxes = document.querySelectorAll('#technika input.checkbox:checked');
+    materialCheckboxes.forEach((checkbox) => {
+        selectedMaterials.push(checkbox.value);
+    });
+    console.log(selectedMaterials)
+    return selectedMaterials;
+}
+
+
+// A szűrő változásakor újra meg kell jeleníteni a termékeket
+document.querySelectorAll('input[name="tema"]').forEach((checkbox) => {
+    checkbox.addEventListener('change', renderProducts);
+});
+document.querySelectorAll('input[name="technika"]').forEach((checkbox) => {
+    checkbox.addEventListener('change', renderProducts);
+});
 
 
 //REST API technikák betöltése:
@@ -152,7 +206,6 @@ const technika = document.getElementById("technika");
 async function materials() {
     const response = await fetch("http://localhost:8080/material/get-all");
     const data = await response.json();
-    console.log(data);
 
     data.forEach((materials) => {
       material = data;
@@ -160,15 +213,16 @@ async function materials() {
       const label = document.createElement("label");
 
       label.innerText = materials.name;
+      input.value = materials.name;
       input.className = "checkbox";
       input.type = "checkbox";
-      label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
-      technika.appendChild(label); // Hozzáadjuk a labelt a technikához
+      label.insertBefore(input, label.firstChild);
+      technika.appendChild(label);
 
+      // Eseményfigyelő hozzáadása minden létrehozott checkboxhoz
+      input.addEventListener('change', renderProducts);
     });
-    console.log(data);
-  }
-  
+}
   
 materials();
 
@@ -190,11 +244,13 @@ async function styles() {
       const label = document.createElement("label");
 
       label.innerText = styles.name;
+      input.value = styles.name;
       input.className = "checkbox";
       input.type = "checkbox";
       label.insertBefore(input, label.firstChild); // A checkboxot az input elem elé szúrjuk be a labelben
       tema.appendChild(label); // Hozzáadjuk a labelt a technikához
 
+      input.addEventListener('change', renderProducts);
     });
     console.log(data);
   }
@@ -202,30 +258,48 @@ async function styles() {
   
 styles();
 
-//A SZŰRÉS:
 
-var products = [];
+//
+function orderProducts(order) {
+    let orderedProducts = [...prodList]; // Másoljuk a termékek listáját, hogy ne módosítsuk az eredetit
 
-    function updateDisplayedProducts(products) {
-        var section = document.getElementById("termekek");
-        section.innerHTML = ""; // Törölje a korábbi termékeket
-
-        products.forEach(function(product, index) {
-            termekDoboz(index + 1, product);
-        });
+    switch (order) {
+        case "priceAsc":
+            orderedProducts.sort((a, b) => a.price - b.price);
+            break;
+        case "priceDesc":
+            orderedProducts.sort((a, b) => b.price - a.price);
+            break;
+        case "themeAsc":
+            orderedProducts.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+        case "materialAsc":
+            orderedProducts.sort((a, b) => {
+                const firstMaterial = a.material[0].name.toLowerCase();
+                const secondMaterial = b.material[0].name.toLowerCase();
+                return firstMaterial.localeCompare(secondMaterial);
+            });
+            break;
+        case "newestFirst":
+            orderedProducts.sort((a, b) => new Date(b.createdYear) - new Date(a.createdYear));
+            break;
+        default:
+            // Ha nincs rendezés kiválasztva, ne módosítsunk semmit
+            return;
     }
 
-    fetch('http://localhost:8080/product/get-all')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            products = data; // a products változó feltöltése a szerverről érkező adatokkal
-            updateDisplayedProducts(products); // a megjelenített termékek frissítése
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
+    // Törölje a korábbi termékeket az oldalról
+    document.getElementById("termekek").innerHTML = "";
+
+    // Iteráljon az új rendezett termékeken és hozzon létre dobozokat
+    orderedProducts.forEach((termek, index) => {
+        termekDoboz(index + 1, termek);
+    });
+}
+
+// Rendezési funkció meghívása a rendezési szűrő változásakor
+document.getElementById("order").addEventListener("change", function() {
+    const selectedOrder = this.value;
+    orderProducts(selectedOrder);
+});
+
