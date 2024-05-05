@@ -18,6 +18,11 @@
       margin-bottom: 50px;
   }
 
+  .uploaded-image{
+    max-width: 184px;
+    max-height: 146px;
+  }
+
  .form-control {
      background-color: rgba(255, 255, 255, 0.83);
      width: 100%;

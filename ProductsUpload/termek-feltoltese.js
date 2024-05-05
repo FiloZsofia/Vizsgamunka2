@@ -109,6 +109,7 @@ let hozzaad = document.getElementById("hozzaadasGomb");
 hozzaad.onclick = feltoltes;
 
 
+//KÉP KIVÁLASZTÁS
 // Fájlkiválasztás a formon belülre kattintáskor:
 document.getElementById('upload-form').addEventListener('click', function() {
   // Amikor a formon belül bármely helyen kattintunk, megnyitjuk a fájlkiválasztó ablakot
@@ -121,5 +122,22 @@ document.getElementById('file-input').addEventListener('change', function() {
   if (this.files && this.files[0]) {
       // Ha a felhasználó választott egy fájlt, akkor megtehetjük a szükséges műveleteket, pl. fájl feltöltése
       console.log('Kiválasztott fájl:', this.files[0]);
+      
+      // Előzőleg kiválasztott kép eltávolítása, ha van
+      var uploadedImage = document.querySelector('.uploaded-image');
+      if (uploadedImage) {
+        uploadedImage.parentNode.removeChild(uploadedImage);
+      }
+
+      // Kiválasztott kép elérési útvonalának elmentése egy változóba
+      //var imagePath = URL.createObjectURL(this.files[0]);
+
+      // Kép megjelenítése a HTML-ben
+      var imageElement = document.createElement('img');
+      imageElement.src = imagePath;
+      imageElement.classList.add('uploaded-image'); // opcionális: hozzáadhatunk egy CSS osztályt is a képhez
+      document.getElementById('upload-form').appendChild(imageElement);
+
   }
 });
+

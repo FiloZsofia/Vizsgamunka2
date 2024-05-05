@@ -41,12 +41,14 @@
         <div class="row">
         
             <div class="col-md-3">
-                <form class="text-center img_upload" action="/action_page.php" id="upload-form">
-                    <i class="gg-image" id="file-selector"></i>
+                <form class="text-center img_upload" id="upload-form">
+                    <i class="gg-image" id="file-selector" onclick="selectFile()"></i>
                     <!-- Ezt a bemenetet használjuk a fájlok kiválasztásához, de elrejtjük a felhasználó elől -->
                     <input type="file" id="file-input" style="display: none;">
                 </form>
             </div>
+            
+            
             
             <div class="col-md-9">
                 <form>
