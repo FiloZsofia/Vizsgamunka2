@@ -15,7 +15,7 @@ setTimeout(function() {
       const response = await fetch("http://localhost:8080/basket/get", {headers: {"Authorization": localStorage.getItem("token")}});
       const data = await response.json();
       const productList = [];
-      console.log(data[0].basket.id)
+      console.log(data)
       for (const item of data) {
         const product = {};
         for (const key in item) {

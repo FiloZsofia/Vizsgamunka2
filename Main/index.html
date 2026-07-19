@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="../style.css" />
     <link rel="stylesheet" href="/Navigation/navigation.css">
-
   </head>
   <body>
 
@@ -19,7 +18,7 @@
 <!-- Háttér videó: -->
       <section class="video-header">
         <div class="overlay"></div>
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <video data-test-id="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
              <source src="../Assets/images/production_id_5008753 (1080p).mp4" type="video/mp4">
         </video>
         <div class="dark-overlay"></div>
@@ -28,7 +27,7 @@
                 <div class="text-white">
                     <h1 class="display-3">Olajfestmények</h1>
                     <p class="lead mb-0">Anyaga, az olajfesték olyan festék, amelynél a festékanyag száradó olajban van eloszlatva. Az olajfestés eljárása a reneszánsz korában váltotta fel a táblaképfestészetben addig szinte egyeduralkodó temperafestést, és máig a legnépszerűbb festészeti technika.</p>
-                    <button class="buy" onclick="window.location.href='../Products/termekek.html'">Megnézem</button>
+                    <button class="buy" data-test-id="megnezem" onclick="window.location.href='../Products/termekek.html'">Megnézem</button>
                   </div>
             </div>
         </div>
@@ -73,7 +72,7 @@
           <!-- Előző gomb (Slideshow) -->
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
-         <!-- <div class="row">
+          <div class="row">
             <div class="col-md-12 col-bg-12">
               <div class="mySlides our-box">
                 <img src="../Assets/images/boat-6686809_1920.jpg" alt="">
@@ -134,7 +133,7 @@
               </div>
             </div>
           </div>
-          <div class="clearfix"></div>    -->
+          <div class="clearfix"></div>   
 
           <section id="termekek">
 
