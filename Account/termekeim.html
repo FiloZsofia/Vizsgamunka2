@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festményvilág</title>
+
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+
+    <script src="../Navigation/auth.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="fiok.css">
+</head>
+<body data-requires-auth>
+
+    <!-- Navigációs sáv: -->
+    <header id="navi"></header>
+
+    <!-- lista nezet -->
+    <section class="section" id="lista-nezet">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow">Fiók</span>
+          <h2>Termékeim</h2>
+        </div>
+
+        <p class="lead" id="lista-osszegzes">Termékek betöltése…</p>
+
+        <p class="form-status" id="szerkesztes-status" hidden></p>
+
+        <div id="sajat-termekek" class="grid-cards"></div>
+
+        <div class="empty-state" id="ures-allapot" hidden>
+          <ion-icon name="albums-outline"></ion-icon>
+          <p>Még nincs feltöltött terméked.</p>
+          <a class="btn" href="../ProductsUpload/termek-feltoltese.html">Első termék feltöltése</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- editor nezet -->
+    <section class="section" id="szerkeszto-nezet" hidden>
+      <div class="container container--narrow">
+
+        <div class="section-head">
+          <span class="eyebrow">Termékeim</span>
+          <h2>Termék szerkesztése</h2>
+        </div>
+
+        <div class="panel">
+          <div class="upload-layout">
+
+            <div class="form-grid">
+
+              <div class="field span-2">
+                <label for="e-productName">Festmény neve</label>
+                <input type="text" id="e-productName" required/>
+              </div>
+
+              <div class="field span-2">
+                <label for="e-artist">Művész</label>
+                <input type="text" id="e-artist"/>
+              </div>
+
+              <div class="field">
+                <label for="e-keszitesEve">Készítés éve</label>
+                <input type="number" min="0" id="e-keszitesEve"/>
+              </div>
+
+              <div class="field">
+                <label for="e-ar">Ár (Ft)</label>
+                <input type="number" min="0" id="e-ar" required/>
+              </div>
+
+              <div class="field">
+                <span class="field-label">Technika</span>
+                <div class="dropdown">
+                  <button type="button" class="dropbtn" id="e-technika-btn">Válassz…</button>
+                  <div class="dropdown-content" id="e-technika"></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <span class="field-label">Téma</span>
+                <div class="dropdown">
+                  <button type="button" class="dropbtn" id="e-tema-btn">Válassz…</button>
+                  <div class="dropdown-content" id="e-tema"></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="e-xcm">Szélesség (cm)</label>
+                <input type="number" min="0" id="e-xcm"/>
+              </div>
+
+              <div class="field">
+                <label for="e-ycm">Magasság (cm)</label>
+                <input type="number" min="0" id="e-ycm"/>
+              </div>
+
+              <div class="field span-2">
+                <label for="e-leiras">Leírás</label>
+                <textarea id="e-leiras" rows="4"></textarea>
+              </div>
+
+            </div>
+
+            <!-- kepet itt is az urlap aljara tettem -->
+            <div class="field">
+              <span class="field-label">Kép</span>
+              <div class="img_upload" id="e-upload-form">
+                <div class="img_upload__hint" id="e-upload-hint">
+                  <ion-icon name="image-outline"></ion-icon>
+                  <span>Kattints a kép cseréjéhez</span>
+                </div>
+                <input type="file" id="e-file-input" accept="image/*" hidden>
+              </div>
+
+              <label for="e-imgUrl" style="margin-top: 1rem;">Kép útvonala</label>
+              <input type="text" id="e-imgUrl" placeholder="../Assets/images/festmeny.jpg">
+              <p class="field-hint">
+                A szerver csak hivatkozást tárol, fájlt nem. Másold a képet az
+                <code>Assets/images</code> mappába, és írd ide az útvonalát.
+              </p>
+            </div>
+
+          </div>
+
+          <p class="form-status" id="szerkeszto-status" hidden></p>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn--ghost" id="e-megse">Vissza a listához</button>
+            <button type="button" class="btn" id="e-mentes">Mentés</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer: -->
+    <footer id="footer"></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="termekeim.js"></script>
+    <script src="../ProductsUpload/filter.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
+
+</body>
+</html>

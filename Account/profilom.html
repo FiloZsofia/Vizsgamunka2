@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festményvilág</title>
+
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+
+    <script src="../Navigation/auth.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="fiok.css">
+</head>
+<body data-requires-auth>
+
+    <!-- Navigációs sáv: -->
+    <header id="navi"></header>
+
+    <section class="section">
+      <div class="container container--narrow">
+
+        <div class="section-head">
+          <span class="eyebrow">Fiók</span>
+          <h2>Profilom</h2>
+        </div>
+
+        <div class="panel">
+
+          <div class="profile-head">
+            <div class="profile-avatar" id="profil-monogram">?</div>
+            <div>
+              <p class="profile-name" id="profil-nev">—</p>
+              <p class="muted">Bejelentkezve</p>
+            </div>
+          </div>
+
+          <p class="muted profile-note">
+            Ez amolyan dashboard funkciót kíván betölteni, noha igencsak vérszegény megvalósításban.
+          </p>
+
+          <div class="profile-links">
+            <a class="profile-link" href="termekeim.html">
+              <ion-icon name="albums-outline"></ion-icon>
+              <span>
+                <strong>Termékeim</strong>
+                <em>A feltöltött műveid megtekintése és szerkesztése</em>
+              </span>
+            </a>
+
+            <a class="profile-link" href="../ProductsUpload/termek-feltoltese.html">
+              <ion-icon name="cloud-upload-outline"></ion-icon>
+              <span>
+                <strong>Termék feltöltése</strong>
+                <em>Új alkotás hozzáadása a kínálathoz</em>
+              </span>
+            </a>
+
+            <a class="profile-link" href="../Order/egyedi-rendeles.html">
+              <ion-icon name="brush-outline"></ion-icon>
+              <span>
+                <strong>Egyedi rendelés</strong>
+                <em>Megrendelés leadása fotó alapján</em>
+              </span>
+            </a>
+          </div>
+
+          <div class="center-button">
+            <button type="button" class="btn btn--ghost" id="profil-kilepes">Kilépés</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer: -->
+    <footer id="footer"></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="profilom.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
+
+</body>
+</html>

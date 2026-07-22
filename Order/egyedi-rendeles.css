@@ -1,117 +1,56 @@
- :root {
-  --main-color: #fff069f1;
-  /*9cecb5f0*/
-  --background: #362d27;
-  --white: #eee;
-  --darkbrown: #2a2420;
-  --light-font: #7e7d7d;
-  --stickyheader: #1c0f00;
-  --cursor: orange;
+/* itt mar csak olyanok vannak, amik nincsenek styles.css-ben, de itt is az abban levo variable-ok vannak hasznalva! */
+
+.panel {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
 }
 
-.my-box {
-  background-color: var(--darkbrown);
-  border-radius: 30px;
-  max-width: 1000px;
-  justify-content: center;
+.upload-layout {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
 }
 
-.container {
-  color: var(--white);
+.panel .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.form-control {
-  background-color: var(--white);
+@media (max-width: 620px) {
+    .panel .form-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-nav ul li a {
-  text-decoration: none !important;
-  color: var(--white) !important;
-  font-weight: 600;
-  position: relative;
-}
-
-.form-group select {
-  background-color: var(--white);
-}
-
-*, ::after, ::before{
-  box-sizing: unset;
-  }
-
-  
-  .img_upload {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--white);
-    color: var(--white);
-    border-radius: 5px;
-    width: 80%;
-    height: 91%;
-}
-.gg-image {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    width: 20px;
-    height: 16px;
+/* kepfeltoltos box */
+.img_upload {
+    display: grid;
+    place-items: center;
+    min-height: 220px;
+    padding: var(--space-lg) var(--space-md);
+    background: var(--surface-alt);
+    border: 1px dashed #CFC6BC;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: center;
     overflow: hidden;
-    box-shadow: 0 0 0 2px;
-    border-radius: 2px;
-    margin: 0 auto;
-    text-align:center;
+    transition: border-color var(--transition), background-color var(--transition);
 }
 
-#hozzaadasGomb{
-  height: 50px;
-  width: auto;
-  padding: 9px 40px;
-  font-size: 17px;
-  line-height: 30px;
-  font-weight: 500;
-  letter-spacing: .5px;
-  border-radius: 15px;     
-  border: none;
-  background: var(--main-color);
-  color: var(--stickyheader);
-} 
-
-#hozzaadasGomb:hover{
-  cursor: pointer;
-  background-color: var(--cursor);
-  color: white;
-  transition: background-color 0.3s ease;
-}       
-
-#technika, #meret{
-height: 80%;
-width: 90%;
-} 
-
-#leiras{
-  width: 90%;
+.img_upload:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
 }
 
-.form-group{
-  margin-bottom: 0px;
-  margin-left: 35px;
+.img_upload__hint {
+    display: grid;
+    place-items: center;
+    gap: var(--space-xs);
+    color: var(--ink-soft);
+    font-size: var(--fs-sm);
 }
 
-.form-group select{
-  background-color: var(--darkbrown) !important;
-  color: var(--white) !important;
-}
-
-.form-group select ::placeholder{
-  background-color: var(--white) !important;
-}
-
-textarea{
-  background-color: var(--darkbrown) !important;
-  color: var(--white) !important;
-}
-
-::placeholder{
-  color: var(--white) !important;
+.img_upload__hint ion-icon {
+    font-size: 2rem;
+    color: var(--accent);
 }

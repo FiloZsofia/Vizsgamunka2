@@ -1,0 +1,189 @@
+/* bar nem vagyok a kulon css fajlok hive, a konzisztencia miatt letrehoztam itt is egy fajlt
+itt is csak olyanok vannak, amik nincsenek styles.css-ben, de itt is az abban levo variable-ok vannak hasznalva! */
+
+.panel {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.upload-layout {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.panel .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 620px) {
+    .panel .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* profil header */
+.profile-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.profile-avatar {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 50%;
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.profile-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.profile-note {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+/* profil linkek */
+.profile-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.profile-link {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+.profile-link:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.profile-link ion-icon {
+    flex-shrink: 0;
+    margin-top: .15rem;
+    font-size: 1.35rem;
+    color: var(--accent);
+}
+
+.profile-link strong {
+    display: block;
+    font-size: var(--fs-sm);
+}
+
+.profile-link em {
+    color: var(--ink-soft);
+    font-size: var(--fs-xs);
+    font-style: normal;
+}
+
+/* termekeim resz */
+#lista-osszegzes {
+    margin-bottom: var(--space-lg);
+}
+
+.empty-state {
+    display: grid;
+    place-items: center;
+    gap: var(--space-sm);
+    padding-block: var(--space-xl);
+    text-align: center;
+    color: var(--ink-soft);
+}
+
+.empty-state[hidden] {
+    display: none;
+}
+
+.empty-state ion-icon {
+    font-size: 3rem;
+    color: var(--border);
+}
+
+/* mentes + vissza gombok */
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 480px) {
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* kepfeltoltes */
+.img_upload {
+    display: grid;
+    place-items: center;
+    gap: var(--space-xs);
+    min-height: 220px;
+    padding: var(--space-lg) var(--space-md);
+    background: var(--surface-alt);
+    border: 1px dashed #CFC6BC;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden;
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+.img_upload:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+}
+
+.img_upload__hint {
+    display: grid;
+    place-items: center;
+    gap: var(--space-xs);
+    color: var(--ink-soft);
+    font-size: var(--fs-sm);
+}
+
+.img_upload__hint[hidden] {
+    display: none;
+}
+
+.img_upload__hint ion-icon {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.uploaded-image {
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}

@@ -4,100 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Festményvilág</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 
-    <!-- Add Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/image.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.0.0/css/ionicons.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+
+    <script src="../Navigation/auth.js"></script>
+
+    <!-- ugy ahogy van, kivettem a bootstrapet, mert nem szeretem, hogy merev -->
+
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="egyedi-rendeles.css" />
-    <link rel="stylesheet" href="../Navigation/navigation.css">
-    <link rel="stylesheet" href="../Footer/footer.css">
-    
+
     <script type="module" src="check-rendeles.js"></script>
-    <script type="module" src="../Navigation/loginscript.js"></script>
-    <script src="../Navigation/basket.js"></script>
-    <script type="module" src="../Navigation/permission-checker.js"></script>
-
   </head>
-  <body>
+  <body data-requires-auth>
 
-    <!-- Navigációs sáv:--> 
- 
-<header id="navi"></header> 
+    <!-- Navigációs sáv: -->
+    <header id="navi"></header>
 
     <!-- Egyedi megrendelés: -->
+    <section class="section">
+      <div class="container container--narrow">
 
-  
-    <div class="container">
-      <div class="card p-4 m-4 my-box">
-          <h1 class="text-center">Egyedi megrendelés leadása</h1>
-          <p class="mt-4 mb-3">
-              Az alábbi űrlapon egyedi megrendelés leadására van lehetőség. A leadott rendelések elkészítése 14 munkanapon belül történik meg.
-              Ha azt szeretnéd, hogy egy fénykép kerüljön lefestésre, kérjük töltsd fel a fotót!
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Egyedi rendelés</span>
+          <h2>Megrendelés leadása</h2>
+        </div>
+
+        <div class="panel">
+
+          <p class="lead" style="margin-bottom: 2rem;">
+            Az alábbi űrlapon egyedi megrendelés adható le. A leadott rendelések elkészítése
+            14 munkanapon belül megtörténik. Ha azt szeretnéd, hogy egy fénykép kerüljön
+            lefestésre, kérjük töltsd fel a fotót!
           </p>
-          <div class="row">
-              <div class="col-md-5">
-                  <div class="form-group mt-4">
-                      <!-- <label for="technika" class="custom-margin-right"></label> -->
-                      <select class="form-control" id="technika">
-                          <option disabled selected>Technika</option>
-                          <option value="Olaj">Olaj</option>
-                          <option value="Akril">Akril</option>
-                          <option value="Grafit">Grafit</option>
-                      </select>
-                  </div>
-                  <div class="form-group mt-4">
-                      <!-- <label for="meret" class="custom-margin-right"></label> -->
-                      <select class="form-control" id="meret" required>
-                          <option disabled selected>Méret</option>
-                          <option value="20x40cm">20x40 cm</option>
-                          <option value="40x60cm">40x60 cm</option>
-                          <option value="60x80cm">60x80 cm</option>
-                      </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="leiras"></label>
-                      <textarea class="form-control" id="leiras" placeholder="Milyennek képzeled el leendő festményedet?" rows="4" required></textarea>
-                  </div>
+
+          <div class="upload-layout">
+
+            <div class="form-grid">
+
+              <div class="field">
+                <label for="technika">Technika</label>
+                <select id="technika">
+                  <option disabled selected>Válassz…</option>
+                </select>
               </div>
-              <div class="col-md-6">
-                  <div class="m-4 text-center img_upload" id="upload-form">
-                    <form action="/action_page.php">
-                      <i class="gg-image" id="file-selector"></i>
-                      <!-- Ezt a bemenetet használjuk a fájlok kiválasztásához, de elrejtjük a felhasználó elől -->
-                      <input type="file" id="file-input" style="display: none;">
-                  </form>
-                  </div>
+
+              <div class="field">
+                <label for="meret">Méret</label>
+                <select id="meret" required>
+                  <option disabled selected>Válassz…</option>
+                  <option value="20x40cm">20 × 40 cm</option>
+                  <option value="40x60cm">40 × 60 cm</option>
+                  <option value="60x80cm">60 × 80 cm</option>
+                </select>
               </div>
+
+              <div class="field span-2">
+                <label for="leiras">Leírás</label>
+                <textarea id="leiras" rows="5" placeholder="Milyennek képzeled el a leendő festményedet?" required></textarea>
+              </div>
+
+            </div>
+
+            <!-- kepet az urlap aljara tettem -->
+            <div class="field">
+              <span class="field-label">Fotó (opcionális)</span>
+              <div class="img_upload" id="upload-form">
+                <div class="img_upload__hint">
+                  <ion-icon name="image-outline"></ion-icon>
+                  <span>Kattints a kép kiválasztásához</span>
+                </div>
+                <input type="file" id="file-input" accept="image/*" hidden>
+              </div>
+            </div>
+
           </div>
-          <div class="row mt-4">
-              <div class="col-md-12 d-flex justify-content-center">
-                  <button id="hozzaadasGomb" type="button" class="btn btn-primary mt-4">Ajánlat kérése</button>
-              </div>
+
+          <div class="center-button">
+            <button id="hozzaadasGomb" type="button" class="btn">Ajánlat kérése</button>
           </div>
+
+        </div>
       </div>
-  </div>
-    
+    </section>
 
-    <!-- Footer:--> 
-
+    <!-- Footer: -->
     <footer id="footer"></footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="egyedi-rendeles.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
+    <script type="module" src="../Navigation/permission-checker.js"></script>
     
   </body>
 </html>
-
-
-
