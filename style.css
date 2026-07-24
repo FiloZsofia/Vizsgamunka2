@@ -3,7 +3,7 @@
 /* https://colorhunt.co/palette/5f6f52a9b388fefae0b99470 */
 
 :root{
-    --main-color: #484040;   /*#fff069f1*/        /*9cecb5f0*/
+    --main-color: #fff069f1;        /*9cecb5f0*/
     --background: #362d27;
     --white: #eee;
     --darkbrown: #2a2420;
@@ -446,7 +446,7 @@ ion-icon{
     margin-right: 7px;
 }
 
-.fenti-logokep{
+.logo{
 display: inline-block;
 margin-right: 7px;
 }
@@ -678,13 +678,13 @@ margin-right: 7px;
 
   }
 
-  #fentikosar{
+  #cart-button{
     position: inline-block;
     background-color: var(--background);
     border: none;
   }
 
-  #fentikosar:hover {
+  #cart-button:hover {
     cursor: pointer;
   }
 

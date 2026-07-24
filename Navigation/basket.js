@@ -1,5 +1,5 @@
 setTimeout(function() {
-  let kosarMegnyitas = document.getElementById("fentikosar");
+  let kosarMegnyitas = document.getElementById("cart-button");
   let kosarBezaras = document.getElementById("btnClose2");
   let kosar = document.getElementById("popup-basket");
   let cartItems = document.getElementById("cartItems"); // Megváltoztatva, korábban nem volt definiálva

@@ -1,5 +1,4 @@
 :root {
-    --main-color: #fff069f1;
     /*9cecb5f0*/
     --background: #362d27;
     --white: #eee;
@@ -134,7 +133,7 @@ textarea{
   color: var(--white) !important;
 }
 
-#hozzaadasGomb{
+#add-product-button{
   height: 50px;
   width: auto;
   padding: 9px 40px;
@@ -148,7 +147,7 @@ textarea{
   color: var(--stickyheader);
 } 
 
-#hozzaadasGomb:hover{
+#add-product-button:hover{
   cursor: pointer;
   background-color: var(--cursor);
   color: white;

@@ -19,7 +19,7 @@
     <nav>
         
         <label class="logo">
-            <ion-icon name="color-palette-outline" class="fenti-logokep"></ion-icon>
+            <ion-icon name="color-palette-outline" class="logo"></ion-icon>
             <a style="color: white;" href="/Main/index.html">Festményvilág</a>
         </label>
 
@@ -30,21 +30,21 @@
         </label>
 
         <ul>
-            <li><a href="/Products/termekek.html">Termékek</a></li>
-            <li><a href="/AboutUs/rolunk.html">Rólunk</a></li>
+            <li><a href="/Products/termekek.html" id="nav-products">Termékek</a></li>
+            <li><a href="/AboutUs/rolunk.html" id="nav-about-us">Rólunk</a></li>
             <li><a id="feltoltes">Termék feltöltése</a></li>
             <li><a id="rendeles">Egyedi rendelés</a></li>
-            <li><a id="btnLogin" class="btnLogin-popup"><ion-icon class="nav_icon" name="person-outline" size="large"></ion-icon></a></li>
-            <li><a id="fentikosar"><ion-icon class="nav_icon" name="cart-outline" size="large"></ion-icon></a></li>
+            <li><a id="btnLogin" class="btnLogin-popup" data-test-id="login-button"><ion-icon class="nav_icon" name="person-outline" size="large"></ion-icon></a></li>
+            <li><a id="cart-button"><ion-icon class="nav_icon" name="cart-outline" size="large"></ion-icon></a></li>
         </ul>
 
     </nav>
 
         <!--Bejelentkezés / Regisztráció-->
-        <div id="popup" class="popup-container">
+        <div id="popup" class="popup-container" data-test-id="login-modal">
             <div class="popup-content">
           
-                <span id="btnClose" class="close"><ion-icon name="close"></ion-icon></span>
+                <span id="btnClose" class="close" data-test-id="btnClose"><ion-icon name="close"></ion-icon></span>
             
                 <div class="form-box login">
                     <h2>Bejelentkezés</h2>
@@ -63,7 +63,7 @@
                             <label><input type="checkbox">Emlékezz rám</label>
                             <a href="#">Elfelejtettem a jelszavam</a>
                         </div>
-                        <button type="submit" class="btn" id="login-btn">Bejelentkezés</button>
+                        <button type="submit" class="btn" id="login-btn" data-test-id="login-submit-button" >Bejelentkezés</button>
                         <div class="login-register">
                             <p>Nincs még fiókod? <a href="#" class="register-link">Regisztráció</a></p>
                         </div>
