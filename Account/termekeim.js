@@ -1,15 +1,4 @@
-/* itt feluton jottem ra, hogy a backend iszonyatosan korlatozott, a js miatt meg nem is nagyon mertem tulkomplikalni...
-
-amit csinaltam: ez a page gyakorlatilag listazza a felhasznalo altal feltoltott termekeket, amit szerkeszteni is lehet
-mivel a backend egyaltalan nem tarol user id-t, igy jobb hijan a /product/get-all valaszabol az "artist" alapjan azonositja be a kod a feltoltot
-ez azt jelenti, hogy az eperrel nem fog mukodni, ha azonban egy db-ben szereplo artisttal lepsz be, akkor mukodni fog
-
-teszt cellal letrehoztam egy profilt: username "Kovács Anna"; pass "1"
-
-nincs modosito vegpont, ezert a mentes ide megy (addig csak mock modban (?mock=1) fut vegig sikeresen:
-POST /product/update
-Authorization: <token>
-{ id, title, artist, price, description, imgUrl, createdYear, xCm, yCm } */
+/* */
 
 $("#navi").load("../Navigation/navigation.html");
 $("#footer").load("../Footer/footer.html");
@@ -44,11 +33,6 @@ $("#footer").load("../Footer/footer.html");
     window.scrollTo(0, 0);
   }
 
-
-  // A backendben VAN erre valo vegpont: /product/get-owned-products a token
-  // alapjan adja vissza a felhasznalo sajat termekeit (ArtService.getOwnedProducts).
-  // Igy nem kell az "artist" mezot a felhasznalonevhez hasonlitani - a feltolto
-  // es a muvesz nem feltetlenul ugyanaz.
   function betolt() {
     return fetch(API + "/product/get-owned-products", {
       headers: { Authorization: token() }
@@ -224,10 +208,6 @@ $("#footer").load("../Footer/footer.html");
     hint.hidden = true;
   }
 
-  // Visszajelzes felugro ablak helyett - az alert megallitja az oldalt,
-  // es a lista frissuleset sem lehet mogotte latni
-  // Mindket nezetben van egy uzenetsav (a siker a listan, a hiba a
-  // szerkesztoben latszik), ezert mindkettot beallitjuk.
   function statusz(uzenet, sikeres) {
     ["szerkesztes-status", "szerkeszto-status"].forEach(function (id) {
       var el = document.getElementById(id);
@@ -250,7 +230,7 @@ $("#footer").load("../Footer/footer.html");
       price: Number(document.getElementById("e-ar").value) || 0,
       description: document.getElementById("e-leiras").value,
       imgUrl: document.getElementById("e-imgUrl").value.trim(),
-      // kisbetus xcm/ycm - lasd a termek-feltoltese.js-ben a magyarazatot
+      // kisbetus xcm/ycm
       xcm: Number(document.getElementById("e-xcm").value) || 0,
       ycm: Number(document.getElementById("e-ycm").value) || 0,
       material: kivalasztottak("e-technika"),

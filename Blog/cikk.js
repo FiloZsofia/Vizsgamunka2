@@ -1,4 +1,4 @@
-/* Egy cikk megjelenitese. Az adat a cikkek-adat.js-bol jon, backend nem kell. */
+/* egy cikk megjelenitese. Az adat a cikkek-adat.js-bol jon, backend nem kell */
 
 $("#navi").load("../Navigation/navigation.html");
 $("#footer").load("../Footer/footer.html");
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var id = Number(new URLSearchParams(window.location.search).get("id"));
   var cikk = (window.CIKKEK || []).filter(function (c) { return c.id === id; })[0];
 
-  // Ha rossz vagy hianyzo id jon, ne ures oldal fogadja a latogatot
+  // ha rossz vagy hianyzo id jon, ne ures oldal fogadja a latogatot
   if (!cikk) {
     cikk = (window.CIKKEK || [])[0];
   }
