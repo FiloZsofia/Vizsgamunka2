@@ -34,54 +34,20 @@
     cursor: pointer;
     text-align: center;
     overflow: hidden;
-    box-shadow: 0 0 0 2px;
-    border-radius: 2px;
-    margin: 0 auto;
-    text-align:center;
+    transition: border-color var(--transition), background-color var(--transition);
 }
 
-#hozzaadasGomb{
-  height: 50px;
-  width: auto;
-  padding: 9px 40px;
-  font-size: 17px;
-  line-height: 30px;
-  font-weight: 500;
-  letter-spacing: .5px;
-  border-radius: 15px;     
-  border: none;
-  background: var(--main-color);
-  color: var(--stickyheader);
-} 
-
-#hozzaadasGomb:hover{
-  cursor: pointer;
-  background-color: var(--cursor);
-  color: white;
-  transition: background-color 0.3s ease;
-}       
-
-#technika, #meret{
-height: 80%;
-width: 90%;
-} 
-
-#leiras{
-  width: 90%;
+.img_upload:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
 }
 
-.form-group{
-  margin-bottom: 0px;
-  margin-left: 35px;
-}
-
-.form-group select{
-  background-color: var(--darkbrown) !important;
-  color: var(--white) !important;
-}
-
-.form-group select ::placeholder{
-  background-color: var(--white) !important;
+.img_upload__hint {
+    display: grid;
+    place-items: center;
+    gap: var(--space-xs);
+    color: var(--ink-soft);
+    font-size: var(--fs-sm);
 }
 
 .img_upload__hint ion-icon {

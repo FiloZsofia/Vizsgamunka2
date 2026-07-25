@@ -9,17 +9,18 @@ describe('Főoldal Tesztek', () => {
   })
 
     it('Navigáció tesztelése vendégként (nyilvános menüpontok)', () => {
-    cy.get('#nav-products').click()
+    cy.get('[data-test-id=nav-products]').click()
     cy.url().should('include', '/Products/termekek.html')
     cy.get('.logo').click()
 
-    cy.get('#nav-about-us').click()
+    cy.get('[data-test-id=nav-about-us]').click()
     cy.url().should('include', '/AboutUs/rolunk.html')
     cy.get('.logo').click()
 
-    cy.get('#btnLogin').click()
+    cy.get('[data-test-id="login-open"]').click()
     cy.get('.popup-container').should('be.visible').and('contain', 'Bejelentkezés')
-    cy.get('[data-test-id="btnClose"]').click()
+    cy.wait(2000);
+    cy.get('[data-test-id="login-close"]').click()
     cy.get('.popup-container').should('not.be.visible')
   })
 

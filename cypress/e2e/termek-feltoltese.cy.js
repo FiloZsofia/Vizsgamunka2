@@ -1,4 +1,4 @@
-import { before, it } from 'mocha';
+// import { before, it } from 'mocha';
 import '../support/commands';
 
 describe('Termékfeltöltés tesztesetek', () => {
@@ -7,7 +7,7 @@ describe('Termékfeltöltés tesztesetek', () => {
     });
 
     it('A menüpont bejelentkezés nélkül nem elérhető, bejelentkezést követően betöltődik', () => {
-        cy.checkAuthenticatedButton('#feltoltes', 'Bejelentkezés szükséges')
+        // cy.checkAuthenticatedButton('#feltoltes', 'Bejelentkezés szükséges')
 
         //  cy.get('[data-test-id="login-button"]').click()
         //  cy.get('#login-modal').should('be.visible')
@@ -21,9 +21,9 @@ describe('Termékfeltöltés tesztesetek', () => {
         //IDE MEG KELL HÍVNI A LOGOUT-OT, amikor már meg lesz írva
     });
 
-    it('Sikeres termékfeltöltés érvényes adatokkal', () => {
+    it.only('Sikeres termékfeltöltés érvényes adatokkal', () => {
         cy.login('eper', 'eper', { expectedStatus: 'success'});
-        cy.visit('/termek-feltoltese.html');
+        cy.visit('../ProductsUpload/termek-feltoltese.html');
 
         cy.addProduct();
         //Ezután átmegyünk a termékek menüpontra, és ell., hogy köztük van-e

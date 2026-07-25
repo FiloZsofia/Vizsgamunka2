@@ -148,7 +148,7 @@ if (!formData.title || !formData.price) {
   return;
 }
 
-const gomb = document.getElementById("hozzaadasGomb");
+const gomb = document.getElementById("add-product-button");
 gomb.disabled = true;
 gomb.textContent = "Feltöltés…";
 
@@ -180,9 +180,13 @@ fetch("http://localhost:8080/product/add", {
   });
 }
 
-let hozzaad = document.getElementById("hozzaadasGomb");
-hozzaad.onclick = feltoltes;
+/*let hozzaad = document.getElementById("add-product-button");
+hozzaad.onclick = feltoltes;*/
 
+let hozzaad = document.getElementById("add-product-button");
+if (hozzaad) {
+    hozzaad.onclick = feltoltes;
+}
 
 //KÉP KIVÁLASZTÁS
 // Fájlkiválasztás a formon belülre kattintáskor:

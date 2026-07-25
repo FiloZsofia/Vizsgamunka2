@@ -47,19 +47,20 @@ Cypress.Commands.add('login', (username, password, options = {}) => {
     // Opciók alapértelmezett értékei (ha nem adjuk meg, sikeres belépést várunk)
     const { expectedStatus = 'success', errorMessage = '' } = options;
 
-    cy.get('[data-test-id="login-button"]').click()
+    cy.wait(2000)
+    cy.get('[data-test-id="login-open"]').click()
     cy.get('[data-test-id="login-modal"]').should('be.visible')
 
     if (username) {
-        cy.get('#username').clear().type(username)
+        cy.get('#user-login').clear().type(username)
     } else {
-        cy.get('#username').clear()
+        cy.get('#user-login').clear()
     }
 
     if (password) {
-        cy.get('#password').clear().type(password)
+        cy.get('#pass-login').clear().type(password)
     } else {
-        cy.get('#password').clear()
+        cy.get('#pass-login').clear()
     }
 
     cy.get('[data-test-id="login-submit-button"]').click()
@@ -78,28 +79,36 @@ Cypress.Commands.add('login', (username, password, options = {}) => {
 });
 
 Cypress.Commands.add('addProduct', (productData = {}) => {
-  // Alapértelmezett adatok, ha a híváskor nem adunk meg egyedit
   const defaultData = {
     title: 'Csendélet eperrel',
     artist: 'Minta Művész',
     price: '45000',
     description: 'Gyönyörű olajfestmény vásznon.',
     createdYear: '2024',
+    imgUrl: '../Assets/images/teszt_kep.jpg',
+    size: '60x80',
     fileName: 'teszt_kep.jpg',
-    xCm: 40,
-    yCm: 20
+    xcm: 60,
+    ycm: 80
   };
 
   const data = { ...defaultData, ...productData };
 
-  // 1. GET Intercept-ek megvárásra/elfogásra
-  cy.intercept('GET', 'http://localhost:8080/material/get-all').as('getMaterials');
-  cy.intercept('GET', 'http://localhost:8080/style/get-all').as('getStyles');
+  // 1. GET Intercept-ek (a dinamikus adatokhoz)
+  cy.intercept('GET', 'http://localhost:8080/material/get-all', [
+    { id: 1, name: 'Olaj' },
+    { id: 2, name: 'Akril' }
+  ]).as('getMaterials');
 
-  // 2. POST Intercept a backend hívás szimulálásához
+  cy.intercept('GET', 'http://localhost:8080/style/get-all', [
+    { id: 1, name: 'Csendélet' },
+    { id: 2, name: 'Táj kép' }
+  ]).as('getStyles');
+
+  // 2. POST Intercept a sikeres válasz szimulálására
   cy.intercept('POST', 'http://localhost:8080/product/add', {
     statusCode: 200,
-    body: { message: 'Termék sikeresen hozzáadva!' }
+    body: { message: 'A termék feltöltve.' }
   }).as('addProductRequest');
 
   // 3. Mezők kitöltése
@@ -109,27 +118,46 @@ Cypress.Commands.add('addProduct', (productData = {}) => {
   cy.get('#leiras').clear().type(data.description);
   cy.get('#keszitesEve').clear().type(data.createdYear);
 
-  // 4. Kép feltöltése
+  // Méret kijelölése (ha van #meret select a DOM-ban)
+  cy.get('body').then(($body) => {
+    if ($body.find('#meret').length > 0) {
+      cy.get('#meret').select(data.size);
+    }
+  });
+
+  // Kép útvonal kitöltése (ha van #imgUrl mező)
+  cy.get('body').then(($body) => {
+    if ($body.find('#imgUrl').length > 0) {
+      cy.get('#imgUrl').clear().type(data.imgUrl);
+    }
+  });
+
+  // 4. Kép feltöltése (fájlkiválasztás)
   cy.get('#file-input').selectFile({
     contents: Cypress.Buffer.from('fake image content'),
     fileName: data.fileName,
     mimeType: 'image/jpeg',
   }, { force: true });
 
-  // 5. Preview ellenőrzése
+  // 5. Preview megjelenésének ellenőrzése
   cy.get('.uploaded-image').should('be.visible');
 
-  // 6. Beküldés
-  cy.get('#add-product-button').click();
+  // 6. Beküldés gomb kattintás
+  cy.get('#add-products-button').click();
 
-  // 7. Hálózati kérés ellenőrzése
+  // 7. Státuszüzenet és hálózati kérés ellenőrzése
+  cy.get('#feltoltes-status')
+    .should('be.visible')
+    .and('have.text', 'A termék feltöltve.');
+
   cy.wait('@addProductRequest').its('request.body').should('deep.include', {
     title: data.title,
     artist: data.artist,
     price: data.price,
     description: data.description,
     createdYear: data.createdYear,
-    xCm: data.xCm,
-    yCm: data.yCm
+    imgUrl: data.imgUrl,
+    xcm: data.xcm,
+    ycm: data.ycm
   });
 });
