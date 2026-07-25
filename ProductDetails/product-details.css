@@ -1,71 +1,81 @@
-nav ul{
-    z-index: 1;
+/* itt mar csak olyanok vannak, amik nincsenek styles.css-ben, de itt is az abban levo variable-ok vannak hasznalva! */
+
+.product-detail {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
 }
 
-nav ul li a {
-    text-decoration: none !important;
-    color: var(--white) !important;
+/* prod kep */
+.product-detail__media {
+    display: grid;
+    place-items: center;
+    padding: var(--space-md);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
 }
 
-.image-div img {
-    max-width: 800px;
+.product-detail__media img {
     width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
 }
 
-h3{
-    color: white;
+/* prod adatok */
+.product-detail__info h1 {
+    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
 }
 
-.box {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
+.product-detail__info > p {
+    margin-top: var(--space-xs);
 }
 
-.content h3 {
-    font-size: 30px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+.product-detail__price {
+    margin-top: var(--space-sm) !important;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
 }
 
-.content p {
-    margin-bottom: 10px;
+.product-detail__meta {
+    margin-top: var(--space-md);
+    padding-block: var(--space-sm);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
-.image-div img {
-    max-width: 100%;
-    height: auto;
-}
-
-#kosar{
-    width: 30%;
-    justify-content: center;
-    border-radius: 15px;
-    margin-top: 7px;
-    margin-bottom: 7px;
-}
-
-#price {
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 50px;
-}
-
-.center_container {
+.product-detail__meta p {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: var(--space-xs);
+    padding-block: .3rem;
+    color: var(--ink-soft);
+    font-size: var(--fs-sm);
 }
 
-@media (min-width: 768px) {
-    .col-md-6 {
-        max-width: 100%;
+.product-detail__meta b {
+    min-width: 8.5rem;
+    color: var(--ink);
+    font-weight: 600;
+}
+
+#description {
+    margin-top: var(--space-md) !important;
+    color: var(--ink-soft);
+}
+
+#kosar {
+    margin-top: var(--space-lg);
+    min-width: 220px;
+}
+
+@media (max-width: 860px) {
+    .product-detail {
+        grid-template-columns: 1fr;
     }
-}
 
-@media (max-width: 1000px) {
-    .box {
-        margin: 50px 0 0 0;
+    #kosar {
+        width: 100%;
     }
 }

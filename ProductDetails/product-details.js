@@ -7,10 +7,13 @@ const urlParams = new URLSearchParams(window.location.search);
 const termekAzonosito = urlParams.get('id');
 const url = "http://localhost:8080/product/get/" + termekAzonosito;
 
+let aktualisTermek = null; // kosarba tetelnel legyen elerheto az adata
+
 fetch(url)
             .then(response => response.json())
             .then(data => {
-                
+                aktualisTermek = data;
+
                 function getMaterial(jsonObj) {
                     if (!jsonObj.material) {
                         return "Nincs elegendő adat a JSON objektumban.";
@@ -45,45 +48,14 @@ fetch(url)
 
 let gomb = document.getElementById("kosar");
 
-function kosarbaRakas(){
-  if(localStorage.getItem("token") == null){
-    alert("Be kell jelentkezned")
+function kosarbaRakas(){ // ezt atdolgoztam, hogy ne kelljen belepni a kosarba rakashoz (mert ez egy webshopban sem feltetel)
+  if (!aktualisTermek) { // ha meg nem toltodott be
+    return;
   }
-  kosarba();
+  window.Cart.add(aktualisTermek);
 }
 
-gomb.onclick=kosarbaRakas;
-
-function kosarba(){
-    
-    const formData = {
-        id: termekAzonosito
-      };
-  
-      // Send POST request to Spring Boot backend
-      fetch("http://localhost:8080/basket/save", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": localStorage.getItem("token")
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.status !== 500) {
-            alert("Hozzáadtad a kosárhoz")
-          }
-          else{
-            alert(data.message)
-          }
-          console.log("Success:", data);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          // Handle error, e.g., show an error message to the user
-        });
-    }
+gomb.onclick = kosarbaRakas;
 
 /*    function felhasznalo(){
       var jwt = localStorage.getItem("token");

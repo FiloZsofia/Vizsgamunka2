@@ -4,274 +4,240 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Festményvilág</title>
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.0.0/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../style.css" />
-    <link rel="stylesheet" href="/Navigation/navigation.css">
+
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+
+    <script src="../Navigation/auth.js"></script>
+
+    <!-- ugy ahogy van, kivettem a bootstrapet, mert nem szeretem, hogy merev -->
+
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
 
-<!-- Navigációs sáv:--> 
-    <header id="navi"></header> 
+<!-- Navigációs sáv: -->
+    <header id="navi"></header>
 
 <!-- Háttér videó: -->
-      <section class="video-header">
-        <div class="overlay"></div>
-        <video data-test-id="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-             <source src="../Assets/images/production_id_5008753 (1080p).mp4" type="video/mp4">
-        </video>
-        <div class="dark-overlay"></div>
-        <div class="container">
-            <div class="d-flex text-center align-items-center">
-                <div class="text-white">
-                    <h1 class="display-3">Olajfestmények</h1>
-                    <p class="lead mb-0">Anyaga, az olajfesték olyan festék, amelynél a festékanyag száradó olajban van eloszlatva. Az olajfestés eljárása a reneszánsz korában váltotta fel a táblaképfestészetben addig szinte egyeduralkodó temperafestést, és máig a legnépszerűbb festészeti technika.</p>
-                    <button class="buy" data-test-id="megnezem" onclick="window.location.href='../Products/termekek.html'">Megnézem</button>
-                  </div>
-            </div>
+    <section class="video-header">
+      <video data-test-id="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="../Assets/images/production_id_5008753 (1080p).mp4" type="video/mp4">
+      </video>
+      <div class="dark-overlay"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <h1>Olajfestmények</h1>
+          <p>Az olajfestés a reneszánsz óta a legnépszerűbb festészeti technika: a festékanyag száradó olajban oszlik el, így mély, telt színeket és lágy átmeneteket ad.</p>
+          <button class="btn btn--on-dark" data-test-id="megnezem" onclick="window.location.href='../Products/termekek.html'">Megnézem</button>
         </div>
+      </div>
     </section>
 
-<!-- Első szekció: -->
-      <section class="section-one">
-        <div class="container">
-          <div class="col-div-4">
-            <p class="p1">FESTMÉNYVILÁG</p>
-            <h2 class="heading-1">Rólunk</h2>
-            <p class="para-1">
-              Kedves Látogató! A Baranya Vármegyei SZC Radnóti Miklós Közgazdasági Technikum végzős diákjai vagyunk. Záródolgozatunk témájául választottuk
+<!-- beraktam egy rolunkot a fooldalra, hogy tobbnek tunjon a tartalomxd -->
+    <section class="section">
+      <div class="container">
+        <div class="split">
+          <div>
+            <div class="section-head">
+              <span class="eyebrow">Festményvilág</span>
+              <h2>Piactér műkedvelőknek és művészeknek</h2>
+            </div>
+            <p class="lead">
+              A Baranya Vármegyei SZC Radnóti Miklós Közgazdasági Technikum végzős diákjai vagyunk. Záródolgozatunk témájául választottuk
               egy online piacfelület fejlesztését a társammal. A Festményvilág egy piactér, mely összehozza a műkedvelőket és a 
               művészeket. A művészek feltölthetik alkotásaikat, az érdeklődők pedig többféle technikával készült festményekből és 
-              rajzokból válogathatnak, valamint egyedi megrendelés leadására is lehetőségük van fotó alapján. 
+              rajzokból válogathatnak, valamint egyedi megrendelés leadására is lehetőségük van fotó alapján.
             </p>
-            <button class="buy" onclick="window.location.href='../AboutUs/rolunk.html'" data-test-id="aboutUs">Bővebben</button>
+            <p style="margin-top: 1.5rem;">
+              <a class="btn btn--ghost" href="../AboutUs/rolunk.html">Bővebben rólunk</a>
+            </p>
           </div>
-          <div class="col-div-8">
-            <div class="img-box">
-              <img src="../Assets/images/pexels-deeana-arts-1646953.jpg" alt="">
-            </div>
-            <div class="img-box">
-              <img src="../Assets/images/pexels-eberhard-grossgasteiger-2086361.jpg" alt="">
-            </div>
-            <div class="img-box">
-              <img src="../Assets/images/pexels-shelagh-murphy-2258795.jpg" alt="">
-            </div>
+
+          <div class="about-images">
+            <img src="../Assets/images/pexels-deeana-arts-1646953.jpg" alt="Festőecsetek a műteremben">
+            <img src="../Assets/images/pexels-eberhard-grossgasteiger-2086361.jpg" alt="Hegyvidéki tájkép">
+            <img src="../Assets/images/pexels-shelagh-murphy-2258795.jpg" alt="Festménytextúra közelről">
           </div>
-          <div class="clearfix"></div>
         </div>
-      </section>
-
-<!-- Második szekció -->
-      <section class="section-two">
-        <div class="container">
-          <div style="text-align: center;">
-            <p class="p1">FESTMÉNYEK</p>
-            <h2 class="heading-1">Termékek</h2>
-          </div>
-          <!-- Előző gomb (Slideshow) -->
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-
-          <div class="row">
-            <div class="col-md-12 col-bg-12">
-              <div class="mySlides our-box">
-                <img src="../Assets/images/boat-6686809_1920.jpg" alt="">
-                <div class="our-content">
-                  <h3>1</h3>
-                  <p class="price">60 000 Ft</p>
-                  <p class="size">A festmény mérete: 80 x 60</p>
-                  <button class="kosar">Bővebben</button>
-                </div>
-              </div>
-            </div>
-      
-            <div class="col-md-12 col-bg-12">
-              <div class="mySlides our-box">
-                <img src="../Assets/images/watercolor-4119156_1280.jpg" alt="">
-                <div class="our-content">
-                  <h3>2</h3>
-                  <p class="price">40 000 Ft</p>
-                  <p class="size">A festmény mérete: 80 x 60</p>
-                  <button class="kosar">Bővebben</button>
-                </div>
-              </div>
-            </div>
-      
-            <div class="col-md-12 col-bg-12">
-              <div class="mySlides our-box">
-                <img src="../Assets/images/pexels-steve-johnson-1145720.jpg" alt="">
-                <div class="our-content">
-                  <h3>3</h3>
-                  <p class="price">45 000 Ft</p>
-                  <p class="size">A festmény mérete: 80 x 60</p>
-                  <button class="kosar">Bővebben</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-12 col-bg-12">
-              <div class="mySlides our-box">
-                <img src="../Assets/images/pexels-eberhard-grossgasteiger-2086361.jpg" alt="">
-                <div class="our-content">
-                  <h3>4</h3>
-                  <p class="price">45 000 Ft</p>
-                  <p class="size">A festmény mérete: 80 x 60</p>
-                  <button class="kosar">Bővebben</button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-md-12 col-bg-12">
-            <div class="mySlides our-box">
-              <img src="../Assets/images/pexels-deeana-arts-1646953.jpg" alt="">
-              <div class="our-content">
-                <h3>5</h3>
-                <p class="price">45 000 Ft</p>
-                <p class="size">A festmény mérete: 80 x 60</p>
-                <button class="kosar">Bővebben</button>
-              </div>
-            </div>
-          </div>
-          <div class="clearfix"></div>   
-
-          <section id="termekek">
-
-            <!--ide töltődnek be a termékek-->
-          
-          </section>
-  
-          <!-- Következő gomb (Slideshow) -->
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-          
       </div>
-          
-          <br>
+    </section>
 
-          <!-- Alsó pöttyök (Slideshow) -->
-    <div class="dots-wrapper">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-  </div>
-        
-          <!-- Tovább a termékekhez gomb -->
-          <div id="termekek-div" class="center-button"><button id="termekek" class="buy" onclick="window.location.href='../Products/termekek.html'" data-test-id="more-products-button">További termékek</button></div>
-          <div class="clearfix"></div>
+<!-- termekek slideshow -->
+    <section class="section section--alt">
+      <div class="container">
 
-        </div>     
-      </section>
-      
-<!-- Harmadik szekció -->
- 
-
-  <section class="section-three">
-
-        <h2 class="cim">Technikák</h2>
-
-    <div class="container_s4">
-
-        <div class="s-box">
-          <ion-icon name="brush-outline"></ion-icon>
-          <h3>Olaj</h3>
-          <p>Olajfestmények kézműves papíron, keretezett, csillogásmentes üveg mögött.</p>
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Festmények</span>
+          <h2>Válogatás a kínálatból</h2>
         </div>
 
-      <div class="s-box">
-          <ion-icon name="color-palette-outline"></ion-icon>
-          <h3>Akril</h3>
-          <p>Az akrilfesték teljesen fedő, gyorsan száradó, száradás után vízálló, vizes alapú dekorációs festék.</p>
-        </div>
+        <div class="slideshow">
+          <div class="slides-row">
 
-        <div class="s-box">
-          <ion-icon name="color-palette-outline"></ion-icon>
-          <h3>Akvarell</h3>
-          <p>Értéke a finom, világos, áttetsző színekben van. Gyors, tovatűnő élmények, jelenségek rögzítésére kiválóan alkalmas.</p>
-        </div>
+            <article class="mySlides our-box">
+              <img src="../Assets/images/boat-6686809_1920.jpg" alt="Hajnali kikötő">
+              <div class="our-content">
+                <h3>Hajnali kikötő</h3>
+                <p class="size">Olaj, 80 × 60 cm</p>
+                <p class="price">60 000 Ft</p>
+                <button class="kosar" onclick="window.location.href='../Products/termekek.html'">Bővebben</button>
+              </div>
+            </article>
 
-        <div class="s-box">
-          <ion-icon name="brush-outline"></ion-icon>
-          <h3>Pasztell</h3>
-          <p>Lényege, hogy a festékszemcsék a papíron kötőanyag nélkül, kizárólag a felület bolyhossága, érdessége révén tapadnak meg.</p>
-        </div>
+            <article class="mySlides our-box">
+              <img src="../Assets/images/watercolor-4119156_1280.jpg" alt="Akvarell álom">
+              <div class="our-content">
+                <h3>Akvarell álom</h3>
+                <p class="size">Akvarell, 50 × 40 cm</p>
+                <p class="price">40 000 Ft</p>
+                <button class="kosar" onclick="window.location.href='../Products/termekek.html'">Bővebben</button>
+              </div>
+            </article>
 
-        <div class="s-box">
-          <ion-icon name="brush-outline"></ion-icon>
-          <h3>Grafit</h3>
-          <p>A grafit mint médium egyik előnye, hogy a világos és a sötét közötti tónusértékek széles skáláját képes létrehozni, ami ideális a realisztikus rajzok és portrék készítéséhez.</p>
-        </div>
-        
-        <div class="s-box">
-          <ion-icon name="color-palette-outline"></ion-icon>
-          <h3>Szén</h3>
-          <p>A faszén (charcoal) sokoldalú médium, amelyet rajzolásra, vázlatkészítésre és részletes műalkotások létrehozására lehet használni. </p>
-        </div>
+            <article class="mySlides our-box">
+              <img src="../Assets/images/pexels-steve-johnson-1145720.jpg" alt="Színrobbanás">
+              <div class="our-content">
+                <h3>Színrobbanás</h3>
+                <p class="size">Akril, 70 × 50 cm</p>
+                <p class="price">45 000 Ft</p>
+                <button class="kosar" onclick="window.location.href='../Products/termekek.html'">Bővebben</button>
+              </div>
+            </article>
 
-        <div class="s-box">
-          <ion-icon name="brush-outline"></ion-icon>
-          <h3>Színes ceruza</h3>
-          <p>A színes ceruza egy olyan rajzeszköz, amely egy külső fa hengerből, tokból és egy belső, színes ceruzatöltetből áll. A színes ceruzatöltet viasz, vagy olaj bázisú anyag, és különböző arányban tartalmaz színezékeket, adalékokat és kötőanyagokat.</p>
-        </div>
+            <article class="mySlides our-box">
+              <img src="../Assets/images/parrot-2289943_1280.jpg" alt="Papagáj">
+              <div class="our-content">
+                <h3>Papagáj</h3>
+                <p class="size">Akril, 60 × 60 cm</p>
+                <p class="price">52 000 Ft</p>
+                <button class="kosar" onclick="window.location.href='../Products/termekek.html'">Bővebben</button>
+              </div>
+            </article>
 
-      <div class="clearfix"></div>
-    </div>
-  </section>   
+            <article class="mySlides our-box">
+              <img src="../Assets/images/pexels-deeana-arts-1646953.jpg" alt="Műterem">
+              <div class="our-content">
+                <h3>Műterem</h3>
+                <p class="size">Olaj, 40 × 30 cm</p>
+                <p class="price">38 000 Ft</p>
+                <button class="kosar" onclick="window.location.href='../Products/termekek.html'">Bővebben</button>
+              </div>
+            </article>
 
-
-<!-- Negyedik szekció -->
-
-
-       <section class="section-four">
-
-        <div style="text-align: center;">
-          <p class="p1">FESTMÉNY GALÉRIA</p>
-          <h2 class="gallery">Portfólió galéria</h2>
-        </div>
-
-        <div class="container_s3">
-
-          <div class="col-div-3">
-            <img src="../Assets/images/boat-6686809_1920.jpg" class="ga-img">
           </div>
-          <div class="col-div-3">
-            <img src="../Assets/images/watercolor-4119156_1280.jpg" class="ga-img">
-          </div>
-          <div class="col-div-3">
-            <img src="../Assets/images/pexels-steve-johnson-1145720.jpg" class="ga-img">
-          </div>
-          <div class="col-div-3">
-            <img src="../Assets/images/parrot-2289943_1280.jpg" class="ga-img">
-          </div>
-          <div class="col-div-3">
-            <img src="../Assets/images/parrot-2289943_1280.jpg" class="ga-img">
-          </div>
-          <div class="col-div-3">
-            <img src="../Assets/images/parrot-2289943_1280.jpg" class="ga-img">
-          </div>
-          <div class="col-div-3">
-            <img src="../Assets/images/parrot-2289943_1280.jpg" class="ga-img">
-          </div>
-          <div class="col-div-3">
-            <img src="../Assets/images/parrot-2289943_1280.jpg" class="ga-img">
-          </div>
-          <div class="clearfix"></div>
         </div>
 
-      </section> 
-<!-- Footer:--> 
+        <div class="slideshow-controls">
+          <a class="prev" onclick="plusSlides(-1)" title="Előző">&#10094;</a>
+
+          <div class="dots-wrapper">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+
+          <a class="next" onclick="plusSlides(1)" title="Következő">&#10095;</a>
+        </div>
+
+        <div class="center-button">
+          <a class="btn" href="../Products/termekek.html">További termékek</a>
+        </div>
+
+      </div>
+    </section>
+
+<!-- Technikak -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Technikák</span>
+          <h2>Amiből válogathatsz</h2>
+        </div>
+
+        <div class="techniques-grid">
+
+          <div class="s-box">
+            <ion-icon name="brush-outline"></ion-icon>
+            <h3>Olaj</h3>
+            <p>Olajfestmények kézműves papíron, keretezett, csillogásmentes üveg mögött.</p>
+          </div>
+
+          <div class="s-box">
+            <ion-icon name="color-palette-outline"></ion-icon>
+            <h3>Akril</h3>
+            <p>Teljesen fedő, gyorsan száradó, száradás után vízálló, vizes alapú festék.</p>
+          </div>
+
+          <div class="s-box">
+            <ion-icon name="water-outline"></ion-icon>
+            <h3>Akvarell</h3>
+            <p>Értéke a finom, világos, áttetsző színekben van. Gyors, tovatűnő jelenségek rögzítésére kiváló.</p>
+          </div>
+
+          <div class="s-box">
+            <ion-icon name="color-filter-outline"></ion-icon>
+            <h3>Pasztell</h3>
+            <p>A festékszemcsék kötőanyag nélkül, kizárólag a felület érdessége révén tapadnak meg.</p>
+          </div>
+
+          <div class="s-box">
+            <ion-icon name="pencil-outline"></ion-icon>
+            <h3>Grafit</h3>
+            <p>A világos és sötét közötti tónusértékek széles skálája, Ideális realisztikus portrékhoz.</p>
+          </div>
+
+          <div class="s-box">
+            <ion-icon name="ellipse-outline"></ion-icon>
+            <h3>Szén</h3>
+            <p>Sokoldalú médium vázlatkészítéshez és részletes műalkotások létrehozásához.</p>
+          </div>
+
+          <div class="s-box">
+            <ion-icon name="create-outline"></ion-icon>
+            <h3>Színes ceruza</h3>
+            <p>Viasz, vagy olaj bázisú anyag, és tartalmaz színezékeket, adalékokat és kötőanyagokat.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+<!-- galeria -->
+    <section class="section section--alt">
+      <div class="container">
+
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Festmény galéria</span>
+          <h2>Portfólió</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <img src="../Assets/images/boat-6686809_1920.jpg" class="ga-img" alt="">
+          <img src="../Assets/images/watercolor-4119156_1280.jpg" class="ga-img" alt="">
+          <img src="../Assets/images/pexels-steve-johnson-1145720.jpg" class="ga-img" alt="">
+          <img src="../Assets/images/parrot-2289943_1280.jpg" class="ga-img" alt="">
+          <img src="../Assets/images/bird-3342446_1280.jpg" class="ga-img" alt="">
+          <img src="../Assets/images/fish-3735501_1920.jpg" class="ga-img" alt="">
+          <img src="../Assets/images/pexels-lumn-587958.jpg" class="ga-img" alt="">
+          <img src="../Assets/images/cherry-blossoms-impressionist-lourry-legarde.jpg" class="ga-img" alt="">
+        </div>
+
+      </div>
+    </section>
+
+<!-- Footer: -->
     <footer id="footer"></footer>
 
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="slides.js"></script>
     <script src="index.js"></script>
-    <script type="module" src="/Navigation/loginscript.js"></script>
-    <script src="/Navigation/basket.js"></script>
+    <script src="slides.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
     <script type="module" src="../Navigation/permission-checker.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
   </body>
 </html>

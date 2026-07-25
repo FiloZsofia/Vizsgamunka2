@@ -3,116 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termékek</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.0.0/css/ionicons.min.css">
+    <title>Festményvilág</title>
+
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+
+    <script src="../Navigation/auth.js"></script>
+
+    <!-- ugy ahogy van, kivettem a bootstrapet, mert nem szeretem, hogy merev -->
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../Navigation/navigation.css">
     <link rel="stylesheet" href="termekek.css">
-    <script type="module" src="../Navigation/loginscript.js"></script>
-    <script src="../Navigation/basket.js"></script>
-    
-    
 </head>
 <body>
 
-
-    <!-- Navigációs sáv:--> 
- 
+    <!-- Navigációs sáv: -->
     <header id="navi"></header>
 
+     <!-- Termékek: https://www.w3schools.com/howto/howto_css_modal_images.asp    Modal Images    -->
 
- <!-- Termékek: https://www.w3schools.com/howto/howto_css_modal_images.asp    Modal Images    -->   
-
-    <section class="section-two" id="section">
+    <section class="section">
         <div class="container">
-            <div style="text-align: center;">
-                <p class="p1">TERMÉKEK</p>
-                <h2 class="heading-1">Termékek</h2>
+
+            <div class="section-head section-head--center">
+                <span class="eyebrow">Termékek</span>
+                <h2>Festmények és rajzok</h2>
             </div>
-            <form id="filter">
-                    <input id="search" type="text" placeholder="Keresés">
-                    <div class="dropdown">
-                        <button class="dropbtn" onsubmit="false">Technika</button>
-                        <div class="dropdown-content" id="technika">
-                        </div>
-                      </div>
-                      
-                      <div class="dropdown">
-                        <button class="dropbtn" onsubmit="false">Méret</button>
-                        <div class="dropdown-content" id="meret">
-                          <label><input type="checkbox" class="checkbox">Nagy</label>
-                          <label><input type="checkbox" class="checkbox">Közepes</label> 
-                          <label><input type="checkbox" class="checkbox">Kicsi</label>
-                        </div>
-                      </div>
 
-                      <div class="dropdown">
-                        <button class="dropbtn" onsubmit="false">Téma</button>
-                        <div class="dropdown-content" id="tema">
-                        </div>
-                      </div>
+            <!-- gomboknak type button kell,kulonben elkuldik az urlapot! ezt javitottam -->
+            <form id="filter" class="filter-bar" onsubmit="return false">
 
-                      <select name="" id="order">
-                        <option value="" disabled selected hidden>Rendezés</option>
-                        <option value="priceAsc">Ár szerint növekvő</option>
-                        <option value="priceDesc">Ár szerint csökkenő</option>
-                        <option value="themeAsc">Téma szerint ABC sorrend</option>
-                        <option value="materialAsc">Anyag szerint ABC sorrend</option>
-                        <option value="newestFirst">Legfrissebb legelől</option>
-                    </select>
-                    
+                <input id="search" type="search" placeholder="Keresés a művek között…">
+
+                <div class="dropdown">
+                    <button type="button" class="dropbtn">Technika</button>
+                    <div class="dropdown-content" id="technika"></div>
+                </div>
+
+                <div class="dropdown">
+                    <button type="button" class="dropbtn">Méret</button>
+                    <div class="dropdown-content" id="meret">
+                        <label><input type="checkbox" class="checkbox">Nagy</label>
+                        <label><input type="checkbox" class="checkbox">Közepes</label>
+                        <label><input type="checkbox" class="checkbox">Kicsi</label>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button type="button" class="dropbtn">Téma</button>
+                    <div class="dropdown-content" id="tema"></div>
+                </div>
+
+                <select id="order">
+                    <option value="" disabled selected hidden>Rendezés</option>
+                    <option value="priceAsc">Ár szerint növekvő</option>
+                    <option value="priceDesc">Ár szerint csökkenő</option>
+                    <option value="themeAsc">Téma szerint ABC sorrend</option>
+                    <option value="materialAsc">Anyag szerint ABC sorrend</option>
+                    <option value="newestFirst">Legfrissebb legelől</option>
+                </select>
+
             </form>
         </div>
     </section>
 
-    <section id="termekek">
-
+    <div class="container">
         <!--ide töltődnek be a termékek-->
-      
-    </section>
+        <section id="termekek" class="grid-cards"></section>
+        <div id="paginator"></div>
+    </div>
 
-          <div id="paginator"></div>
-
-    <!-- Footer:--> 
-
+    <!-- Footer: -->
     <footer id="footer"></footer>
 
 <script>
-  // JavaScript kód, hogy a labelre kattintáskor is bekerüljön a pipa a checkboxba:
-  document.addEventListener("DOMContentLoaded", function() {
-      // Az összes címke elem kijelölése
-      var labels = document.querySelectorAll('label');
-
-      // Minden címke elemhez hozzáadunk egy eseményfigyelőt a kattintásra
-      labels.forEach(function(label) {
-          label.addEventListener('click', function(event) {
-              // Megállapítjuk, hogy a kattintás közvetlenül a checkbox-ra vagy a címke szövegére történt-e
+  // ezt atdolgoztam, remelem mukodikxd
+  document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('#filter .dropdown-content label').forEach(function (label) {
+          label.addEventListener('click', function (event) {
               var checkbox = label.querySelector('input[type="checkbox"]');
-              if (checkbox) {
-                  // Ellenőrizzük, hogy a checkbox be van-e pipálva vagy sem
+              if (checkbox && event.target !== checkbox) {
                   checkbox.checked = !checkbox.checked;
+                  checkbox.dispatchEvent(new Event('change', { bubbles: true }));
               }
-              // Ne zárjuk be a dropdown tartalmakat
-              event.preventDefault();
               event.stopPropagation();
-          });
-
-          // A címkére való kattintás megakadályozása a pipa beállítása/eltávolítása során
-          label.addEventListener('mousedown', function(event) {
-              event.preventDefault();
           });
       });
   });
 </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="termekek.js"></script>
     <script src="filter.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
     <script type="module" src="../Navigation/permission-checker.js"></script>
+
 </body>
 </html>

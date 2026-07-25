@@ -32,7 +32,7 @@ function termekDoboz(number, termek) {
 
     let size = document.createElement("p");
     size.className = "size";
-    size.innerText = `A termék mérete: "${termek.xcm} x ${termek.ycm} cm"`;
+    size.innerText = `${termek.xcm} × ${termek.ycm} cm`;
 
     let kosar = document.createElement("button");
     kosar.className = "kosar";

@@ -12,15 +12,11 @@ document.addEventListener("DOMContentLoaded", function() {
     bezar.onclick = closePopup;
     
     function openPopup() {
-      if(localStorage.getItem("token") !== null){
-        console.log("bejentkezve(loginscript.js)");
-        localStorage.removeItem("token");
-        window.location.href = "/Main/index.html";
-        alert("Kijelentkezés")
-      }
-      else{
-        document.getElementById('popup').style.display = 'block';
-      }
+      // Belepve mar nem itt jelentkezunk ki: az ikon a fiok menut nyitja,
+      // azt a Navigation/auth.js kezeli, a Kilepes is ott van.
+      if (localStorage.getItem("token") !== null) return;
+
+      document.getElementById('popup').style.display = 'block';
     }
     
     function closePopup() {
@@ -109,7 +105,13 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then((data) => {
       console.log("Sikeres bejelentkezés:", data);
-      window.localStorage.setItem('token', data.code);
+      // A felhasznalonevet is eltesszuk: a backend csak tokent ad vissza,
+      // de a "Termekeim" listahoz kell a muvesznev.
+      if (window.Auth) {
+        window.Auth.setSession(loginUsername, data.code);
+      } else {
+        window.localStorage.setItem('token', data.code);
+      }
       closePopup();
       alert("Sikeres bejelentkezés!");
     })
@@ -122,4 +124,3 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   setTimeout(delayedFunction, 700);
 });
- 

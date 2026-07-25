@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festményvilág</title>
+
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+
+    <script src="../Navigation/auth.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="cikkek.css">
+</head>
+<body>
+
+    <!-- Navigációs sáv: -->
+    <header id="navi"></header>
+
+    <article class="section">
+      <div class="container container--narrow">
+
+        <a class="vissza-link" href="cikkek.html">
+          <ion-icon name="arrow-back-outline"></ion-icon> Vissza a cikkekhez
+        </a>
+
+        <div class="cikk-fejlec">
+          <span class="cikk-cimke" id="cikk-cimke"></span>
+          <h1 id="cikk-cim"></h1>
+          <p class="cikk-meta" id="cikk-meta"></p>
+        </div>
+
+        <img class="cikk-boritokep" id="cikk-kep" src="" alt="">
+
+        <div class="cikk-torzs" id="cikk-torzs"></div>
+
+        <div class="cikk-lablec">
+          <p class="muted">
+            Tetszett az írás? Nézd meg a művek közt is, mi került fel legutóbb.
+          </p>
+          <a class="btn" href="../Products/termekek.html">Irány a kínálat</a>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- Footer: -->
+    <footer id="footer"></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="cikkek-adat.js"></script>
+    <script src="cikk.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
+
+</body>
+</html>

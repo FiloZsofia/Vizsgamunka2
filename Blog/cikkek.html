@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festményvilág</title>
+
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+
+    <script src="../Navigation/auth.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="cikkek.css">
+</head>
+<body>
+
+    <!-- Navigációs sáv: -->
+    <header id="navi"></header>
+
+    <!-- Rovatfejléc -->
+    <section class="section">
+      <div class="container">
+
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Magazin</span>
+          <h2>Cikkek és interjúk</h2>
+          <p class="lead" style="margin: 1rem auto 0;">
+            Műterem-látogatások, technikai útmutatók és beszélgetések azokkal,
+            akik a képeket festik. Új írás minden hónapban.
+          </p>
+        </div>
+
+        <!-- Kiemelt cikk -->
+        <article class="cikk-kiemelt">
+          <a class="cikk-kiemelt__kep" href="cikk.html?id=1">
+            <img src="../Assets/images/pexels-deeana-arts-1646953.jpg" alt="">
+          </a>
+          <div class="cikk-kiemelt__szoveg">
+            <span class="cikk-cimke">Műterem</span>
+            <h3><a href="cikk.html?id=1">„A festék akkor él, ha még nedves" — látogatás Kovács Anna műtermében</a></h3>
+            <p class="muted">
+              Egy régi pécsi bérház tetőterében dolgozik, ahol a fény délutánonként
+              pontosan arra a falra esik, ahol a félkész vásznak sorakoznak. Arról
+              beszélgettünk, miért nem vázlatol, és miért fest mindig három képet
+              egyszerre.
+            </p>
+            <p class="cikk-meta">Szerkesztőség · 8 perc olvasás</p>
+          </div>
+        </article>
+
+        <!-- Cikklista -->
+        <div class="cikk-racs" id="cikk-racs"></div>
+
+        <div class="center-button">
+          <button type="button" class="btn btn--ghost" id="tobb-cikk">További cikkek</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Hírlevél sáv -->
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="hirlevel-sav">
+          <div>
+            <h3>Ne maradj le egy írásról sem</h3>
+            <p class="muted">Havonta egy levél, csak a friss cikkekről. Bármikor leiratkozhatsz.</p>
+          </div>
+          <form class="hirlevel-urlap" onsubmit="return false">
+            <input type="email" placeholder="E-mail cím" aria-label="E-mail cím">
+            <button type="submit" class="btn">Feliratkozom</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer: -->
+    <footer id="footer"></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="cikkek-adat.js"></script>
+    <script src="cikkek.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
+
+</body>
+</html>
