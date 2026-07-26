@@ -23,25 +23,6 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add('checkAuthenticatedButton', (selector, expectedText) => {
-  let alertText = '';
-
-  // Elkapjuk az alertet
-  cy.on('window:alert', (txt) => {
-    alertText = txt;
-  });
-
-  cy.get(selector).click();
-
-  cy.should(() => {
-    expect(alertText).to.equal(expectedText);
-  });
-
-  // Kiürítjük a változót, hogy ne ragadjon be a következő tesztre
-  cy.should(() => {
-    alertText = '';
-  });
-});
 
 Cypress.Commands.add('login', (username, password, options = {}) => {
     // Opciók alapértelmezett értékei (ha nem adjuk meg, sikeres belépést várunk)
