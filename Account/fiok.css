@@ -42,6 +42,24 @@ itt is csak olyanok vannak, amik nincsenek styles.css-ben, de itt is az abban le
     font-family: var(--font-serif);
     font-size: 1.75rem;
     font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.profile-avatar:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.profile-head__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .25rem;
+    margin-right: auto;
 }
 
 .profile-name {
@@ -49,6 +67,51 @@ itt is csak olyanok vannak, amik nincsenek styles.css-ben, de itt is az abban le
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.2;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column; /* Egymás alatt jelennek meg a gombok */
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.changing-profile-picture {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-left: auto;
+    padding: .35rem .6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.changing-profile-picture:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.changing-username {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-left: auto;
+    padding: .35rem .6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.changing-username:hover {
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .profile-note {

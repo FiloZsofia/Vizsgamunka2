@@ -28,14 +28,19 @@
         <div class="panel">
 
           <div class="profile-head">
-            <div class="profile-avatar" id="profil-monogram">?</div>
-            <div>
+            <div class="profile-avatar" id="profil-monogram" role="button" tabindex="0" title="Profilkép feltöltése">?</div>
+            <input id="profil-kep-input" type="file" accept="image/*" hidden>
+            <div class="profile-head__meta">
               <p class="profile-name" id="profil-nev">—</p>
               <p class="muted">Bejelentkezve</p>
             </div>
-          </div>
 
-          <p class="muted profile-note">
+          <div class="profile-actions">
+    <button type="button" class="changing-username" id="changing-username" title="Felhasználónév módosítása">Felhasználónév módosítása</button>
+    <button type="button" class="changing-profile-picture" id="changing-profile-picture" title="Profilkép törlése">Profilkép törlése</button>
+  </div>
+</div>
+              <p class="muted profile-note">
             Ez amolyan dashboard funkciót kíván betölteni, noha igencsak vérszegény megvalósításban.
           </p>
 
