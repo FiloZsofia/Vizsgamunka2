@@ -340,6 +340,18 @@ h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 
+.about-us-h3 {
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+}
+
+.about-us {
+    margin-top: var(--space-md);
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
 p {
     color: var(--ink);
     text-wrap: pretty;

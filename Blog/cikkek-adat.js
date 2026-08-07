@@ -7,7 +7,7 @@ window.CIKKEK = [
   {
     id: 1,
     cimke: "Műterem",
-    cim: "„A festék akkor él, ha még nedves” — látogatás Kovács Anna műtermében",
+    cim: "„A kép akkor él, ha gondolatokat ébreszt” — látogatás Kovács Anna műtermében",
     lead: "Egy régi pécsi bérház tetőterében dolgozik, ahol a fény délutánonként pontosan arra a falra esik, ahol a félkész vásznak sorakoznak.",
     szerzo: "Szerkesztőség",
     ido: "8 perc",
