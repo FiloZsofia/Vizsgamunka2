@@ -54,7 +54,7 @@
 
 .darkmode {
  --bg: #092635; /* main background */
-    --surface: #344d4d;
+    --surface:/* #344d4d; */ #2f4545;
     --surface-alt: #223a46;
     --ink: #aee7b9; /* primary text */
     --ink-soft: #f4f4f4; /* secondary text */
@@ -326,6 +326,28 @@ body::-webkit-scrollbar-thumb {
     border-color: #D9534F;
     color: #A33A36;
 }
+
+/* Alert ablakok stílusa */
+
+.swal2-custom-popup {
+    background-color: var(--surface);
+    border-radius: var(--radius-lg);
+}
+
+.swal2-custom-popup .swal2-title {
+    font-size: var(--fs-h3);
+    color: var(--ink);
+}
+
+.swal2-custom-popup .swal2-confirm {
+    background-color: var(--accent);
+}
+
+.swal2-custom-popup .swal2-confirm:hover {
+    background-color: var(--accent-dark);
+}
+
+/* Alert ablakok stílusa eddig tart*/
 
 /* text */
 h1, h2, h3 {
