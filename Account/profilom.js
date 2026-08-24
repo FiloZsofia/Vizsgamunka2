@@ -1,7 +1,7 @@
 /* mivel a backend nem tarol felhasznaloi adatot (amugy wtf), ezert csak a loginkor elmentett nev jelenik meg */
 
-$("#navi").load("../Navigation/navigation.html");
-$("#footer").load("../Footer/footer.html");
+$("#navi").html(NAVIGATION_HTML);
+$("#footer").html(FOOTER_HTML);
 
 var PROFILE_IMAGE_KEY = "festmenyvilag:profile-image";
 

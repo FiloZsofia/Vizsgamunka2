@@ -1,11 +1,21 @@
-<!-- ide nem kell doctype deklaracio, mert olyan helyen hivod meg, ahol az mar megvan
-navigation.css-t ugy ahogy van, toroltem ebbol a mappabol -->
+/* A navigation.html tartalma ide van atmasolva, sablon-stringkent.
 
-<!-- FIGYELEM: ezt a fajlt a lapok mar NEM AJAX-szal toltik be (lasd navigation-template.js
-es az ottani magyarazatot - a dev szerverek egy resze HTML valaszokba szkriptet injektal,
-ami ezt a fajlt csonkolva juttatta el a bongeszohoz). Ez a fajl csak referenciakent maradt
-meg; ha a navigaciot modositod, a navigation-template.js-ben tedd, es tukrozd ide is. -->
+mivel a a live-server csomag (127.0.0.1:5501) automatikusan egy <script>-et fuz be minden
+text/html valaszba - beleertve azt is, amit a lapok ajax-szal (jQuery .load())
+toltenek be a navigation.html-bol
 
+ez a befuzes a navigation.html kozepén,
+a theme-switch gomb inline svg-i kozott csusztatta be magat, es a valasz
+emiatt csonkolva erkezett vissza: a <div id="cart-drawer"> resz (es minden
+utana kovetkezo) sosem kerult be a dom-ba
+ezert nem nyilt ki a kosar oldalsav, amikor a backend (tobb parhuzamos kerest okozva) is futott.
+
+sima .js fajlkent viszont a szerver nem nyul hozza a tartalomhoz, igy ez a hiba szervertol fuggetlenul nem biztos, hogy visszajon
+
+Ha a navigaciot modositod, ITT tedd - a navigation.html mar csak
+referenciakent van megtartva, a lapok ezt a valtozot hasznaljak. */
+
+window.NAVIGATION_HTML = `
 <nav>
 
     <input type="checkbox" id="check">
@@ -146,16 +156,13 @@ meg; ha a navigaciot modositod, a navigation-template.js-ben tedd, es tukrozd id
 
     </aside>
 </div>
+`;
 
-<script>
-    function toggleMenu() {
-        var menuIcon = document.getElementById("menuIcon");
-        var closeIcon = document.getElementById("closeIcon");
-        var open = menuIcon.style.display !== "none";
+function toggleMenu() {
+    var menuIcon = document.getElementById("menuIcon");
+    var closeIcon = document.getElementById("closeIcon");
+    var open = menuIcon.style.display !== "none";
 
-        menuIcon.style.display = open ? "none" : "block";
-        closeIcon.style.display = open ? "block" : "none";
-    }
-</script>
-<script src="Navigation/custom-alert.js"></script>
-<script src="../Navigation/darkmode.js" defer></script>
+    menuIcon.style.display = open ? "none" : "block";
+    closeIcon.style.display = open ? "block" : "none";
+}

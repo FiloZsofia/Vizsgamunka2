@@ -1,7 +1,7 @@
 /* Cikklista. Az adat a cikkek-adat.js-ben van, backend nem kell hozza. */
 
-$("#navi").load("../Navigation/navigation.html");
-$("#footer").load("../Footer/footer.html");
+$("#navi").html(NAVIGATION_HTML);
+$("#footer").html(FOOTER_HTML);
 
 (function () {
   "use strict";

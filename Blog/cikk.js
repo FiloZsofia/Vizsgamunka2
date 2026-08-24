@@ -1,7 +1,7 @@
 /* egy cikk megjelenitese. Az adat a cikkek-adat.js-bol jon, backend nem kell */
 
-$("#navi").load("../Navigation/navigation.html");
-$("#footer").load("../Footer/footer.html");
+$("#navi").html(NAVIGATION_HTML);
+$("#footer").html(FOOTER_HTML);
 
 document.addEventListener("DOMContentLoaded", function () {
   var id = Number(new URLSearchParams(window.location.search).get("id"));
