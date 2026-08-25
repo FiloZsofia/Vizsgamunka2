@@ -54,7 +54,7 @@
 
 .darkmode {
  --bg: #092635; /* main background */
-    --surface:/* #344d4d; */ #2f4545;
+    --surface:/* #344d4d; */ /*#2f4545;*/ var(--surface-alt);
     --surface-alt: #223a46;
     --ink: #aee7b9; /* primary text */
     --ink-soft: #f4f4f4; /* secondary text */
