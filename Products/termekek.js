@@ -192,8 +192,6 @@ async function materials() {
     });
 }
 
-materials();
-
 // REST API témák betöltése:
 let style = [];
 const tema = document.getElementById("tema");
@@ -218,13 +216,11 @@ async function styles() {
     });
 }
 
-styles();
-
 // Termékek lekérdezése és betöltése
 function getProducts() {
     let url = "http://localhost:8080/product/get-all";
 
-    fetch(url)
+    return fetch(url)
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`Hiba a kérés során: ${response.status}`);
@@ -242,7 +238,24 @@ function getProducts() {
         });
 }
 
-getProducts();
+// Ha a fooldalrol egy adott temara szurve erkeztunk (pl. termekek.html?tema=Tájkép),
+// pipaljuk be az annak megfelelo checkboxot es szurjunk aszerint. A materials/styles
+// es a getProducts fuggetlenul, aszinkron toltodnek be, ezert csak akkor probalkozunk,
+// ha MINDKETTO (a checkbox-lista es a termeklista) mar keszen van.
+function alkalmazTemaSzurotUrlbol() {
+    const temaNev = new URLSearchParams(window.location.search).get("tema");
+    if (!temaNev) return;
+
+    const checkbox = Array.from(document.querySelectorAll("#tema input.checkbox"))
+        .find((input) => input.value === temaNev);
+
+    if (checkbox) {
+        checkbox.checked = true;
+        filterProducts();
+    }
+}
+
+Promise.all([materials(), styles(), getProducts()]).then(alkalmazTemaSzurotUrlbol);
 
 // Termékek megjelenítése a szűrők alapján
 function renderProducts() {

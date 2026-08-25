@@ -99,10 +99,14 @@ Cypress.Commands.add('addProduct', (productData = {}) => {
   cy.get('#leiras').clear().type(data.description);
   cy.get('#keszitesEve').clear().type(data.createdYear);
 
-  // Méret kijelölése (ha van #meret select a DOM-ban)
+  // Méret megadása - régebben #meret select volt (data.size, pl. "60x80"),
+  // most #meretHossz / #meretSzeles kulon szammezok (data.xcm / data.ycm).
   cy.get('body').then(($body) => {
     if ($body.find('#meret').length > 0) {
       cy.get('#meret').select(data.size);
+    } else if ($body.find('#meretHossz').length > 0) {
+      cy.get('#meretHossz').clear().type(String(data.xcm));
+      cy.get('#meretSzeles').clear().type(String(data.ycm));
     }
   });
 

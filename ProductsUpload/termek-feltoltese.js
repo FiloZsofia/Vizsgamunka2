@@ -72,7 +72,8 @@ let muvesz = document.getElementById("artist");
 let ar = document.getElementById("ar");
 let leiras = document.getElementById("leiras");
 let keszitve = document.getElementById("keszitesEve");
-let meret = document.getElementById("meret");
+let meretHossz = document.getElementById("meretHossz");
+let meretSzeles = document.getElementById("meretSzeles");
 let kepUtvonal = document.getElementById("imgUrl");
 
 // A bepipalt technikak / temak kiolvasasa {id, name} alakban - ugyanabban a
@@ -86,17 +87,16 @@ function kivalasztottak(containerId) {
   });
 }
 
-// A Meret legordulo "60x80" alaku, ezt kell szammá bontani.
-// Korabban fixen 40x20 ment ki, barmit is valasztott a felhasznalo.
+// Korabban egy fix "20x40"/"40x60"/"60x80" legordulobol jott a meret - most
+// a feltolto szabadon megadhatja ket kulon szammezoben (hosszusag x szelesseg).
 //
 // A mezonev SZANDEKOSAN xcm/ycm kisbetuvel: a backend ArtDto-jaban a mezo
 // neve xCm, de a Jackson ezt "xcm"-kent teszi ki a drotra (a GET valasz is
 // igy adja vissza). Ha xCm-et kuldunk, nem kot be, es 0 kerul az adatbazisba.
 function meretek() {
-  var parts = String(meret && meret.value ? meret.value : "").split("x");
   return {
-    xcm: Number(parts[0]) || 0,
-    ycm: Number(parts[1]) || 0
+    xcm: Number(meretHossz && meretHossz.value) || 0,
+    ycm: Number(meretSzeles && meretSzeles.value) || 0
   };
 }
 
@@ -116,9 +116,16 @@ function urlapUrites() {
   ar.value = "";
   leiras.value = "";
   keszitve.value = "";
+  if (meretHossz) meretHossz.value = "";
+  if (meretSzeles) meretSzeles.value = "";
   if (kepUtvonal) kepUtvonal.value = "";
   document.querySelectorAll("#technika input:checked, #tema input:checked")
     .forEach(function (i) { i.checked = false; });
+  // A dropdown gombok szoveget is vissza kell allitani "Válassz…"-re, mert a
+  // filter.js csak checkbox-valtozasra frissiti oket.
+  document.querySelectorAll(".dropdown .dropbtn[data-placeholder]").forEach(function (btn) {
+    btn.textContent = btn.dataset.placeholder;
+  });
   var kep = document.querySelector("#upload-form .uploaded-image");
   if (kep) kep.remove();
   var hint = document.querySelector("#upload-form .img_upload__hint");
@@ -148,7 +155,7 @@ if (!formData.title || !formData.price) {
   return;
 }
 
-const gomb = document.getElementById("add-product-button");
+const gomb = document.getElementById("add-products-button");
 gomb.disabled = true;
 gomb.textContent = "Feltöltés…";
 
@@ -180,10 +187,7 @@ fetch("http://localhost:8080/product/add", {
   });
 }
 
-/*let hozzaad = document.getElementById("add-product-button");
-hozzaad.onclick = feltoltes;*/
-
-let hozzaad = document.getElementById("add-product-button");
+let hozzaad = document.getElementById("add-products-button");
 if (hozzaad) {
     hozzaad.onclick = feltoltes;
 }

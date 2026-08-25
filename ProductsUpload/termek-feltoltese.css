@@ -22,6 +22,24 @@
     }
 }
 
+/* Meret mezopar: [hosszusag] x [szelesseg] cm - korabban fix legordulo volt,
+mostantol a feltolto barmilyen szamot megadhat */
+.meret-inputs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.meret-inputs input {
+    min-width: 0; /* hogy a flex osszenyomhassa, ne csorduljon ki */
+}
+
+.meret-inputs span {
+    color: var(--ink-soft);
+    font-weight: 600;
+    flex: none;
+}
+
 /* kepfeltoltes */
 .img_upload {
     display: grid;
