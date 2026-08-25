@@ -15,11 +15,14 @@ function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("dot");
-  
-  if (n > slides.length) {slideIndex = 1}    
+
+  // a diak ajax-szal toltodnek be (index.js) kesobb, szoval amig ures a lista, addig ne probaljunk indexelni bele (0-val osztana modulo, hibat dobna)
+  if (slides.length === 0 || dots.length === 0) return;
+
+  if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   
-  // Ha az utolsó diához érünk és előre haladunk, tovább már nem megy
+  // ha az utolsó diához érünk és előre haladunk, tovább már nem megy
   if (n > slides.length - 2 && n < slides.length + 1) { 
     slideIndex = 3;
     //document.querySelector('.next').style.pointerEvents = 'none'; // Letiltja a next gombot

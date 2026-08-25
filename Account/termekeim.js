@@ -109,6 +109,16 @@ $("#footer").html(FOOTER_HTML);
     gomb.addEventListener("click", function () { szerkesztesIndit(termek); });
 
     content.appendChild(cim);
+
+    // ha valaki (akar te) kosarba tette, a backend kihagyja a /product/get-all-bol - onnantol a vevok szamara nem lathato, csak itt, a "Termekeim" alatt.
+    // ez igy rendben is van, de beraktam egy boxot, hogy feltoltokent vizualis visszajelzese legyen annak, hogy valakinek a kosaraban van
+    if (termek.basket) {
+      var jelzes = document.createElement("p");
+      jelzes.className = "basket-flag";
+      jelzes.textContent = "Kosárban van, a Termékek listában ezért jelenleg nem látszik";
+      content.appendChild(jelzes);
+    }
+
     content.appendChild(meret);
     content.appendChild(ar);
     content.appendChild(gomb);

@@ -29,7 +29,7 @@
                 <h2>Festmények és rajzok</h2>
             </div>
 
-            <!-- gomboknak type button kell,kulonben elkuldik az urlapot! ezt javitottam -->
+            <!-- gomboknak type button kell, kulonben elkuldik az urlapot! ezt javitottam -->
             <form id="filter" class="filter-bar" onsubmit="return false">
 
                 <input id="search" type="search" placeholder="Keresés a művek között…">
@@ -75,21 +75,8 @@
     <!-- Footer: -->
     <footer id="footer"></footer>
 
-<script>
-  // ezt atdolgoztam, remelem mukodikxd
-  document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll('#filter .dropdown-content label').forEach(function (label) {
-          label.addEventListener('click', function (event) {
-              var checkbox = label.querySelector('input[type="checkbox"]');
-              if (checkbox && event.target !== checkbox) {
-                  checkbox.checked = !checkbox.checked;
-                  checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-              }
-              event.stopPropagation();
-          });
-      });
-  });
-</script>
+    <!-- a dropdown/checkbox kattintas-kezeles mostantol a filter.js-ben van,
+    egysegesen (lasd az ottani magyarazatot) -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

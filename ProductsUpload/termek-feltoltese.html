@@ -56,7 +56,7 @@
               <div class="field">
                 <span class="field-label">Technika</span>
                 <div class="dropdown">
-                  <button type="button" class="dropbtn">Válassz…</button>
+                  <button type="button" class="dropbtn" data-placeholder="Válassz…">Válassz…</button>
                   <div class="dropdown-content" id="technika"></div>
                 </div>
               </div>
@@ -64,18 +64,19 @@
               <div class="field">
                 <span class="field-label">Téma</span>
                 <div class="dropdown">
-                  <button type="button" class="dropbtn">Válassz…</button>
+                  <button type="button" class="dropbtn" data-placeholder="Válassz…">Válassz…</button>
                   <div class="dropdown-content" id="tema"></div>
                 </div>
               </div>
 
               <div class="field span-2">
-                <label for="meret">Méret</label>
-                <select id="meret" required>
-                  <option value="20x40">20 × 40 cm</option>
-                  <option value="40x60">40 × 60 cm</option>
-                  <option value="60x80">60 × 80 cm</option>
-                </select>
+                <span class="field-label">Méret</span>
+                <div class="meret-inputs">
+                  <input type="number" min="1" id="meretHossz" placeholder="80" required>
+                  <span class="meret-x">×</span>
+                  <input type="number" min="1" id="meretSzeles" placeholder="60" required>
+                  <span>cm</span>
+                </div>
               </div>
 
               <div class="field span-2">
