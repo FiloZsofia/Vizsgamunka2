@@ -79,18 +79,80 @@ function getSelectedMaterials() {
     return selectedMaterials;
 }
 
+// Kiválasztott méretek lekérése a szűrőből
+function getSelectedSizes() {
+    const selectedSizes = [];
+    const sizeCheckboxes = document.querySelectorAll('#meret input.checkbox:checked');
+    sizeCheckboxes.forEach((checkbox) => {
+        // A label szövegéből kinyerjük a méretet (pl. "Nagy", "Közepes")
+        const labelText = checkbox.parentElement.textContent.trim();
+        selectedSizes.push(labelText);
+    });
+    return selectedSizes;
+}
+
+// Segédfüggvény: meghatározza a termék méretkategóriáját
+function getTermekMeretKategoria(termek) {
+    const terulet = termek.xcm * termek.ycm;
+
+    if (terulet < 1200) {          // ~30x40 cm alatt
+        return "Kicsi";
+    } else if (terulet <= 3600) {   // ~60x60 cm-ig
+        return "Közepes";
+    } else {                       // 60x60 cm felett
+        return "Nagy";
+    }
+}
+
 // Szűrés funkció
 function filterProducts() {
     const selectedStyles = getSelectedStyles(); // Kiválasztott stílusok lekérése
     const selectedMaterials = getSelectedMaterials(); // Kiválasztott anyagok lekérése
+    const selectedSizes = getSelectedSizes();       // Kiválasztott méretek lekérésére
+
+    // Button szövegek frissítése (Technika)
+    const technikaBtn = document.querySelector('#technika')?.closest('.dropdown')?.querySelector('.dropbtn');
+    if (technikaBtn) {
+        if (selectedMaterials.length === 1) {
+            technikaBtn.innerText = selectedMaterials[0];
+        } else if (selectedMaterials.length > 1) {
+            technikaBtn.innerText = `Technika (${selectedMaterials.length})`;
+        } else {
+            technikaBtn.innerText = "Technika";
+        }
+    }
+
+    // Button szövegek frissítése (Téma)
+    const temaBtn = document.querySelector('#tema')?.closest('.dropdown')?.querySelector('.dropbtn');
+    if (temaBtn) {
+        if (selectedStyles.length === 1) {
+            temaBtn.innerText = selectedStyles[0];
+        } else if (selectedStyles.length > 1) {
+            temaBtn.innerText = `Téma (${selectedStyles.length})`;
+        } else {
+            temaBtn.innerText = "Téma";
+        }
+    }
+
+    // Button szövegek frissítése (Méret)
+    const meretBtn = document.querySelector('#meret')?.closest('.dropdown')?.querySelector('.dropbtn');
+    if (meretBtn) {
+        if (selectedSizes.length === 1) {
+            meretBtn.innerText = selectedSizes[0];
+        } else if (selectedSizes.length > 1) {
+            meretBtn.innerText = `Méret (${selectedSizes.length})`;
+        } else {
+            meretBtn.innerText = "Méret";
+        }
+    }
 
 // Ellenőrizzük, hogy van-e kiválasztott szűrő
-if (selectedStyles.length === 0 && selectedMaterials.length === 0) {
+if (selectedStyles.length === 0 && selectedMaterials.length === 0 && selectedSizes.length === 0) {
     // Ha nincs kiválasztott szűrő, akkor az összes termék megjelenjen
     filteredProducts = prodList;
 } else {
     // Ha csak az egyik szűrő van kiválasztva, akkor az összes többi opció automatikusan kiválasztódik
-    if (selectedStyles.length === 0 && selectedMaterials.length > 0) {
+    if (selectedStyles.length === 0 && selectedMaterials.length > 0 && selectedSizes.length === 0) {
         console.log("csak material")
         filteredProducts = prodList.filter((termek) => {
             return selectedMaterials.some((material) => termek.material.find((m) => m.name === material))})
@@ -98,18 +160,42 @@ if (selectedStyles.length === 0 && selectedMaterials.length === 0) {
         console.log("csak style")
         filteredProducts = prodList.filter((termek) => {
             return selectedStyles.some((style) => termek.style.find((s) => s.name === style))})
-    } else if (selectedMaterials.length > 0 && selectedStyles.length > 0) {
-        console.log("mind kettő")
+        } else if (selectedStyles.length === 0 && selectedMaterials.length === 0 && selectedSizes.length > 0) {
+        console.log("csak size");
+        filteredProducts = prodList.filter((termek) => {
+            return selectedSizes.includes(getTermekMeretKategoria(termek))})
+    }
+    // 2 KIVÁLASZTOTT SZŰRŐKATEGÓRIA ESETÉN:
+    else if (selectedMaterials.length > 0 && selectedStyles.length > 0) {
+        console.log("style és material")
         filteredProducts = prodList.filter((termek) => {
             return selectedStyles.some((style) => termek.style.find((s) => s.name === style)) &&
                    selectedMaterials.some((material) => termek.material.find((m) => m.name === material))})
+    } else if (selectedStyles.length > 0 && selectedSizes.length > 0 && selectedMaterials.length === 0) {
+        console.log("style és size");
+        filteredProducts = prodList.filter((termek) => {
+            return selectedStyles.some((style) => termek.style.find((s) => s.name === style)) &&
+                   selectedSizes.includes(getTermekMeretKategoria(termek));
+        });
+    } else if (selectedMaterials.length > 0 && selectedSizes.length > 0 && selectedStyles.length === 0) {
+        console.log("material és size");
+        filteredProducts = prodList.filter((termek) => {
+            return selectedMaterials.some((material) => termek.material.find((m) => m.name === material)) &&
+                   selectedSizes.includes(getTermekMeretKategoria(termek));
+        });
+    }
+    // MINDHÁROM KIVÁLASZTOTT SZŰRŐKATEGÓRIA ESETÉN:
+    else if (selectedMaterials.length > 0 && selectedStyles.length > 0 && selectedSizes.length > 0) {
+        console.log("mindhárom");
+        filteredProducts = prodList.filter((termek) => {
+            return selectedStyles.some((style) => termek.style.find((s) => s.name === style)) &&
+                   selectedMaterials.some((material) => termek.material.find((m) => m.name === material)) &&
+                   selectedSizes.includes(getTermekMeretKategoria(termek));
+        });
     }
 }
     renderProducts(); // Termékek újraszűrése
 }
-
-
-
 
 // Szűrés funkció meghívása a szűrők változásakor
 document.querySelectorAll('.checkbox').forEach((checkbox) => {
@@ -118,15 +204,22 @@ document.querySelectorAll('.checkbox').forEach((checkbox) => {
 
 // Rendezés funkció
 function orderProducts(order) {
+
+    const orderSelect = document.getElementById("order");
+    const defaultOption = orderSelect ? orderSelect.options[0] : null;
+
     switch (order) {
         case "priceAsc":
             filteredProducts.sort((a, b) => a.price - b.price);
+            if (defaultOption) defaultOption.text = "Ár szerint növekvő";
             break;
         case "priceDesc":
             filteredProducts.sort((a, b) => b.price - a.price);
+            if (defaultOption) defaultOption.text = "Ár szerint csökkenő";
             break;
         case "themeAsc":
             filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
+            if (defaultOption) defaultOption.text = "Téma szerint ABC sorrend";
             break;
         case "materialAsc":
             filteredProducts.sort((a, b) => {
@@ -134,12 +227,15 @@ function orderProducts(order) {
                 const secondMaterial = b.material[0].name.toLowerCase();
                 return firstMaterial.localeCompare(secondMaterial);
             });
+            if (defaultOption) defaultOption.text = "Anyag szerint ABC sorrend";
             break;
         case "newestFirst":
             filteredProducts.sort((a, b) => new Date(b.createdYear) - new Date(a.createdYear));
+            if (defaultOption) defaultOption.text = "Legújabbak elöl";
             break;
         default:
             // Ha nincs rendezés kiválasztva, ne módosítsunk semmit
+            if (defaultOption) defaultOption.text = "Rendezés";
             return;
     }
     renderProducts(); // Termékek rendezése
