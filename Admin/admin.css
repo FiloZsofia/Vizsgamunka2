@@ -1,0 +1,127 @@
+/* admin felulet */
+
+.admin-tabs {
+    display: flex;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-tab {
+    padding: .7rem 1.25rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-soft);
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.admin-tab:hover {
+    color: var(--ink);
+}
+
+.admin-tab.is-active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+#rolunk-szoveg {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: var(--fs-sm);
+    min-height: 360px;
+}
+
+/* a termek/cikk kartyakon egy kis extra sor (feltoltotte nev + kosarban van) */
+.admin-meta {
+    order: 1;
+    color: var(--ink-soft);
+    font-size: var(--fs-xs);
+}
+
+
+.admin-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.admin-row__info h3 {
+    font-size: var(--fs-h3);
+    margin: .15rem 0;
+}
+
+.admin-row__actions {
+    display: flex;
+    flex: none;
+    gap: var(--space-xs);
+}
+
+@media (max-width: 560px) {
+    .admin-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-row__actions {
+        justify-content: flex-end;
+    }
+}
+
+/* technika es tema */
+.kategoria-uj {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin: var(--space-md) 0;
+}
+
+.kategoria-uj textarea {
+    min-height: 4.5rem;
+}
+
+.kategoria-lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.kategoria-sor {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.kategoria-sor:last-child {
+    border-bottom: none;
+}
+
+.kategoria-sor__fo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xs);
+}
+
+.kategoria-sor__fo input {
+    flex: 1;
+}
+
+.kategoria-sor__fo button {
+    flex: none;
+    padding: .5rem .75rem;
+}
+
+.kategoria-sor textarea {
+    min-height: 3.5rem;
+    font-size: var(--fs-sm);
+}

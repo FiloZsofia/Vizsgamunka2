@@ -1,10 +1,8 @@
 <!-- ide nem kell doctype deklaracio, mert olyan helyen hivod meg, ahol az mar megvan
 navigation.css-t ugy ahogy van, toroltem ebbol a mappabol -->
 
-<!-- FIGYELEM: ezt a fajlt a lapok mar NEM AJAX-szal toltik be (lasd navigation-template.js
-es az ottani magyarazatot - a dev szerverek egy resze HTML valaszokba szkriptet injektal,
-ami ezt a fajlt csonkolva juttatta el a bongeszohoz). Ez a fajl csak referenciakent maradt
-meg; ha a navigaciot modositod, a navigation-template.js-ben tedd, es tukrozd ide is. -->
+<!-- ezt a fajlt a lapok mar nem ajax-szal toltik be, szoval ez a script csak megmaradt, nem akarom egyelore torolni
+    ha modositanal, azt a navigation-template.js-ben tedd (onnan meg masold be ide a modositott reszeket) -->
 
 <nav>
 
@@ -46,6 +44,7 @@ meg; ha a navigaciot modositod, a navigation-template.js-ben tedd, es tukrozd id
                 <a href="../Account/termekeim.html">Termékeim</a>
                 <a href="../ProductsUpload/termek-feltoltese.html">Termék feltöltése</a>
                 <a href="../Order/egyedi-rendeles.html">Egyedi rendelés</a>
+                <a href="../Admin/admin.html" id="owner-link" hidden>Owner felület</a>
                 <button type="button" id="logout-btn">Kilépés</button>
             </div>
 

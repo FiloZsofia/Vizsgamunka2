@@ -85,9 +85,8 @@
           <h2>Válogatás a kínálatból</h2>
         </div>
 
-        <!-- korabban 5 db kitalalt festmeny volt itt keziratva, es a "Bővebben"
-        gombok mindig csak a termekek.html-re vittek, sosem a konkret termekhez
-        most az index.js valodi termekeket tolt ide a backendrol. -->
+        <!-- korabban 5 db kitalalt festmeny volt itt hardcode-olva, es a "Bővebben" gombok mindig csak a termekek.html-re vittek, sosem a konkret termekhez
+        most az index.js valodi termekeket tolt ide a backendbol -->
         <div class="slideshow">
           <div class="slides-row" id="kiemelt-termekek"></div>
         </div>
@@ -104,15 +103,15 @@
           <a class="next" onclick="plusSlides(1)" title="Következő">&#10095;</a>
         </div>
 
-        <!-- <div class="center-button">
+        <!-- ezt itt csak kikommenteltem, ha esetleg nem tetszik es visszaallitanad (amugy csak lentebb tettem ezt a gombot a technikak vegere)
+        <div class="center-button">
           <a class="btn" href="../Products/termekek.html" data-test-id="more-products-button">További termékek</a>
         </div> -->
 
       </div>
     </section>
 
-    <!-- temak szerinti ajanlok: minden temahoz, aminek van feltoltott
-    termeke, egy kis valogatas + "Tovább" gomb a szurt termekek.html-re -->
+    <!-- temak szerinti ajanlok: minden temahoz, aminek van feltoltott termeke, egy kis valogatas + "Tovább" gomb a szurt termekek.html-re -->
     <section class="section section--alt" style="padding-top: 20px;">
       <div class="container">
         <div id="theme-sections"></div>
@@ -133,51 +132,9 @@
           <h2>Amiből válogathatsz</h2>
         </div>
 
-        <div class="techniques-grid">
-
-          <div class="s-box">
-            <ion-icon name="brush-outline"></ion-icon>
-            <h3>Olaj</h3>
-            <p>Olajfestmények kézműves papíron, keretezett, csillogásmentes üveg mögött.</p>
-          </div>
-
-          <div class="s-box">
-            <ion-icon name="color-palette-outline"></ion-icon>
-            <h3>Akril</h3>
-            <p>Teljesen fedő, gyorsan száradó, száradás után vízálló, vizes alapú festék.</p>
-          </div>
-
-          <div class="s-box">
-            <ion-icon name="water-outline"></ion-icon>
-            <h3>Akvarell</h3>
-            <p>Értéke a finom, világos, áttetsző színekben van. Gyors, tovatűnő jelenségek rögzítésére kiváló.</p>
-          </div>
-
-          <div class="s-box">
-            <ion-icon name="color-filter-outline"></ion-icon>
-            <h3>Pasztell</h3>
-            <p>A festékszemcsék kötőanyag nélkül, kizárólag a felület érdessége révén tapadnak meg.</p>
-          </div>
-
-          <div class="s-box">
-            <ion-icon name="pencil-outline"></ion-icon>
-            <h3>Grafit</h3>
-            <p>A világos és sötét közötti tónusértékek széles skálája, Ideális realisztikus portrékhoz.</p>
-          </div>
-
-          <div class="s-box">
-            <ion-icon name="ellipse-outline"></ion-icon>
-            <h3>Szén</h3>
-            <p>Sokoldalú médium vázlatkészítéshez és részletes műalkotások létrehozásához.</p>
-          </div>
-
-          <div class="s-box">
-            <ion-icon name="create-outline"></ion-icon>
-            <h3>Színes ceruza</h3>
-            <p>Viasz, vagy olaj bázisú anyag, és tartalmaz színezékeket, adalékokat és kötőanyagokat.</p>
-          </div>
-
-        </div>
+        <!-- korabban 7 db hardcode-olt kartya volt itt, de az adatok mar a backendbol jonnek, szoval amit adminban mokolsz, az itt automatikusan frissul
+        (kiveve az ikon, azzal nem baszakodtam sokat, de index.js-ben kodkent megadhatoak uj ikonok a technikakhoz) -->
+        <div class="techniques-grid" id="techniques-grid"></div>
       </div>
     </section>
 

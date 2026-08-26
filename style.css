@@ -106,8 +106,8 @@
 }
 
 #theme-switch {
-height: 50px;
-width: 50px;
+height: 35px;
+width: 35px;
 padding: 0;
 border-radius: 50%;
 /* background-color: var(--accent); */
@@ -287,7 +287,6 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
 }
 
-/* Kis magyarázó szöveg egy mező alatt */
 .field-hint {
     margin-top: var(--space-xs);
     color: var(--ink-soft);
@@ -434,6 +433,20 @@ p {
     background: var(--accent);
     color: var(--on-accent);
     border-color: var(--accent);
+}
+
+/* torles gombok - ugyanaz a piros, mint a .form-status--error-nel,
+hogy egyertelmubb legyen, mi visszavonhatatlan */
+.btn--danger {
+    background: transparent;
+    color: #A33A36;
+    border-color: #D9534F;
+}
+
+.btn--danger:hover {
+    background: #D9534F;
+    color: #FFFFFF;
+    border-color: #D9534F;
 }
 
 /* videos resznek kulon vilagosabb gomb */
@@ -733,6 +746,13 @@ nav ul li a:hover::after {
     text-align: left;
     cursor: pointer;
     transition: background-color var(--transition), color var(--transition);
+}
+
+/* a fenti display:block felulirta a "hidden" attributumot (pl. az
+#owner-link-en) - emiatt latszott a "Owner felület" nem-owner felhasznaloknak is */
+.user-menu__dropdown a[hidden],
+.user-menu__dropdown button[hidden] {
+    display: none;
 }
 
 .user-menu__dropdown a:hover,
@@ -1181,7 +1201,7 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
-/* Termekeim: jelzes, ha a termek eppen valakinek a kosaraban van */
+/* termekeimnel jelzes, ha a termek eppen valakinek a kosaraban van */
 .basket-flag {
     order: 1;
     padding: .35rem .6rem;

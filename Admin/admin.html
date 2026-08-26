@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festményvilág</title>
+
+    <script src="../Dev/mock-api.js"></script> <!-- ez csak nekem, hogy hozzaferjek az adatbazisodhoz -->
+    <script src="../Navigation/custom-alert.js" defer></script>
+    <script src="../Navigation/auth.js"></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../Account/fiok.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body data-requires-auth>
+
+    <!-- Navigációs sáv: -->
+    <header id="navi"></header>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="eyebrow">Owner felület</span>
+          <h2>Adminisztráció</h2>
+        </div>
+
+        <!-- ide kerul, ha valaki nem admin role-lal nyitja meg a feluletet -->
+        <p class="form-status form-status--error" id="nincs-jogosultsag" hidden>
+          Ehhez az oldalhoz owner jogosultság szükséges.
+        </p>
+
+        <div id="admin-tartalom" hidden>
+
+          <!-- fultab-ok -->
+          <div class="admin-tabs" role="tablist">
+            <button type="button" class="admin-tab is-active" data-tab="rolunk">Rólunk szöveg</button>
+            <button type="button" class="admin-tab" data-tab="magazin">Magazin</button>
+            <button type="button" class="admin-tab" data-tab="termekek">Termékek</button>
+            <button type="button" class="admin-tab" data-tab="technika">Technika</button>
+            <button type="button" class="admin-tab" data-tab="tema">Téma</button>
+          </div>
+
+          <!-- ROLUNK -->
+          <div class="admin-panel" id="panel-rolunk">
+            <div class="panel">
+              <div class="field">
+                <label for="rolunk-szoveg">A Rólunk oldal tartalma (HTML)</label>
+                <textarea id="rolunk-szoveg" rows="16"></textarea>
+              </div>
+              <p class="form-status" id="rolunk-status" hidden></p>
+              <div class="center-button">
+                <button type="button" class="btn" id="rolunk-mentes">Mentés</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- MAGAZIN -->
+          <div class="admin-panel" id="panel-magazin" hidden>
+
+            <!-- lista -->
+            <div id="magazin-lista-nezet">
+              <div class="center-button" style="margin-top:0; margin-bottom: var(--space-lg); text-align:left;">
+                <button type="button" class="btn" id="magazin-uj">+ Új cikk</button>
+              </div>
+              <div id="magazin-lista" class="admin-stack"></div>
+            </div>
+
+            <!-- szerkeszto -->
+            <div id="magazin-szerkeszto-nezet" hidden>
+              <div class="panel">
+                <div class="form-grid">
+
+                  <div class="field">
+                    <label for="m-cimke">Címke</label>
+                    <input type="text" id="m-cimke" placeholder="pl. Műterem">
+                  </div>
+
+                  <div class="field">
+                    <label for="m-szerzo">Szerző</label>
+                    <input type="text" id="m-szerzo" placeholder="Szerkesztőség">
+                  </div>
+
+                  <div class="field span-2">
+                    <label for="m-cim">Cím</label>
+                    <input type="text" id="m-cim" placeholder="A cikk címe" required>
+                  </div>
+
+                  <div class="field">
+                    <label for="m-datum">Dátum</label>
+                    <input type="text" id="m-datum" placeholder="2026. augusztus 25.">
+                  </div>
+
+                  <div class="field">
+                    <label for="m-kep">Kép útvonala</label>
+                    <input type="text" id="m-kep" placeholder="../Assets/images/pelda.jpg">
+                  </div>
+
+                  <div class="field span-2">
+                    <label for="m-lead">Bevezető</label>
+                    <textarea id="m-lead" rows="2"></textarea>
+                  </div>
+
+                  <div class="field span-2">
+                    <label for="m-bekezdesek">Tartalom</label>
+                    <textarea id="m-bekezdesek" rows="8"></textarea>
+                  </div>
+
+                </div>
+
+                <p class="form-status" id="magazin-szerkeszto-status" hidden></p>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn--ghost" id="magazin-megse">Vissza a listához</button>
+                  <button type="button" class="btn" id="magazin-mentes">Mentés</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TERMEKEK -->
+          <div class="admin-panel" id="panel-termekek" hidden>
+
+            <!-- lista -->
+            <div id="termekek-lista-nezet">
+              <p class="lead" id="termekek-osszegzes">Termékek betöltése…</p>
+              <div id="termekek-lista" class="grid-cards"></div>
+            </div>
+
+            <!-- szerkeszto -->
+            <div id="termekek-szerkeszto-nezet" hidden>
+              <div class="panel">
+                <div class="upload-layout">
+
+                  <div class="form-grid">
+
+                    <div class="field span-2">
+                      <label for="t-productName">Festmény neve</label>
+                      <input type="text" id="t-productName" required/>
+                    </div>
+
+                    <div class="field span-2">
+                      <label for="t-artist">Művész</label>
+                      <input type="text" id="t-artist"/>
+                    </div>
+
+                    <div class="field">
+                      <label for="t-keszitesEve">Készítés éve</label>
+                      <input type="number" min="0" id="t-keszitesEve"/>
+                    </div>
+
+                    <div class="field">
+                      <label for="t-ar">Ár (Ft)</label>
+                      <input type="number" min="0" id="t-ar" required/>
+                    </div>
+
+                    <div class="field">
+                      <span class="field-label">Technika</span>
+                      <div class="dropdown">
+                        <button type="button" class="dropbtn" id="t-technika-btn" data-placeholder="Válassz…">Válassz…</button>
+                        <div class="dropdown-content" id="t-technika"></div>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <span class="field-label">Téma</span>
+                      <div class="dropdown">
+                        <button type="button" class="dropbtn" id="t-tema-btn" data-placeholder="Válassz…">Válassz…</button>
+                        <div class="dropdown-content" id="t-tema"></div>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label for="t-xcm">Hosszúság (cm)</label>
+                      <input type="number" min="0" id="t-xcm"/>
+                    </div>
+
+                    <div class="field">
+                      <label for="t-ycm">Szélesség (cm)</label>
+                      <input type="number" min="0" id="t-ycm"/>
+                    </div>
+
+                    <div class="field span-2">
+                      <label for="t-leiras">Leírás</label>
+                      <textarea id="t-leiras" rows="4"></textarea>
+                    </div>
+
+                  </div>
+
+                  <div class="field">
+                    <label for="t-imgUrl">Kép útvonala</label>
+                    <input type="text" id="t-imgUrl" placeholder="../Assets/images/festmeny.jpg">
+                  </div>
+
+                </div>
+
+                <p class="form-status" id="termekek-szerkeszto-status" hidden></p>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn--ghost" id="t-megse">Vissza a listához</button>
+                  <button type="button" class="btn btn--danger" id="t-torles">Törlés</button>
+                  <button type="button" class="btn" id="t-mentes">Mentés</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TECHNIKA -->
+          <div class="admin-panel" id="panel-technika" hidden>
+            <div class="panel">
+
+              <div class="kategoria-uj">
+                <input type="text" id="technika-uj-nev" placeholder="Új technika neve">
+                <textarea id="technika-uj-leiras" rows="2" placeholder="Leírás (opcionális)"></textarea>
+                <button type="button" class="btn" id="technika-uj-gomb">+ Hozzáadás</button>
+              </div>
+
+              <p class="form-status" id="technika-status" hidden></p>
+
+              <div id="technika-lista" class="kategoria-lista"></div>
+            </div>
+          </div>
+
+          <!-- TEMA -->
+          <div class="admin-panel" id="panel-tema" hidden>
+            <div class="panel">
+              <div class="kategoria-uj">
+                <input type="text" id="tema-uj-nev" placeholder="Új téma neve">
+                <textarea id="tema-uj-leiras" rows="2" placeholder="Leírás (opcionális)"></textarea>
+                <button type="button" class="btn" id="tema-uj-gomb">+ Hozzáadás</button>
+              </div>
+
+              <p class="form-status" id="tema-status" hidden></p>
+
+              <div id="tema-lista" class="kategoria-lista"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer: -->
+    <footer id="footer"></footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../Navigation/navigation-template.js"></script>
+    <script src="../Footer/footer-template.js"></script>
+    <script src="../Products/filter.js"></script>
+    <script src="admin.js"></script>
+    <script type="module" src="../Navigation/loginscript.js"></script>
+    <script src="../Navigation/basket.js"></script>
+    <script src="../Navigation/darkmode.js" defer></script>
+</body>
+</html>

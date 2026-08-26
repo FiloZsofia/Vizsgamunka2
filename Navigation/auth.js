@@ -10,6 +10,19 @@ a felhasznalonevet login utan menti el, mert a backend csak egy tokent ad vissza
   var TOKEN_KEY = "token"; // ezt hasznalja a projekt tobbi resze is
   var USER_KEY  = "festmenyvilag:user";
 
+  // jegyzet: backend JwtUtil.generateJwt), base64 dekodolas
+  function payload() {
+    var token = localStorage.getItem(TOKEN_KEY);
+    if (!token) return null;
+    try {
+      var jwt = token.replace(/^Bearer\s+/i, "");
+      var parts = jwt.split(".");
+      return JSON.parse(atob(parts[1]));
+    } catch (e) {
+      return null;
+    }
+  }
+
   var Auth = {
     isLoggedIn: function () {
       return localStorage.getItem(TOKEN_KEY) !== null;
@@ -21,6 +34,16 @@ a felhasznalonevet login utan menti el, mert a backend csak egy tokent ad vissza
 
     username: function () {
       return localStorage.getItem(USER_KEY) || "";
+    },
+
+    // "ADMIN" a backendben (szerencsere mar volt user es admin role a db-ben)
+    role: function () {
+      var p = payload();
+      return p && p.role ? String(p.role).toUpperCase() : "";
+    },
+
+    isOwner: function () {
+      return Auth.role() === "ADMIN";
     },
 
     // loginscript.js hivja, ha sikeres a login
@@ -79,6 +102,9 @@ a felhasznalonevet login utan menti el, mert a backend csak egy tokent ad vissza
 
     var nameEl = document.getElementById("user-menu-name");
     if (nameEl) nameEl.textContent = Auth.username() || "Felhasználó";
+
+    var ownerLink = document.getElementById("owner-link");
+    if (ownerLink) ownerLink.hidden = !(authed && Auth.isOwner());
 
     var trigger = document.getElementById("btnLogin");
     if (trigger) {

@@ -27,21 +27,18 @@
           </p>
         </div>
 
-        <!-- Kiemelt cikk -->
-        <article class="cikk-kiemelt">
-          <a class="cikk-kiemelt__kep" href="cikk.html?id=1">
-            <img src="../Assets/images/pexels-deeana-arts-1646953.jpg" alt="">
+        <!-- kiemelt cikk
+          ez eddig statikus volt, mar a legfrissebbet teszi meg automatikusan kiemeltkent
+          (ezt lehetne melyiteni, hogy adminkent te dontsd el, melyik cikk legyen a kiemelt, de nem akarnek most ezzel baszakodni) -->
+        <article class="cikk-kiemelt" id="cikk-kiemelt" hidden>
+          <a class="cikk-kiemelt__kep" id="kiemelt-kep-link" href="#">
+            <img id="kiemelt-kep" src="" alt="">
           </a>
           <div class="cikk-kiemelt__szoveg">
-            <span class="cikk-cimke">Műterem</span>
-            <h3><a href="cikk.html?id=1">"A kép akkor él, ha gondolatokat ébreszt" — látogatás Kovács Anna műtermében</a></h3>
-            <p class="muted">
-              Egy régi pécsi bérház tetőterében dolgozik, ahol a fény délutánonként
-              pontosan arra a falra esik, ahol a félkész vásznak sorakoznak. Arról
-              beszélgettünk, miért nem vázlatol, és miért fest mindig három képet
-              egyszerre.
-            </p>
-            <p class="cikk-meta">Szerkesztőség · 8 perc olvasás</p>
+            <span class="cikk-cimke" id="kiemelt-cimke"></span>
+            <h3><a id="kiemelt-cim-link" href="#"></a></h3>
+            <p class="muted" id="kiemelt-lead"></p>
+            <p class="cikk-meta" id="kiemelt-meta"></p>
           </div>
         </article>
 
@@ -76,7 +73,6 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../Navigation/navigation-template.js"></script>
     <script src="../Footer/footer-template.js"></script>
-    <script src="cikkek-adat.js"></script>
     <script src="cikkek.js"></script>
     <script type="module" src="../Navigation/loginscript.js"></script>
     <script src="../Navigation/basket.js"></script>

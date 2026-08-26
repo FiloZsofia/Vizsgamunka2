@@ -1,41 +1,70 @@
-/* egy cikk megjelenitese. Az adat a cikkek-adat.js-bol jon, backend nem kell */
+/* korabban a cikkek-adat.js-bok hardcode-oltkent jott, mar a backend blog/get/{id}-bol, igy az admin altal szerkesztett tartalom is megjelenik */
 
 $("#navi").html(NAVIGATION_HTML);
 $("#footer").html(FOOTER_HTML);
 
-document.addEventListener("DOMContentLoaded", function () {
-  var id = Number(new URLSearchParams(window.location.search).get("id"));
-  var cikk = (window.CIKKEK || []).filter(function (c) { return c.id === id; })[0];
+(function () {
+  "use strict";
 
-  // ha rossz vagy hianyzo id jon, ne ures oldal fogadja a latogatot
-  if (!cikk) {
-    cikk = (window.CIKKEK || [])[0];
+  var API = "http://localhost:8080";
+
+  function olvasasiIdo(cikk) {
+    var szoveg = [cikk.lead || "", cikk.bekezdesek || ""].join(" ");
+    var szoszam = szoveg.trim().length ? szoveg.trim().split(/\s+/).length : 0;
+    return Math.max(1, Math.round(szoszam / 200)) + " perc";
   }
-  if (!cikk) return;
 
-  document.title = cikk.cim + " — Festményvilág";
+  function rajzold(cikk) {
+    document.title = cikk.cim + " — Festményvilág";
 
-  document.getElementById("cikk-cimke").textContent = cikk.cimke;
-  document.getElementById("cikk-cim").textContent = cikk.cim;
-  document.getElementById("cikk-meta").textContent =
-    cikk.szerzo + " · " + cikk.datum + " · " + cikk.ido + " olvasás";
+    document.getElementById("cikk-cimke").textContent = cikk.cimke || "";
+    document.getElementById("cikk-cim").textContent = cikk.cim || "";
+    document.getElementById("cikk-meta").textContent =
+      (cikk.szerzo || "Szerkesztőség") + " · " + (cikk.datum || "") + " · " + olvasasiIdo(cikk) + " olvasás";
 
-  var kep = document.getElementById("cikk-kep");
-  kep.src = cikk.kep;
-  kep.alt = cikk.cim;
+    var kep = document.getElementById("cikk-kep");
+    kep.src = cikk.kep || "";
+    kep.alt = cikk.cim || "";
 
-  var torzs = document.getElementById("cikk-torzs");
-  torzs.innerHTML = "";
+    var torzs = document.getElementById("cikk-torzs");
+    torzs.innerHTML = "";
 
-  // A lead nagyobb betuvel, bevezetokent
-  var lead = document.createElement("p");
-  lead.className = "cikk-lead";
-  lead.textContent = cikk.lead;
-  torzs.appendChild(lead);
+    if (cikk.lead) {
+      var lead = document.createElement("p");
+      lead.className = "cikk-lead";
+      lead.textContent = cikk.lead;
+      torzs.appendChild(lead);
+    }
 
-  (cikk.bekezdesek || []).forEach(function (szoveg) {
-    var p = document.createElement("p");
-    p.textContent = szoveg;
-    torzs.appendChild(p);
+    (cikk.bekezdesek || "").split(/\n\s*\n/).forEach(function (szoveg) {
+      if (!szoveg.trim()) return;
+      var p = document.createElement("p");
+      p.textContent = szoveg.trim();
+      torzs.appendChild(p);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var id = new URLSearchParams(window.location.search).get("id");
+
+    fetch(API + "/blog/get/" + id)
+      .then(function (r) {
+        if (!r.ok) throw new Error("A szerver " + r.status + " hibakóddal válaszolt");
+        return r.json();
+      })
+      .then(function (cikk) {
+        // ha rossz vagy hianyzo id jon, akkor a legfrissebb cikket hozza, ne egy ures oldal jelenjen meg
+        if (cikk && cikk.id) { rajzold(cikk); return; }
+        return fetch(API + "/blog/get-all")
+          .then(function (r) { return r.json(); })
+          .then(function (lista) {
+            if (Array.isArray(lista) && lista.length) rajzold(lista[0]);
+          });
+      })
+      .catch(function (err) {
+        console.error("A cikk betöltése sikertelen:", err);
+        document.getElementById("cikk-torzs").innerHTML =
+          "<p class=\"muted\">A cikk betöltése nem sikerült. Fut a backend?</p>";
+      });
   });
-});
+})();

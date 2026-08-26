@@ -1,8 +1,4 @@
-/* Magazin rovat (cikklista + cikkoldal).
-   Csak az itt szukseges elteresek - a tokenek es az alapelemek a style.css-ben. */
-
-/* --- Cimke ---------------------------------------------------------------- */
-
+/* cimke */
 .cikk-cimke {
     display: inline-block;
     margin-bottom: var(--space-xs);
@@ -20,8 +16,7 @@
 }
 
 
-/* --- Kiemelt cikk --------------------------------------------------------- */
-
+/* kiemelt */
 .cikk-kiemelt {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -71,17 +66,19 @@
 }
 
 
-/* --- Cikkracs ------------------------------------------------------------- */
-
-.cikk-racs {
+.cikk-racs { /* attekinthetoseg miatt egy oszlopban megjelenore allitottam a cikkeket */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
 }
 
 .cikk-kartya {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-md);
+    align-items: center;
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--border);
 }
 
 .cikk-kartya__kep {
@@ -101,8 +98,14 @@
     transform: scale(1.04);
 }
 
-.cikk-kartya__test {
-    padding-top: var(--space-sm);
+@media (max-width: 640px) {
+    .cikk-kartya {
+        grid-template-columns: 1fr;
+    }
+
+    .cikk-kartya__test {
+        padding-top: var(--space-sm);
+    }
 }
 
 .cikk-kartya__test h3 {
@@ -121,8 +124,7 @@
 }
 
 
-/* --- Hirlevel sav --------------------------------------------------------- */
-
+/* hirlevel */
 .hirlevel-sav {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -162,7 +164,7 @@
 }
 
 
-/* --- Cikkoldal ------------------------------------------------------------ */
+/* cikk belseje */
 
 .vissza-link {
     display: inline-flex;
@@ -195,7 +197,7 @@
     margin-bottom: var(--space-lg);
 }
 
-/* Olvashato szovegszelesseg */
+/* szovegszelesseg */
 .cikk-torzs {
     max-width: 68ch;
 }

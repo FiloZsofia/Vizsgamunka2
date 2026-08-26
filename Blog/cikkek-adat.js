@@ -1,7 +1,7 @@
-/* A magazin rovat tartalma.
-   Szandekosan itt van, egy sima tombben: ehhez a reszhez NEM kell backend.
-   Ha kesobb mégis adatbazisbol jonne, eleg ezt a fajlt lecserelni egy
-   fetch-re, a megjelenites (cikkek.js, cikk.js) valtozatlan maradhat. */
+/* ez a fajl elvileg mar nem toltodik be sehonnan, backendbol toltodik be, amit az admin tud szerkeszteni (vagy ugye db-ben kezzel)
+(BlogController, Admin/admin.html)
+
+ezt inkabb csak kesobbiekre hagytam itt, hatha a backend elszarodik */
 
 window.CIKKEK = [
   {

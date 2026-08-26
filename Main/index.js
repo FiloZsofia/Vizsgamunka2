@@ -129,15 +129,58 @@ function renderTemakSzerint(termekek, temak) {
   });
 }
 
+// a technika nev es leiras mostantol a backendbol jon, de az nem tarol ikont (nem is szutykolnek vele, ha nem muszaj), ezert csinaltam egy nev szerinti listat az ikonokhoz
+// ha nem allitasz be ikont, akkor alapertelmezettkent egy random shapes-outline-t ad neki, hogy ne legyen mar kep nelkuli
+var TECHNIKA_IKONOK = {
+  "olaj": "brush-outline",
+  "akril": "color-palette-outline",
+  "akvarell": "water-outline",
+  "pasztell": "color-filter-outline",
+  "grafit": "pencil-outline",
+  "szén": "ellipse-outline",
+  "színes ceruza": "create-outline"
+};
+var TECHNIKA_ALAPERTELMEZETT_IKON = "shapes-outline";
+
+function renderTechnikakat(technikak) {
+  var racs = document.getElementById("techniques-grid");
+  if (!racs) return;
+  racs.innerHTML = "";
+
+  technikak.forEach(function (technika) {
+    var box = document.createElement("div");
+    box.className = "s-box";
+
+    var icon = document.createElement("ion-icon");
+    icon.setAttribute("name", TECHNIKA_IKONOK[(technika.name || "").toLowerCase()] || TECHNIKA_ALAPERTELMEZETT_IKON);
+    box.appendChild(icon);
+
+    var cim = document.createElement("h3");
+    cim.textContent = technika.name || "";
+    box.appendChild(cim);
+
+    if (technika.description) {
+      var leiras = document.createElement("p");
+      leiras.textContent = technika.description;
+      box.appendChild(leiras);
+    }
+
+    racs.appendChild(box);
+  });
+}
+
 function toltsBeFooldalatData() {
   Promise.all([
     fetch(API + "/product/get-all").then(function (r) { return r.json(); }),
-    fetch(API + "/style/get-all").then(function (r) { return r.json(); })
+    fetch(API + "/style/get-all").then(function (r) { return r.json(); }),
+    fetch(API + "/material/get-all").then(function (r) { return r.json(); })
   ]).then(function (eredmenyek) {
     var termekek = eredmenyek[0] || [];
     var temak = eredmenyek[1] || [];
+    var technikak = eredmenyek[2] || [];
     renderKiemeltek(termekek);
     renderTemakSzerint(termekek, temak);
+    renderTechnikakat(technikak);
   }).catch(function (error) {
     console.error("Nem sikerült betölteni a termékeket a főoldalra:", error);
   });

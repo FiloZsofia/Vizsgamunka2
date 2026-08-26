@@ -4,7 +4,7 @@ mivel a a live-server csomag (127.0.0.1:5501) automatikusan egy <script>-et fuz 
 text/html valaszba - beleertve azt is, amit a lapok ajax-szal (jQuery .load())
 toltenek be a navigation.html-bol
 
-ez a befuzes a navigation.html kozepén,
+ez a befuzes a navigation.html kozepen,
 a theme-switch gomb inline svg-i kozott csusztatta be magat, es a valasz
 emiatt csonkolva erkezett vissza: a <div id="cart-drawer"> resz (es minden
 utana kovetkezo) sosem kerult be a dom-ba
@@ -12,7 +12,7 @@ ezert nem nyilt ki a kosar oldalsav, amikor a backend (tobb parhuzamos kerest ok
 
 sima .js fajlkent viszont a szerver nem nyul hozza a tartalomhoz, igy ez a hiba szervertol fuggetlenul nem biztos, hogy visszajon
 
-Ha a navigaciot modositod, ITT tedd - a navigation.html mar csak
+ha a navigaciot modositod, ITT tedd - a navigation.html mar csak
 referenciakent van megtartva, a lapok ezt a valtozot hasznaljak. */
 
 window.NAVIGATION_HTML = `
@@ -56,6 +56,7 @@ window.NAVIGATION_HTML = `
                 <a href="../Account/termekeim.html">Termékeim</a>
                 <a href="../ProductsUpload/termek-feltoltese.html">Termék feltöltése</a>
                 <a href="../Order/egyedi-rendeles.html">Egyedi rendelés</a>
+                <a href="../Admin/admin.html" id="owner-link" hidden>Owner felület</a>
                 <button type="button" id="logout-btn">Kilépés</button>
             </div>
 
