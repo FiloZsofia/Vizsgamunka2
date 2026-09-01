@@ -125,11 +125,8 @@
     }
   ];
 
-  /* A termekek megorzese oldalbetoltesek kozott.
-     Enelkul a fenti PRODUCTS tomb minden oldalbetoltesnel visszaallt az
-     eredetire, ezert tunt ugy, hogy a szerkesztes "rogton felulirja magat".
-     A sessionStorage a fulhoz kotodik: uj fulon ujra az eredeti adat jon,
-     "?mock=reset" pedig szandekosan visszaallitja. */
+  /* termekek megorzese oldalbetoltesek kozott
+     enelkul a fenti PRODUCTS minden oldalbetoltesnel visszaallt az eredetire */
   var PRODUCTS_KEY = "festmenyvilag:mock:products";
 
   try {
@@ -197,9 +194,6 @@
       return json({ status: 200, message: "Termék hozzáadva (mock)", id: next });
     }
 
-    // Ez a vegpont LETEZIK a backendben (ArtService.getOwnedProducts):
-    // a tokenbol allapitja meg a felhasznalot. Mockban a bejelentkezeskor
-    // elmentett nevet hasznaljuk, es az "artist" mezovel parositjuk.
     if (path === "/product/get-owned-products") {
       if (!loggedIn()) return json({ status: 401, message: "Nincs bejelentkezve" }, 401);
       var nev = (localStorage.getItem("festmenyvilag:user") || "").trim().toLowerCase();
@@ -208,8 +202,7 @@
       }));
     }
 
-    // A backendben ez a vegpont MEG NINCS MEG - a Termekeim oldal
-    // szerkesztoje ide kuldi a mentest, hogy a design tesztelheto legyen.
+    // A backendben ez meg nincs meg - a termekeim oldal szerkesztes utan ide kuldi a mentest, hogy a design tesztelheto legyen
     if (path === "/product/update") {
       var uid = parseInt(body && body.id, 10);
       var idx = -1;
@@ -311,8 +304,7 @@
   //   document.body.appendChild(el);
   // }
 
-  // A badge() definiciojat kikommentelted, ezert a hivasat is ki kellett venni:
-  // igy ahogy volt, ReferenceError-t dobott ("badge is not defined").
+  // a badge() definiciojat kikommentelted, ezert a hivasat is ki kellett venni, mert igy ReferenceError-t dobott ("badge is not defined")
 
   console.info("[mock-api] Bekapcsolva — kitalált adatok. Kikapcsolás: ?mock=0");
 })();

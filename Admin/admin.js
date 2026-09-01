@@ -328,7 +328,7 @@ $("#footer").html(FOOTER_HTML);
     });
   }
 
-  // {id, name} alakban - ugyanugy, ahogy a backend /material style/get-all + a termekeim oldalak is kuldik
+  // {id, name} alakban - ugyanugy, ahogy a backend material style/get-all + a termekeim oldalak is kuldik
   function kivalasztottak(containerId) {
     return Array.from(document.querySelectorAll("#" + containerId + " input:checked"))
       .map(function (i) { return { id: Number(i.dataset.id), name: i.value }; });
@@ -557,6 +557,97 @@ $("#footer").html(FOOTER_HTML);
     betolt();
   }
 
+  /* EGYEDI RENDELES */
+
+  function datumFormazas(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleDateString("hu-HU") + " " + d.toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function betoltRendeleseket() {
+    fetch(API + "/order/get-all", { headers: { Authorization: token() } })
+      .then(function (r) {
+        if (!r.ok) throw new Error("A szerver " + r.status + " hibakóddal válaszolt");
+        return r.json();
+      })
+      .then(function (data) {
+        rajzoldRendelesListat(Array.isArray(data) ? data : []);
+      })
+      .catch(function (err) {
+        document.getElementById("rendelesek-osszegzes").textContent =
+          "A rendelések betöltése nem sikerült (" + err.message + ").";
+      });
+  }
+
+  function rajzoldRendelesListat(rendelesek) {
+    var lista = document.getElementById("rendelesek-lista");
+    var osszegzes = document.getElementById("rendelesek-osszegzes");
+    lista.innerHTML = "";
+    osszegzes.textContent = rendelesek.length
+      ? rendelesek.length + " beérkezett egyedi rendelés."
+      : "Még nincs beérkezett egyedi rendelés.";
+
+    rendelesek.forEach(function (rendeles) {
+      var sor = document.createElement("article");
+      sor.className = "admin-row";
+
+      var info = document.createElement("div");
+      info.className = "admin-row__info";
+
+      var meta = document.createElement("p");
+      meta.className = "admin-meta";
+      meta.textContent = datumFormazas(rendeles.createdAt) + " · " + (rendeles.userName || "ismeretlen felhasználó");
+      info.appendChild(meta);
+
+      var cim = document.createElement("h3");
+      cim.textContent = (rendeles.materialName || "Technika nélkül") + " · " + rendeles.xcm + " × " + rendeles.ycm + " cm";
+      info.appendChild(cim);
+
+      var leiras = document.createElement("p");
+      leiras.className = "size";
+      leiras.textContent = rendeles.description || "";
+      info.appendChild(leiras);
+
+      if (rendeles.upload) {
+        var kep = document.createElement("p");
+        kep.className = "size";
+        var link = document.createElement("a");
+        link.href = rendeles.upload;
+        link.target = "_blank";
+        link.textContent = "Kép: " + rendeles.upload;
+        kep.appendChild(link);
+        info.appendChild(kep);
+      }
+
+      var gombSor = document.createElement("div");
+      gombSor.className = "admin-row__actions";
+
+      var torol = document.createElement("button");
+      torol.type = "button";
+      torol.className = "btn btn--danger";
+      torol.textContent = "Törlés";
+      torol.addEventListener("click", function () {
+        if (!window.confirm("Biztosan törlöd ezt a rendelést?")) return;
+        fetch(API + "/order/delete/" + rendeles.id, {
+          method: "DELETE",
+          headers: { Authorization: token() }
+        })
+          .then(function (r) {
+            if (!r.ok) throw new Error("A szerver " + r.status + " hibakóddal válaszolt");
+            betoltRendeleseket();
+          })
+          .catch(function (err) { window.alert("A törlés nem sikerült: " + err.message); });
+      });
+      gombSor.appendChild(torol);
+
+      sor.appendChild(info);
+      sor.appendChild(gombSor);
+      lista.appendChild(sor);
+    });
+  }
+
   /* inditas */
   document.addEventListener("DOMContentLoaded", function () {
     if (!ellenorizJogosultsagot()) return;
@@ -585,5 +676,7 @@ $("#footer").html(FOOTER_HTML);
 
     kategoriaKezelo("/material", "technika-lista", "technika-uj-nev", "technika-uj-leiras", "technika-uj-gomb", "technika-status");
     kategoriaKezelo("/style", "tema-lista", "tema-uj-nev", "tema-uj-leiras", "tema-uj-gomb", "tema-status");
+
+    betoltRendeleseket();
   });
 })();

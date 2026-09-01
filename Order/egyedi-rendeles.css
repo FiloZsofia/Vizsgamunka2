@@ -22,6 +22,23 @@
     }
 }
 
+/* meret mar ket field a korabbi egy helyett (ugyanugy, mint termek feltoltesenel */
+.meret-inputs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.meret-inputs input {
+    min-width: 0;
+}
+
+.meret-inputs span {
+    color: var(--ink-soft);
+    font-weight: 600;
+    flex: none;
+}
+
 /* kepfeltoltos box */
 .img_upload {
     display: grid;
@@ -53,4 +70,15 @@
 .img_upload__hint ion-icon {
     font-size: 2rem;
     color: var(--accent);
+}
+
+.img_upload__hint[hidden] {
+    display: none;
+}
+
+.uploaded-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
 }

@@ -748,8 +748,10 @@ nav ul li a:hover::after {
     transition: background-color var(--transition), color var(--transition);
 }
 
-/* a fenti display:block felulirta a "hidden" attributumot (pl. az
-#owner-link-en) - emiatt latszott a "Owner felület" nem-owner felhasznaloknak is */
+#owner-link {
+    background: var(--surface-alt);
+}
+
 .user-menu__dropdown a[hidden],
 .user-menu__dropdown button[hidden] {
     display: none;

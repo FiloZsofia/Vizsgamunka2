@@ -84,24 +84,24 @@ function getSelectedSizes() {
     const selectedSizes = [];
     const sizeCheckboxes = document.querySelectorAll('#meret input.checkbox:checked');
     sizeCheckboxes.forEach((checkbox) => {
-        // A label szövegéből kinyerjük a méretet (pl. "Nagy", "Közepes")
-        const labelText = checkbox.parentElement.textContent.trim();
-        selectedSizes.push(labelText);
+        selectedSizes.push(checkbox.value);
     });
     return selectedSizes;
 }
 
-// Segédfüggvény: meghatározza a termék méretkategóriáját
+// meretkategoriak, de ez igy nem fed le mindent, szoval meg tweakelni kell rajta, mert van olyan, hogy egy termek merete egyik kategoriaba sem tartozik...
 function getTermekMeretKategoria(termek) {
-    const terulet = termek.xcm * termek.ycm;
+    const x = termek.xcm;
+    const y = termek.ycm;
 
-    if (terulet < 1200) {          // ~30x40 cm alatt
+    if (x < 30 && y < 30) {
         return "Kicsi";
-    } else if (terulet <= 3600) {   // ~60x60 cm-ig
+    } else if (x >= 30 && x < 50 && y >= 30 && y < 50) {
         return "Közepes";
-    } else {                       // 60x60 cm felett
+    } else if (x >= 50 && y >= 50) {
         return "Nagy";
     }
+    return null;
 }
 
 // Szűrés funkció
@@ -334,10 +334,7 @@ function getProducts() {
         });
 }
 
-// Ha a fooldalrol egy adott temara szurve erkeztunk (pl. termekek.html?tema=Tájkép),
-// pipaljuk be az annak megfelelo checkboxot es szurjunk aszerint. A materials/styles
-// es a getProducts fuggetlenul, aszinkron toltodnek be, ezert csak akkor probalkozunk,
-// ha MINDKETTO (a checkbox-lista es a termeklista) mar keszen van.
+// ha a fooldalrol egy adott temara szurve erkeztunk, auto pipalja az ahhoz tartozo checkboxot
 function alkalmazTemaSzurotUrlbol() {
     const temaNev = new URLSearchParams(window.location.search).get("tema");
     if (!temaNev) return;

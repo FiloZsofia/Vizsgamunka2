@@ -44,19 +44,19 @@
 
               <div class="field">
                 <label for="technika">Technika</label>
-                <select id="technika">
-                  <option disabled selected>Válassz…</option>
+                <select id="technika" required>
+                  <option disabled selected value="">Válassz…</option>
                 </select>
               </div>
 
               <div class="field">
-                <label for="meret">Méret</label>
-                <select id="meret" required>
-                  <option disabled selected>Válassz…</option>
-                  <option value="20x40cm">20 × 40 cm</option>
-                  <option value="40x60cm">40 × 60 cm</option>
-                  <option value="60x80cm">60 × 80 cm</option>
-                </select>
+                <span class="field-label">Méret</span>
+                <div class="meret-inputs">
+                  <input type="number" min="1" id="rendeles-xcm" placeholder="80" required>
+                  <span class="meret-x">×</span>
+                  <input type="number" min="1" id="rendeles-ycm" placeholder="60" required>
+                  <span>cm</span>
+                </div>
               </div>
 
               <div class="field span-2">
@@ -76,9 +76,18 @@
                 </div>
                 <input type="file" id="file-input" accept="image/*" hidden>
               </div>
+
+              <label for="imgUrl" style="margin-top: 1rem;">Kép útvonala (opcionális)</label>
+              <input type="text" id="imgUrl" placeholder="../Assets/images/inspiracio.jpg">
+              <p class="field-hint">
+                Mivel a szerver csak hivatkozást tárol, ezért a feltöltésre szánt képet másold az
+                <code>Assets/images</code> mappába.
+              </p>
             </div>
 
           </div>
+
+          <p class="form-status" id="rendeles-status" hidden></p>
 
           <div class="center-button">
             <button id="add-product-button" type="button" class="btn">Ajánlat kérése</button>
