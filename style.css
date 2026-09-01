@@ -1332,8 +1332,28 @@ nav ul li a:hover::after {
 .about-images img:first-child {
     grid-column: 1 / -1;
     aspect-ratio: 16 / 9;
+} 
+
+/* harom kep ami a rolunk resznel van
+.about-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: repeat(2, 1fr); 
+    gap: var(--space-sm);
 }
 
+.about-images img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+.about-images img:first-child {
+    grid-column: 1 / 2; 
+    grid-row: 1 / -1;   
+    aspect-ratio: auto; 
+} */
 
 .techniques-grid { /* technikak resz */
     display: grid;
